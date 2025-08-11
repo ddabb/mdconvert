@@ -1,11 +1,12 @@
-/* 小红书风格样式 */
+/* 小红书风格样式 - 2024年版 */
 body {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  line-height: 1.75;
+  font-family: "PingFang SC", -apple-system, BlinkMacSystemFont, "Segoe UI", "Hiragino Sans GB", "Microsoft YaHei", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  line-height: 1.8;
   color: #333;
-  background-color: #f4f4f4;
+  background-color: #faf5f5;
   margin: 0;
-  padding: 0;
+  padding: 20px;
+  letter-spacing: 0.02em;
 }
 
 .xhs-container {
@@ -13,8 +14,8 @@ body {
   margin: 0 auto;
   padding: 0;
   background-color: #fff;
-  border-radius: 8px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
   overflow: hidden;
 }
 
@@ -22,8 +23,9 @@ body {
 .xhs-header {
   display: flex;
   align-items: center;
-  padding: 16px;
+  padding: 20px;
   border-bottom: 1px solid #f4f4f4;
+  background-color: #fff;
 }
 
 .xhs-user {
@@ -33,11 +35,12 @@ body {
 }
 
 .xhs-avatar {
-  width: 40px;
-  height: 40px;
+  width: 45px;
+  height: 45px;
   border-radius: 50%;
   background: linear-gradient(45deg, #ff2e4d, #ff4e50);
-  margin-right: 12px;
+  margin-right: 15px;
+  box-shadow: 0 2px 10px rgba(255, 46, 77, 0.3);
 }
 
 .xhs-info {
@@ -45,148 +48,194 @@ body {
 }
 
 .xhs-name {
-  font-size: 16px;
-  font-weight: 600;
+  font-size: 17px;
+  font-weight: 700;
   color: #333;
 }
 
 .xhs-date {
-  font-size: 12px;
+  font-size: 13px;
   color: #999;
-  margin-top: 2px;
+  margin-top: 3px;
 }
 
 .xhs-follow-btn {
-  padding: 6px 16px;
+  padding: 8px 18px;
   background-color: #ff2e4d;
   color: white;
-  border-radius: 16px;
+  border-radius: 20px;
   font-size: 14px;
   font-weight: 600;
   cursor: pointer;
+  box-shadow: 0 2px 8px rgba(255, 46, 77, 0.3);
 }
 
 /* 内容区域 */
 .xhs-content {
-  padding: 16px;
+  padding: 20px;
 }
 
 /* 标题样式 */
 h1 {
-  font-size: 22px;
-  color: #333;
-  margin-top: 10px;
-  margin-bottom: 16px;
-  font-weight: bold;
-  line-height: 1.4;
+  font-size: 28px;
+  color: #ff2e4d;
+  margin-top: 15px;
+  margin-bottom: 25px;
+  font-weight: 800;
+  line-height: 1.5;
+  text-align: center;
+  position: relative;
+  padding-bottom: 18px;
+  letter-spacing: 0.05em;
+}
+
+h1:after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 3px;
+  background: linear-gradient(90deg, #ff2e4d, #ff7676);
+  border-radius: 3px;
 }
 
 h2 {
-  font-size: 20px;
-  color: #333;
-  margin-top: 24px;
-  margin-bottom: 16px;
-  font-weight: bold;
+  font-size: 22px;
+  color: #ff4e50;
+  margin-top: 30px;
+  margin-bottom: 18px;
+  font-weight: 700;
+  padding-left: 12px;
+  border-left: 4px solid #ff2e4d;
 }
 
 h3 {
-  font-size: 18px;
-  color: #333;
-  margin-top: 20px;
-  margin-bottom: 12px;
-  font-weight: bold;
+  font-size: 20px;
+  color: #ff6666;
+  margin-top: 25px;
+  margin-bottom: 15px;
+  font-weight: 700;
 }
 
 h4 {
-  font-size: 16px;
-  color: #555;
-  margin-top: 16px;
-  margin-bottom: 10px;
-  font-weight: bold;
+  font-size: 18px;
+  color: #ff7676;
+  margin-top: 20px;
+  margin-bottom: 12px;
+  font-weight: 700;
 }
 
 /* 段落样式 */
 p {
-  margin-bottom: 16px;
-  line-height: 1.75;
+  margin-bottom: 18px;
+  line-height: 1.85;
   font-size: 16px;
   color: #333;
+  text-align: justify;
 }
 
 /* 列表样式 */
 ul, ol {
-  margin-bottom: 20px;
+  margin-bottom: 22px;
   padding-left: 25px;
 }
 
 li {
-  margin-bottom: 8px;
+  margin-bottom: 10px;
+  line-height: 1.8;
 }
 
 /* 表格样式 */
 table {
   width: 100%;
   border-collapse: collapse;
-  margin: 20px 0;
-  border: 1px solid #eee;
+  margin: 25px 0;
+  border: 1px solid #f0e0e0;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
 }
 
 table, th, td {
-  border: 1px solid #eee;
+  border: 1px solid #f0e0e0;
 }
 
 th, td {
-  padding: 12px;
+  padding: 14px;
   text-align: left;
 }
 
 th {
-  background-color: #f9f9f9;
+  background-color: #fff0f0;
   font-weight: bold;
-  color: #333;
+  color: #ff2e4d;
 }
 
 tr:nth-child(even) {
-  background-color: #fafafa;
+  background-color: #fef8f8;
 }
 
 /* 代码块样式 */
 pre {
-  background-color: #f6f8fa;
-  border-radius: 8px;
-  padding: 15px;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  padding: 18px;
   overflow-x: auto;
-  margin: 15px 0;
-  border: 1px solid #eee;
+  margin: 20px 0;
+  border: 1px solid #f0e0e0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 }
 
 code {
-  font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+  font-family: "Fira Code", Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
   font-size: 14px;
+  color: #ff4e50;
 }
 
 /* 引用样式 */
 blockquote {
-  padding: 15px;
-  margin: 20px 0;
+  padding: 22px 25px;
+  margin: 30px 0;
   background-color: #fff9f9;
   border-left: 4px solid #ff2e4d;
-  color: #666;
-  border-radius: 0 8px 8px 0;
+  color: #555;
+  border-radius: 0 15px 15px 0;
+  position: relative;
+  box-shadow: 0 3px 15px rgba(255, 46, 77, 0.1);
+}
+
+blockquote:before {
+  content: "\201C";
+  font-size: 70px;
+  color: rgba(255, 46, 77, 0.15);
+  position: absolute;
+  top: -20px;
+  left: 10px;
+  font-family: Georgia, serif;
 }
 
 blockquote p {
   margin: 0;
+  padding-left: 25px;
+  line-height: 1.9;
+  font-style: italic;
+  font-size: 17px;
 }
 
 /* 链接样式 */
 a {
   color: #ff2e4d;
   text-decoration: none;
+  border-bottom: 1px solid rgba(255, 46, 77, 0.3);
+  transition: all 0.3s ease;
 }
 
 a:hover {
-  text-decoration: underline;
+  color: #ff6666;
+  border-bottom: 1px solid #ff6666;
+  text-decoration: none;
 }
 
 /* 图片样式 */
@@ -194,16 +243,29 @@ img {
   max-width: 100%;
   height: auto;
   display: block;
-  margin: 20px auto;
-  border-radius: 8px;
+  margin: 25px auto;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
 /* 分割线样式 */
 hr {
   border: none;
-  height: 1px;
-  background-color: #eee;
-  margin: 30px 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #ff2e4d, #ff6666, transparent);
+  margin: 35px 0;
+  border-radius: 2px;
+}
+
+/* 强调样式 */
+strong, b {
+  font-weight: 700;
+  color: #ff2e4d;
+}
+
+em, i {
+  font-style: italic;
+  color: #ff6666;
 }
 
 /* 小红书标签样式 */
@@ -290,4 +352,32 @@ hr {
     margin: 0;
     border-radius: 0;
   }
+}
+
+/* 任务列表样式 */
+.task-list-item {
+  list-style-type: none;
+  position: relative;
+  padding-left: 1.8em;
+  margin-bottom: 12px;
+}
+
+.task-list-item-checkbox {
+  position: absolute;
+  left: 0;
+  top: 0.25em;
+  margin: 0;
+  accent-color: #ff2e4d;
+  transform: scale(1.2);
+}
+
+/* 代码样式优化 */
+code {
+  font-family: "Fira Code", Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+  font-size: 14px;
+  color: #ff4e50;
+  background-color: #fff5f5;
+  padding: 3px 6px;
+  border-radius: 4px;
+  border: 1px solid #ffe0e0;
 }

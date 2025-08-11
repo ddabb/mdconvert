@@ -19,6 +19,36 @@
 npm install -g yyds_md2png
 ```
 
+### 国内用户安装说明
+
+本工具依赖 Puppeteer 生成图片，国内用户可能会遇到 Chromium 下载失败的问题。我们已经配置了国内镜像源，但如果仍然遇到问题，可以尝试以下方法：
+
+```bash
+# 方法一：设置环境变量后再安装
+# 针对 Puppeteer v19 以下版本
+export PUPPETEER_DOWNLOAD_HOST=https://cdn.npmmirror.com/binaries
+
+# 针对 Puppeteer v20 及以上版本
+export PUPPETEER_DOWNLOAD_BASE_URL=https://cdn.npmmirror.com/binaries/chrome-for-testing
+
+# 然后安装
+npm install -g yyds_md2png
+
+# 方法二：全局安装特定版本的 Puppeteer
+# 安装 Puppeteer v19 版本
+set PUPPETEER_DOWNLOAD_HOST=https://cdn.npmmirror.com/binaries && npm install -g puppeteer@19.11.1
+
+# 安装 Puppeteer v20 及以上版本
+set PUPPETEER_DOWNLOAD_BASE_URL=https://cdn.npmmirror.com/binaries/chrome-for-testing && npm install -g puppeteer@latest
+
+# 然后安装本工具
+npm install -g yyds_md2png
+
+# 方法三：使用 cnpm 安装
+npm install -g cnpm
+cnpm install -g yyds_md2png
+```
+
 ## 快速开始
 
 ### 基本用法
