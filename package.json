@@ -1,33 +1,26 @@
 {
   "name": "yyds_md2png",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "将Markdown文件转换为不同样式的HTML或PNG图片",
   "main": "src/index.js",
   "bin": {
-    "yyds_md2png": "bin/yyds_md2png.js"
+    "md2png": "bin/yyds_md2png.js"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "postinstall": "node -e \"try { require('puppeteer'); console.log('正在安装Puppeteer浏览器...'); require('child_process').execSync('npx puppeteer browsers install chrome', {stdio: 'inherit'}); console.log('✅ Puppeteer浏览器安装成功！'); } catch(e) { console.log('⚠️ Puppeteer浏览器安装失败，可能需要手动安装: npx puppeteer browsers install chrome'); }\""
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
     "markdown",
     "html",
-    "converter",
-    "template",
-    "douyin",
-    "wechat",
-    "xiaohongshu",
     "png",
-    "image"
+    "image",
+    "converter",
+    "template"
   ],
   "author": "MDConvert Team",
   "repository": {
     "type": "git",
     "url": "https://github.com/ddabb/mdconvert.git"
-  },
-  "bugs": {
-    "url": "https://github.com/ddabb/mdconvert/issues"
   },
   "homepage": "https://github.com/ddabb/mdconvert",
   "license": "MIT",
@@ -43,7 +36,10 @@
     "open": "^8.4.2",
     "node-html-to-image": "^4.0.0"
   },
-  "optionalDependencies": {
-    "html-pdf": "^3.0.1"
+  "peerDependencies": {
+    "puppeteer": ">=19.0.0"
+  },
+  "engines": {
+    "node": ">=14.0.0"
   }
 }
