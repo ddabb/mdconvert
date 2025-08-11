@@ -1,0 +1,229 @@
+# yyds_md2png
+
+一个功能强大的 Markdown 转换工具，支持将 Markdown 文件转换为精美的 HTML 或 PNG 图片，内置多种样式模板（微信、抖音、小红书等）。
+
+## 特性
+
+- **多模板支持**：内置多种样式模板（默认、微信、抖音、小红书等）
+- **高质量图片生成**：优化的图片生成流程，支持多种图片格式
+- **智能分页**：自动检测内容尺寸，超长内容自动分页，或按章节分割
+- **流程图支持**：完美支持 Mermaid 流程图、序列图、甘特图等
+- **数学公式**：支持 KaTeX 数学公式渲染
+- **批量处理**：支持批量处理整个目录的 Markdown 文件
+- **交互式命令**：无参数运行时，自动询问是否处理当前目录下所有文件
+- **高级定制**：支持代码高亮、目录生成、自定义 CSS/JS、透明背景等
+
+## 安装
+
+```bash
+npm install -g yyds_md2png
+```
+
+## 快速开始
+
+### 基本用法
+
+```bash
+# 直接转换为 PNG 图片（默认行为）
+yyds_md2png document.md
+
+# 使用微信公众号模板
+yyds_md2png document.md --template wechat
+
+# 转换为 HTML
+yyds_md2png document.md --to-html
+
+# 无参数运行，将询问是否处理当前目录下所有 Markdown 文件
+yyds_md2png
+```
+
+### 模板选择
+
+```bash
+# 列出所有可用模板
+yyds_md2png --list-templates
+
+# 使用不同模板
+yyds_md2png document.md --template wechat    # 微信公众号风格
+yyds_md2png document.md --template douyin    # 抖音风格
+yyds_md2png document.md --template xiaohongshu  # 小红书风格
+```
+
+### 高级功能
+
+```bash
+# 生成目录
+yyds_md2png document.md --toc
+
+# 启用数学公式支持
+yyds_md2png document.md --katex
+
+# 设置渲染等待时间（对于复杂的 Mermaid 图表很有用）
+yyds_md2png document.md --wait 5000
+
+# 批量处理目录中的所有 Markdown 文件
+yyds_md2png --batch ./docs
+
+# 在浏览器中打开生成的 HTML 文件
+yyds_md2png document.md --to-html --browser
+```
+
+### 图片转换选项
+
+```bash
+# 自动确定图片尺寸（根据内容）
+yyds_md2png document.md --auto-size
+
+# 按章节分割成多个 PNG 图片
+yyds_md2png document.md --split-sections
+
+# 自定义 PNG 图片尺寸和缩放
+yyds_md2png document.md --png-width 1200 --png-height 800 --png-scale 2
+
+# 设置图片最大高度，超过此高度将自动分页
+yyds_md2png document.md --max-height 15000
+
+# 使用透明背景
+yyds_md2png document.md --transparent
+
+# 使用不同图片格式
+yyds_md2png document.md --format webp
+```
+
+## 命令行选项
+
+```
+选项:
+  -V, --version                  输出版本号
+  -t, --theme <theme>            设置主题 (light, dark) (默认: "light")
+  --toc                          生成目录 (默认: false)
+  -b, --batch <directory>        批量处理指定目录中的所有 Markdown 文件
+  --template <template>          设置模板 (default, wechat, douyin, xiaohongshu等) (默认: "default")
+  --css <file>                   使用自定义 CSS 文件
+  --js <file>                    使用自定义 JavaScript 文件
+  --mermaid-theme <theme>        设置 Mermaid 图表主题 (默认: "default")
+  -k, --katex                    启用 KaTeX 数学公式支持 (默认: false)
+  -o, --output <path>            指定输出文件路径
+  --browser                      在浏览器中打开生成的 HTML 文件 (默认: false)
+  --pre-render                   预渲染 Mermaid 图表 (默认: true)
+  --no-pre-render                禁用 Mermaid 图表预渲染
+  --wait <ms>                    等待页面渲染的时间（毫秒） (默认: "2000")
+  --timeout <ms>                 渲染超时时间（毫秒） (默认: "60000")
+  --no-save-svg                  不保存 SVG 文件到本地
+  --svg-dir <directory>          指定保存 SVG 文件的目录 (默认: "mermaid-svg")
+  --keep-code-blocks             保留 Mermaid 代码块 (默认: false)
+  --list-templates               列出所有可用的模板
+  --create-template <name>       创建新模板
+  --template-author <author>     新模板的作者
+  --template-desc <description>  新模板的描述
+  
+  # 转换相关选项
+  --to-html                      将 Markdown 转换为 HTML 而不是 PNG 图片 (默认: false)
+  --to-png                       将生成的 HTML 转换为 PNG 图片 (默认: true)
+  --png-quality <quality>        PNG 图片质量(0-100) (默认: "90")
+  --png-scale <scale>            设备缩放比例 (默认: "2")
+  --png-width <width>            PNG 图片宽度
+  --png-height <height>          PNG 图片高度
+  --png-output <directory>       指定 PNG 输出目录
+  --split-sections               按章节分割 PNG 图片 (默认: false)
+  --section-selector <selector>  章节选择器 (默认: "h1, h2, h3")
+  --auto-size                    自动确定图片尺寸（根据内容） (默认: true)
+  --no-auto-size                 禁用自动尺寸
+  --max-height <height>          图片最大高度，超过此高度将自动分页 (默认: "15000")
+  --transparent                  使用透明背景（仅 PNG 格式有效） (默认: false)
+  --format <format>              图片格式 (png, jpeg, webp) (默认: "png")
+  --optimize                     优化图片大小 (默认: true)
+  --no-optimize                  不优化图片大小
+  --delete-html                  转换完成后删除 HTML 文件 (默认: false)
+  
+  # 元数据选项
+  --author <author>              设置文档作者
+  --description <description>    设置文档描述
+  --keywords <keywords>          设置文档关键词，用逗号分隔
+  -h, --help                     显示帮助信息
+```
+
+## 自定义模板
+
+yyds_md2png 使用基于 CSS 的模板系统，您可以通过以下方式创建自己的模板：
+
+### 方法一：使用命令行创建模板
+
+```bash
+yyds_md2png --create-template my-template --template-author "我的名字" --template-desc "我的自定义模板"
+```
+
+### 方法二：手动创建模板文件
+
+在 `templates/styles` 目录下创建一个新的 CSS 文件，例如 `my-template.css`：
+
+```css
+/* 模板信息
+ * 描述: 我的自定义模板
+ * 作者: 我的名字
+ * 版本: 1.0.0
+ * 标签: 自定义, 简洁
+ */
+
+/* 自定义样式 */
+body {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  color: #333;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #0066cc;
+}
+
+/* 更多自定义样式... */
+```
+
+### 使用自定义模板
+
+```bash
+yyds_md2png document.md --template my-template
+```
+
+## 在代码中使用
+
+您也可以在 Node.js 项目中直接使用 yyds_md2png：
+
+```javascript
+const { convertToPngDirect } = require('yyds_md2png');
+
+async function convert() {
+  const options = {
+    template: 'wechat',
+    waitTime: 5000,
+    autoSize: true
+  };
+  
+  const pngPaths = await convertToPngDirect('document.md', options);
+  console.log(`生成的图片: ${pngPaths}`);
+}
+
+convert();
+```
+
+## 常见问题解答
+
+### 流程图不显示？
+
+增加渲染等待时间：`--wait 5000`
+
+### 内容被截断？
+
+使用自动尺寸选项：`--auto-size`
+
+### 图片质量不佳？
+
+增加质量和缩放比例：`--png-quality 95 --png-scale 2`
+
+## 许可证
+
+MIT

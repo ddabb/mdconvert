@@ -1,0 +1,362 @@
+/* 微信公众号风格样式 */
+body {
+  font-family: -apple-system-font, BlinkMacSystemFont, "Helvetica Neue", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei UI", "Microsoft YaHei", Arial, sans-serif;
+  color: #333333;
+  font-size: 16px;
+  line-height: 1.75;
+  letter-spacing: 0.05em;
+  background-color: #fff;
+  max-width: 677px; /* 微信公众号文章宽度 */
+  margin: 0 auto;
+  padding: 20px 16px;
+  word-wrap: break-word;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: bold;
+  line-height: 1.4;
+  margin-top: 1.8em;
+  margin-bottom: 1em;
+  color: #1a1a1a;
+}
+
+h1 {
+  font-size: 22px;
+  margin-bottom: 24px;
+  text-align: center;
+  font-weight: bold;
+  line-height: 1.4;
+}
+
+h2 {
+  font-size: 20px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #f0f0f0;
+  margin-top: 35px;
+}
+
+h3 {
+  font-size: 18px;
+  margin-top: 30px;
+}
+
+h4 {
+  font-size: 16px;
+  margin-top: 25px;
+}
+
+p {
+  margin-bottom: 1.5em;
+  color: #333333;
+  line-height: 1.75;
+}
+
+a {
+  color: #576b95;
+  text-decoration: none;
+  border-bottom: 1px solid #d9d9d9;
+  word-wrap: break-word;
+}
+
+a:hover {
+  color: #07c160;
+  border-bottom: 1px solid #07c160;
+}
+
+code {
+  font-family: Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace;
+  background-color: rgba(0, 0, 0, 0.04);
+  padding: 2px 4px;
+  border-radius: 3px;
+  font-size: 14px;
+  color: #d14;
+  word-wrap: break-word;
+}
+
+pre {
+  font-family: Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace;
+  background-color: #f8f8f8;
+  border-radius: 5px;
+  padding: 16px;
+  overflow: auto;
+  font-size: 14px;
+  margin: 20px 0;
+  line-height: 1.45;
+  border: 1px solid #e7e7e7;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+pre code {
+  background-color: transparent;
+  padding: 0;
+  color: #333;
+  border-radius: 0;
+}
+
+blockquote {
+  padding: 15px;
+  margin: 20px 0;
+  border-left: 4px solid #07c160;
+  background-color: #f8f8f8;
+  color: #666;
+  font-size: 15px;
+}
+
+blockquote p {
+  margin: 0;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 20px 0;
+  border: 1px solid #e0e0e0;
+  font-size: 15px;
+}
+
+table th, table td {
+  padding: 10px;
+  border: 1px solid #e0e0e0;
+  word-break: break-all;
+}
+
+table th {
+  background-color: #f8f8f8;
+  font-weight: bold;
+  color: #333;
+}
+
+table tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 20px auto;
+  border-radius: 4px;
+}
+
+hr {
+  border: none;
+  border-top: 1px solid #e0e0e0;
+  margin: 30px 0;
+}
+
+ul, ol {
+  padding-left: 2em;
+  margin: 20px 0;
+  color: #333333;
+}
+
+li {
+  margin-bottom: 10px;
+  line-height: 1.75;
+}
+
+/* 列表样式优化 */
+ul {
+  list-style-type: disc;
+}
+
+ul ul {
+  list-style-type: circle;
+}
+
+ul ul ul {
+  list-style-type: square;
+}
+
+ol {
+  list-style-type: decimal;
+}
+
+ol ol {
+  list-style-type: lower-alpha;
+}
+
+ol ol ol {
+  list-style-type: lower-roman;
+}
+
+.task-list-item {
+  list-style-type: none;
+  position: relative;
+  padding-left: 1.5em;
+}
+
+.task-list-item-checkbox {
+  position: absolute;
+  left: 0;
+  top: 0.25em;
+  margin: 0;
+}
+
+.footnote {
+  font-size: 14px;
+  color: #888;
+  margin-top: 40px;
+  padding-top: 10px;
+  border-top: 1px solid #f0f0f0;
+}
+
+.wechat-footer {
+  text-align: center;
+  margin-top: 40px;
+  padding-top: 20px;
+  border-top: 1px solid #f0f0f0;
+  color: #888;
+  font-size: 14px;
+}
+
+.wechat-footer img {
+  width: 120px;
+  height: 120px;
+  margin: 10px auto;
+}
+
+.wechat-footer p {
+  margin: 5px 0;
+  color: #888;
+}
+
+/* 微信特有的样式 */
+.wx-box {
+  margin-bottom: 20px;
+  padding: 15px;
+  border: 1px solid #f0f0f0;
+  border-radius: 5px;
+  background-color: #fafafa;
+}
+
+.wx-title {
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #07c160;
+}
+
+/* 强调样式 */
+strong, b {
+  font-weight: bold;
+  color: #222;
+}
+
+em, i {
+  font-style: italic;
+  color: #222;
+}
+
+/* 代码高亮 */
+.hljs {
+  display: block;
+  overflow-x: auto;
+  padding: 0.5em;
+  color: #333;
+  background: #f8f8f8;
+}
+
+/* Mermaid图表样式 */
+.mermaid {
+  margin: 20px auto;
+  text-align: center;
+  background-color: white;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+/* 引用链接样式 */
+.reference-link {
+  font-size: 14px;
+  color: #576b95;
+}
+
+/* 图片说明文字 */
+.image-caption {
+  text-align: center;
+  font-size: 14px;
+  color: #888;
+  margin-top: -10px;
+  margin-bottom: 20px;
+}
+
+/* 打印样式 */
+@media print {
+  body {
+    padding: 0;
+    margin: 0;
+    font-size: 14px;
+  }
+  
+  .wechat-footer {
+    display: none;
+  }
+}
+
+/* 移动设备适配 */
+@media screen and (max-width: 677px) {
+  body {
+    padding: 15px 10px;
+  }
+  
+  h1 {
+    font-size: 20px;
+  }
+  
+  h2 {
+    font-size: 18px;
+  }
+  
+  pre {
+    padding: 10px;
+  }
+}
+
+/* 微信公众号特有的卡片样式 */
+.wx-card {
+  margin: 20px 0;
+  padding: 15px;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  background-color: #fafafa;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.wx-card-title {
+  font-size: 17px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #1a1a1a;
+}
+
+.wx-card-content {
+  font-size: 15px;
+  color: #666;
+}
+
+/* 微信公众号特有的提示框样式 */
+.wx-tip {
+  margin: 20px 0;
+  padding: 15px;
+  border-left: 4px solid #07c160;
+  background-color: #f8f8f8;
+  color: #666;
+}
+
+.wx-warning {
+  margin: 20px 0;
+  padding: 15px;
+  border-left: 4px solid #fa5151;
+  background-color: #fff7f7;
+  color: #666;
+}
+
+.wx-info {
+  margin: 20px 0;
+  padding: 15px;
+  border-left: 4px solid #10aeff;
+  background-color: #f0f8ff;
+  color: #666;
+}
