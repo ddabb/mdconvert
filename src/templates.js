@@ -1,6 +1,6 @@
 /**
- * 模板管理模块
- * 基于CSS的模板系统，使不同模板主要通过CSS样式区分
+ * templates.js - 模板管理模块
+ * 提供模板渲染和管理功能
  */
 
 const fs = require('fs');
@@ -122,119 +122,111 @@ function getTemplateCss(templateName) {
  * @returns {string} 渲染后的HTML
  */
 function renderTemplate(templateName, params) {
-  const { title, content, meta = {} } = params;
+  const { title, content, options = {}, meta = {} } = params;
   const css = getTemplateCss(templateName);
   
+  // 处理元数据
+  const metaTags = `
+    <meta name="author" content="${meta.author || ''}">
+    <meta name="description" content="${meta.description || ''}">
+    <meta name="keywords" content="${meta.keywords || ''}">
+  `;
+  
+  // 处理自定义CSS
+  const customCss = params.customCss ? `\n/* 用户自定义CSS */\n${params.customCss}` : '';
+  
   // 构建HTML
-  let html = `<!DOCTYPE html>
-<html>
+  return `
+<!DOCTYPE html>
+<html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  ${metaTags}
   <title>${title}</title>
-  <style>
-${css}
-  </style>
-`;
-
-  // 添加自定义CSS
-  if (params.customCss) {
-    html += `  <style>
-${params.customCss}
-  </style>
-`;
-  }
-
-  // 添加KaTeX支持
-  if (params.katex) {
-    html += `  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css">
+  
+  <!-- 添加Mermaid支持 -->
+  <script src="https://cdn.jsdelivr.net/npm/mermaid@11.9.0/dist/mermaid.min.js"></script>
+  
+  ${params.katex ? `
+  <!-- 添加KaTeX支持 -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css">
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.js"></script>
-  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body);"></script>
-`;
-  }
-
-  // 添加Mermaid支持
-  html += `  <script src="https://cdn.jsdelivr.net/npm/mermaid@11.9.0/dist/mermaid.min.js"></script>
+  ` : ''}
+  
+  <!-- 添加代码高亮样式 -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11.7.0/styles/github.min.css">
+  
+  <style>
+    ${css}
+    ${customCss}
+  </style>
+</head>
+<body>
+  <div class="markdown-content">
+    ${content}
+  </div>
+  
   <script>
-    // 立即初始化Mermaid，不等待DOMContentLoaded事件
-    window.mermaid = window.mermaid || {};
-    mermaid.initialize({
-      startOnLoad: true,
-      theme: '${params.mermaidTheme || 'default'}',
-      securityLevel: 'loose'
-    });
-    
-    // 确保在DOMContentLoaded后再次尝试渲染
     document.addEventListener('DOMContentLoaded', function() {
-      // 查找所有未渲染的mermaid图表
-      document.querySelectorAll('.mermaid:not(svg), pre code.language-mermaid').forEach(function(el) {
-        try {
-          if (el.tagName === 'CODE') {
-            // 创建一个div来放置渲染后的图表
-            const div = document.createElement('div');
-            div.className = 'mermaid';
-            div.textContent = el.textContent;
-            
-            // 替换pre元素
-            const pre = el.parentElement;
-            pre.parentElement.replaceChild(div, pre);
-            
-            // 尝试渲染
-            mermaid.init(undefined, div);
-          } else {
-            mermaid.init(undefined, el);
-          }
-        } catch (e) {
-          console.error('Mermaid渲染错误:', e);
-        }
+      // 初始化Mermaid
+      mermaid.initialize({
+        startOnLoad: true,
+        theme: '${options.theme === 'dark' ? 'dark' : 'default'}',
+        securityLevel: 'loose',
+        flowchart: { useMaxWidth: true, htmlLabels: true, curve: 'linear' },
+        fontSize: 14,
+        fontFamily: 'sans-serif'
+      });
+      
+      // 添加图片加载完成事件
+      const images = document.querySelectorAll('img');
+      images.forEach(img => {
+        img.addEventListener('load', function() {
+          this.classList.add('loaded');
+        });
+        img.addEventListener('error', function() {
+          this.classList.add('error');
+          this.alt = '图片加载失败';
+        });
       });
     });
   </script>
-`;
+</body>
+</html>
+  `;
+}
 
-  // 添加自定义JavaScript
-  if (params.customJs) {
-    html += `  <script>
-${params.customJs}
-  </script>
-`;
+/**
+ * 创建新模板
+ * @param {string} templateName 模板名称
+ * @param {string} cssContent CSS内容
+ * @returns {boolean} 是否创建成功
+ */
+function createTemplate(templateName, cssContent) {
+  try {
+    if (!templateName.match(/^[a-zA-Z0-9_-]+$/)) {
+      throw new Error('模板名称只能包含字母、数字、下划线和连字符');
+    }
+    
+    const cssPath = path.join(STYLES_DIR, `${templateName}.css`);
+    
+    if (fs.existsSync(cssPath)) {
+      throw new Error(`模板 "${templateName}" 已存在`);
+    }
+    
+    fs.writeFileSync(cssPath, cssContent, 'utf8');
+    console.log(chalk.green(`✅ 成功创建模板: ${templateName}`));
+    return true;
+  } catch (error) {
+    console.error(chalk.red(`❌ 创建模板失败:`), error.message);
+    return false;
   }
-
-  html += `</head>
-<body>
-`;
-
-  // 添加元数据
-  if (meta.author || meta.keywords || meta.description) {
-    html += `  <div class="metadata">
-`;
-    if (meta.author) {
-      html += `    <div class="author">作者: ${meta.author}</div>
-`;
-    }
-    if (meta.keywords) {
-      html += `    <div class="keywords">关键词: ${meta.keywords}</div>
-`;
-    }
-    if (meta.description) {
-      html += `    <div class="description">${meta.description}</div>
-`;
-    }
-    html += `  </div>
-`;
-  }
-
-  // 添加内容
-  html += content;
-
-  html += `</body>
-</html>`;
-
-  return html;
 }
 
 module.exports = {
   getAvailableTemplates,
   renderTemplate,
-  getTemplateCss
+  getTemplateCss,
+  createTemplate
 };

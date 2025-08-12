@@ -72,19 +72,26 @@ async function htmlToPng(htmlPath, options = {}) {
     prefix: 'page',
     splitSections: false,
     sectionSelector: 'h1, h2, h3',
-    format: 'png',
+    format: 'png', // 支持 'png', 'jpeg', 'webp', 'pdf'
     template: 'default',
     timeout: 60000, // 默认超时时间60秒
     autoSize: true, // 默认使用自动尺寸
-    maxHeight: 15000 // 最大高度，超过此高度将自动分页
+    maxHeight: 15000, // 最大高度，超过此高度将自动分页
+    outputFormats: [] // 额外的输出格式，例如 ['png', 'jpeg', 'webp', 'pdf']
   };
 
   // 合并选项
   const opts = { ...defaultOptions, ...options };
   
-  // 创建与模板相关的输出目录
-  const templateDir = path.resolve(opts.outputDir, opts.template);
-  opts.outputDir = templateDir;
+  // 如果指定了不使用子文件夹，则直接使用原始输出目录
+  // 注意：当使用 --templates * 或多个模板时，默认不创建子文件夹
+  if (opts.noSubfolders !== false) {
+    // 直接使用原始输出目录
+  } else {
+    // 创建与模板相关的输出目录
+    const templateDir = path.resolve(opts.outputDir, opts.template);
+    opts.outputDir = templateDir;
+  }
   
   // 确保输出目录存在
   try {
@@ -176,18 +183,35 @@ async function convertWithNodeHtmlToImage(htmlPath, options) {
 async function convertWithAutoSize(html, htmlPath, options) {
   const nodeHtmlToImage = require('node-html-to-image');
   
-  // 生成唯一的文件名，包含模板名称和时间戳
+  // 准备输出路径
   const timestamp = new Date().getTime();
-  // 使用简短的文件名，避免中文路径问题
-  const fileName = `${options.template}_${timestamp}.${options.format}`;
-  const outputPath = path.resolve(options.outputDir, fileName);
+  // 如果有文件名前缀，使用 "文件名_模板名" 作为前缀，否则只使用模板名
+  // 确保中文文件名能够正确保留
+  const prefix = options.fileNamePrefix 
+    ? `${options.fileNamePrefix}_${options.template}` 
+    : options.template;
+  
+  // 输出调试信息
+  console.log(chalk.blue(`📄 文件名前缀: ${options.fileNamePrefix || '未设置'}`));
+  console.log(chalk.blue(`📄 使用的前缀: ${prefix}`));
   
   // 确保输出目录存在
-  if (!fs.existsSync(path.dirname(outputPath))) {
-    fs.mkdirSync(path.dirname(outputPath), { recursive: true });
+  if (!fs.existsSync(options.outputDir)) {
+    fs.mkdirSync(options.outputDir, { recursive: true });
   }
   
+  // 主要输出格式
+  const mainFormat = options.format || 'png';
+  // 使用中文文件名
+  const fileName = `${prefix}_${timestamp}.${mainFormat}`;
+  const outputPath = path.resolve(options.outputDir, fileName);
+  
   console.log(chalk.blue(`📄 将生成图片: ${fileName}`));
+  
+  // 准备额外的输出格式
+  const outputPaths = [outputPath];
+  const additionalFormats = Array.isArray(options.outputFormats) ? 
+    options.outputFormats.filter(fmt => fmt !== mainFormat) : [];
   
   // 转换选项
   const convertOptions = {
@@ -277,11 +301,33 @@ async function convertWithAutoSize(html, htmlPath, options) {
     `
   };
   
-  // 执行转换
+  // 执行主格式转换
   await nodeHtmlToImage(convertOptions);
-  
   console.log(chalk.green(`✅ 图片已生成: ${outputPath}`));
-  return [outputPath];
+  
+  // 处理额外的输出格式
+  for (const format of additionalFormats) {
+    const additionalFileName = `${prefix}_${timestamp}.${format}`;
+    const additionalOutputPath = path.resolve(options.outputDir, additionalFileName);
+    
+    console.log(chalk.blue(`📄 将生成额外格式图片(${format}): ${additionalFileName}`));
+    
+    const additionalOptions = {
+      ...convertOptions,
+      output: additionalOutputPath,
+      type: format
+    };
+    
+    try {
+      await nodeHtmlToImage(additionalOptions);
+      console.log(chalk.green(`✅ 额外格式图片已生成: ${additionalOutputPath}`));
+      outputPaths.push(additionalOutputPath);
+    } catch (error) {
+      console.error(chalk.red(`❌ 生成 ${format} 格式图片失败: ${error.message}`));
+    }
+  }
+  
+  return outputPaths;
 }
 
 /**
@@ -294,18 +340,29 @@ async function convertWithAutoSize(html, htmlPath, options) {
 async function convertWithFixedSize(html, htmlPath, options) {
   const nodeHtmlToImage = require('node-html-to-image');
   
-  // 生成唯一的文件名，包含模板名称和时间戳
+  // 准备输出路径
   const timestamp = new Date().getTime();
-  // 使用简短的文件名，避免中文路径问题
-  const fileName = `${options.template}_${timestamp}.${options.format}`;
-  const outputPath = path.resolve(options.outputDir, fileName);
+  // 如果有文件名前缀，使用 "文件名_模板名" 作为前缀，否则只使用模板名
+  const prefix = options.fileNamePrefix 
+    ? `${options.fileNamePrefix}_${options.template}` 
+    : options.template;
   
   // 确保输出目录存在
-  if (!fs.existsSync(path.dirname(outputPath))) {
-    fs.mkdirSync(path.dirname(outputPath), { recursive: true });
+  if (!fs.existsSync(options.outputDir)) {
+    fs.mkdirSync(options.outputDir, { recursive: true });
   }
   
+  // 主要输出格式
+  const mainFormat = options.format || 'png';
+  const fileName = `${prefix}_${timestamp}.${mainFormat}`;
+  const outputPath = path.resolve(options.outputDir, fileName);
+  
   console.log(chalk.blue(`📄 将生成图片: ${fileName}`));
+  
+  // 准备额外的输出格式
+  const outputPaths = [outputPath];
+  const additionalFormats = Array.isArray(options.outputFormats) ? 
+    options.outputFormats.filter(fmt => fmt !== mainFormat) : [];
   
   // 转换选项
   const convertOptions = {
@@ -370,11 +427,33 @@ async function convertWithFixedSize(html, htmlPath, options) {
     `
   };
   
-  // 执行转换
+  // 执行主格式转换
   await nodeHtmlToImage(convertOptions);
-  
   console.log(chalk.green(`✅ 图片已生成: ${outputPath}`));
-  return [outputPath];
+  
+  // 处理额外的输出格式
+  for (const format of additionalFormats) {
+    const additionalFileName = `${prefix}_${timestamp}.${format}`;
+    const additionalOutputPath = path.resolve(options.outputDir, additionalFileName);
+    
+    console.log(chalk.blue(`📄 将生成额外格式图片(${format}): ${additionalFileName}`));
+    
+    const additionalOptions = {
+      ...convertOptions,
+      output: additionalOutputPath,
+      type: format
+    };
+    
+    try {
+      await nodeHtmlToImage(additionalOptions);
+      console.log(chalk.green(`✅ 额外格式图片已生成: ${additionalOutputPath}`));
+      outputPaths.push(additionalOutputPath);
+    } catch (error) {
+      console.error(chalk.red(`❌ 生成 ${format} 格式图片失败: ${error.message}`));
+    }
+  }
+  
+  return outputPaths;
 }
 
 /**
@@ -495,9 +574,13 @@ async function convertWithSplitSections(html, htmlPath, options) {
       const range = sectionRanges[i];
       const sectionHeight = range.end - range.start;
       
-      // 生成唯一的文件名，包含模板名称、章节编号和时间戳
+      // 生成唯一的文件名，包含原始文件名（如果有）、模板名称、章节编号和时间戳
       const timestamp = new Date().getTime();
-      const fileName = `${options.template}_section${i+1}_${timestamp}.${options.format}`;
+      // 如果有文件名前缀，使用 "文件名_模板名" 作为前缀，否则只使用模板名
+      const prefix = options.fileNamePrefix 
+        ? `${options.fileNamePrefix}_${options.template}` 
+        : options.template;
+      const fileName = `${prefix}_section${i+1}_${timestamp}.${options.format}`;
       const outputPath = path.resolve(options.outputDir, fileName);
       
       // 确保输出目录存在
@@ -558,10 +641,14 @@ async function convertWithHtmlPdf(htmlPath, options) {
     // 读取HTML内容
     const html = fs.readFileSync(htmlPath, 'utf8');
     
-    // 生成唯一的文件名，包含模板名称和时间戳
+    // 生成唯一的文件名，包含原始文件名（如果有）、模板名称和时间戳
     const timestamp = new Date().getTime();
+    // 如果有文件名前缀，使用 "文件名_模板名" 作为前缀，否则只使用模板名
+    const prefix = options.fileNamePrefix 
+      ? `${options.fileNamePrefix}_${options.template}` 
+      : options.template;
     // 使用简短的文件名，避免中文路径问题
-    const fileName = `${options.template}_${timestamp}.${options.format === 'png' ? 'png' : 'pdf'}`;
+    const fileName = `${prefix}_${timestamp}.${options.format === 'png' ? 'png' : 'pdf'}`;
     const outputPath = path.resolve(options.outputDir, fileName);
     
     // 确保输出目录存在
@@ -612,10 +699,14 @@ async function generateHtmlPreview(htmlPath, options) {
     // 创建增强版HTML（添加打印样式和提示）
     const enhancedHtml = addPrintStyles(htmlContent);
     
-    // 生成唯一的文件名，包含模板名称和时间戳
+    // 生成唯一的文件名，包含原始文件名（如果有）、模板名称和时间戳
     const timestamp = new Date().getTime();
+    // 如果有文件名前缀，使用 "文件名_模板名" 作为前缀，否则只使用模板名
+    const prefix = options.fileNamePrefix 
+      ? `${options.fileNamePrefix}_${options.template}` 
+      : options.template;
     // 使用简短的文件名，避免中文路径问题
-    const fileName = `${options.template}_preview_${timestamp}.html`;
+    const fileName = `${prefix}_preview_${timestamp}.html`;
     const outputPath = path.resolve(options.outputDir, fileName);
     
     // 确保输出目录存在

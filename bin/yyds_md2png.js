@@ -50,6 +50,8 @@ program
   .option('--toc', '生成目录', false)
   .option('-b, --batch <directory>', '批量处理指定目录中的所有Markdown文件')
   .option('--template <template>', '设置模板 (default, wechat, douyin, xiaohongshu等)', 'default')
+  .option('--templates <templates>', '使用多个模板，用逗号分隔 (例如: default,wechat,douyin)，使用 * 表示所有模板')
+  .option('--subfolders', '为每个模板创建子文件夹')
   .option('--css <file>', '使用自定义CSS文件')
   .option('--js <file>', '使用自定义JavaScript文件')
   .option('--mermaid-theme <theme>', '设置Mermaid图表主题', 'default')
@@ -82,7 +84,8 @@ program
   .option('--no-auto-size', '禁用自动尺寸')
   .option('--max-height <height>', '图片最大高度，超过此高度将自动分页', '15000')
   .option('--transparent', '使用透明背景（仅PNG格式有效）', false)
-  .option('--format <format>', '图片格式 (png, jpeg, webp)', 'png')
+  .option('--format <format>', '主要图片格式 (png, jpeg, webp, pdf)', 'png')
+  .option('--output-formats <formats>', '额外输出格式，用逗号分隔 (例如: png,jpeg,webp,pdf)')
   .option('--optimize', '优化图片大小', true)
   .option('--no-optimize', '不优化图片大小')
   .option('--delete-html', '转换完成后删除HTML文件', false)
@@ -198,8 +201,23 @@ async function main() {
       waitTime: parseInt(options.wait),
       timeout: parseInt(options.timeout),
       autoSize: options.autoSize,
-      maxHeight: parseInt(options.maxHeight)
+      maxHeight: parseInt(options.maxHeight),
+      // 添加文件名前缀选项，用于生成图片文件名，保留原始中文文件名
+      fileNamePrefix: markdownFile ? (() => {
+        // 获取文件名（不含扩展名）
+        const fileName = path.basename(markdownFile, '.md');
+        console.log(chalk.blue(`📄 原始文件名: ${markdownFile}`));
+        console.log(chalk.blue(`📄 提取的文件名: ${fileName}`));
+        return fileName;
+      })() : undefined,
+      // 默认不使用子文件夹，除非明确指定了 --subfolders 选项
+      noSubfolders: true
     };
+    
+    // 处理额外的输出格式
+    if (options.outputFormats) {
+      pngOptions.outputFormats = options.outputFormats.split(',').map(fmt => fmt.trim());
+    }
 
     // 如果指定了PNG输出目录
     if (options.pngOutput) {
@@ -209,26 +227,87 @@ async function main() {
     // 合并PNG选项到转换选项
     Object.assign(convertOptions, pngOptions);
 
-    // 根据不同的处理模式执行相应的操作
-    if (options.toHtml) {
-      // 只转换为HTML
-      if (options.batch) {
-        await batchProcess(options.batch, convertOptions);
+    // 检查是否使用多个模板
+    if (options.templates) {
+      // 解析多个模板
+      let templateList = [];
+      
+      // 特殊处理 --templates * 选项，使用所有可用模板
+      if (options.templates.trim() === '*') {
+        console.log(chalk.blue('🎨 使用所有可用模板处理'));
+        const availableTemplates = templates.getAvailableTemplates();
+        templateList = Object.keys(availableTemplates);
       } else {
-        await convertToHtml(markdownFile, convertOptions);
+        templateList = options.templates.split(',').map(t => t.trim());
       }
-    } else {
-      // 默认行为：直接将Markdown转换为PNG
-      if (options.batch) {
-        // 批量处理
-        await batchConvertToPng(options.batch, convertOptions);
-      } else {
-        // 单文件处理
-        const pngPaths = await convertToPngDirect(markdownFile, convertOptions);
-        console.log(chalk.green(`✅ 成功生成 ${pngPaths.length} 张图片:`));
-        pngPaths.forEach(pngPath => {
+      console.log(chalk.blue(`🎨 使用多个模板处理: ${templateList.join(', ')}`));
+      
+      // 存储所有生成的图片路径
+      const allPngPaths = [];
+      
+      // 依次使用每个模板处理
+      for (const template of templateList) {
+        console.log(chalk.blue(`🖌️ 使用模板 "${template}" 处理...`));
+        
+        // 为当前模板创建选项副本
+        const templateOptions = { ...convertOptions, template };
+        
+        // 根据不同的处理模式执行相应的操作
+        if (options.toHtml) {
+          // 只转换为HTML
+          if (options.batch) {
+            const htmlPaths = await batchProcess(options.batch, templateOptions);
+            console.log(chalk.green(`✅ 使用模板 "${template}" 成功生成 ${htmlPaths.length} 个HTML文件`));
+          } else {
+            const htmlPath = await convertToHtml(markdownFile, templateOptions);
+            console.log(chalk.green(`✅ 使用模板 "${template}" 成功生成HTML文件: ${htmlPath}`));
+          }
+        } else {
+          // 默认行为：直接将Markdown转换为PNG
+          if (options.batch) {
+            // 批量处理
+            const pngPaths = await batchConvertToPng(options.batch, templateOptions);
+            console.log(chalk.green(`✅ 使用模板 "${template}" 成功生成 ${pngPaths.length} 张图片`));
+            allPngPaths.push(...pngPaths);
+          } else {
+            // 单文件处理
+            const pngPaths = await convertToPngDirect(markdownFile, templateOptions);
+            console.log(chalk.green(`✅ 使用模板 "${template}" 成功生成 ${pngPaths.length} 张图片`));
+            allPngPaths.push(...pngPaths);
+          }
+        }
+      }
+      
+      // 显示所有生成的图片路径
+      if (!options.toHtml && allPngPaths.length > 0) {
+        console.log(chalk.green(`✅ 总共成功生成 ${allPngPaths.length} 张图片:`));
+        allPngPaths.forEach(pngPath => {
           console.log(chalk.blue(`- ${pngPath}`));
         });
+      }
+    } else {
+      // 使用单一模板
+      // 根据不同的处理模式执行相应的操作
+      if (options.toHtml) {
+        // 只转换为HTML
+        if (options.batch) {
+          await batchProcess(options.batch, convertOptions);
+        } else {
+          await convertToHtml(markdownFile, convertOptions);
+        }
+      } else {
+        // 默认行为：直接将Markdown转换为PNG
+        if (options.batch) {
+          // 批量处理
+          await batchConvertToPng(options.batch, convertOptions);
+        } else {
+          // 单文件处理
+          const pngPaths = await convertToPngDirect(markdownFile, convertOptions);
+          console.log(chalk.green(`✅ 成功生成 ${pngPaths.length} 张图片:`));
+          pngPaths.forEach(pngPath => {
+            console.log(chalk.blue(`- ${pngPath}`));
+          });
+        }
       }
     }
     
