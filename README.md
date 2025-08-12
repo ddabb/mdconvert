@@ -67,20 +67,146 @@ yyds_md2png document.md --to-html
 yyds_md2png
 ```
 
-### 模板选择
+## 内置模板
+
+yyds_md2png 提供了多种精心设计的模板，适用于不同场景和平台：
+
+### 默认模板 (default)
+
+现代简约风格，适合一般用途的文档展示。
+
+- 清晰的层次结构
+- 蓝色系标题
+- 优化的代码块和表格样式
+- 适合技术文档和一般内容
 
 ```bash
-# 列出所有可用模板
-yyds_md2png --list-templates
-
-# 使用不同模板
-yyds_md2png document.md --template wechat    # 微信公众号风格
-yyds_md2png document.md --template douyin    # 抖音风格
-yyds_md2png document.md --template xiaohongshu  # 小红书风格
-yyds_md2png document.md --template handwriting  # 手写体风格
+yyds_md2png document.md --template default
 ```
 
-### 高级功能
+### 微信公众号模板 (wechat)
+
+专为微信公众号设计，符合微信平台的视觉风格。
+
+- 微信绿色作为主色调
+- 标题下方添加装饰线
+- 优化的引用块样式，带有引号装饰
+- 适合在微信公众号发布的内容
+
+```bash
+yyds_md2png document.md --template wechat
+```
+
+### 抖音模板 (douyin)
+
+深色背景配合抖音特有的红蓝配色，现代感强烈。
+
+- 深色背景配合抖音标志性的红蓝配色
+- 标题使用渐变色效果
+- 高对比度设计
+- 适合在抖音平台分享的内容
+
+```bash
+yyds_md2png document.md --template douyin
+```
+
+### 小红书模板 (xiaohongshu)
+
+粉色系为主，符合小红书平台的温馨风格。
+
+- 使用小红书特有的粉红色调
+- 标题居中并添加下划线装饰
+- 圆角设计元素
+- 适合在小红书平台分享的内容
+
+```bash
+yyds_md2png document.md --template xiaohongshu
+```
+
+### 手写体模板 (handwriting)
+
+模拟手写效果，适合展示诗歌、随笔等内容。
+
+- 使用楷体风格字体
+- 米黄色背景，模拟纸张质感
+- 棕色系文字，模拟墨水颜色
+- 虚线边框和装饰，增强手写感
+- 适合展示诗歌、随笔、感悟等内容
+
+```bash
+yyds_md2png document.md --template handwriting
+```
+
+### 极简风格 (minimalist)
+
+简约、留白、精致的排版，适合商务内容。
+
+- 大量留白空间
+- 简约的黑白配色，辅以少量强调色
+- 精简的线条和边框
+- 无衬线字体
+- 适合展示商务报告或技术文档
+
+```bash
+yyds_md2png document.md --template minimalist
+```
+
+### 复古报纸风格 (vintage)
+
+模拟老式报纸的排版和设计，怀旧感强。
+
+- 米色或淡黄色背景，模拟旧纸张
+- 衬线字体，增强古典感
+- 装饰性分隔线和花边
+- 适合展示新闻类或历史类内容
+
+```bash
+yyds_md2png document.md --template vintage
+```
+
+### 科技感风格 (tech)
+
+现代、锐利的设计，适合科技主题。
+
+- 深色背景（深蓝或黑色）
+- 霓虹色调的强调色
+- 几何线条和形状
+- 代码风格的等宽字体
+- 适合展示科技、编程或未来主题的内容
+
+```bash
+yyds_md2png document.md --template tech
+```
+
+### 自然风格 (nature)
+
+温暖、有机的设计，适合环保或健康主题。
+
+- 柔和的绿色或棕色调
+- 有机形状和自然纹理
+- 圆润的字体
+- 装饰性植物或自然元素
+- 适合展示环保、旅行或健康类内容
+
+```bash
+yyds_md2png document.md --template nature
+```
+
+### 儿童风格 (kids)
+
+活泼、色彩丰富的设计，适合教育内容。
+
+- 明亮、多彩的配色方案
+- 圆润、可爱的字体
+- 手绘风格的装饰元素
+- 活泼的布局和间距
+- 适合展示教育或儿童相关内容
+
+```bash
+yyds_md2png document.md --template kids
+```
+
+## 高级功能
 
 ```bash
 # 生成目录
@@ -99,7 +225,7 @@ yyds_md2png --batch ./docs
 yyds_md2png document.md --to-html --browser
 ```
 
-### 图片转换选项
+## 图片转换选项
 
 ```bash
 # 自动确定图片尺寸（根据内容）

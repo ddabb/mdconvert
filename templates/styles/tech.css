@@ -1,0 +1,233 @@
+/* 科技感风格样式 */
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Roboto:wght@300;400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;700&display=swap');
+
+body {
+  font-family: 'Noto Sans SC', 'Roboto', sans-serif;
+  line-height: 1.6;
+  color: #e0e0e0;
+  background-color: #121212;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 30px;
+  letter-spacing: 0.02em;
+  background-image: radial-gradient(circle at 50% 50%, #1a1a1a 0%, #121212 100%);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 700;
+  line-height: 1.3;
+  margin-top: 1.8em;
+  margin-bottom: 0.8em;
+  color: #00bfff;
+  text-shadow: 0 0 5px rgba(0, 191, 255, 0.5);
+}
+
+h1 {
+  font-size: 2.2em;
+  text-align: center;
+  margin-bottom: 1em;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  background: linear-gradient(90deg, #00bfff, #ff00ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
+  position: relative;
+  padding-bottom: 0.5em;
+}
+
+h1:after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 25%;
+  width: 50%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #00bfff, #ff00ff, transparent);
+}
+
+h2 {
+  font-size: 1.8em;
+  color: #00ffcc;
+  border-bottom: 1px solid #333;
+  padding-bottom: 0.3em;
+  text-shadow: 0 0 5px rgba(0, 255, 204, 0.5);
+}
+
+h3 {
+  font-size: 1.5em;
+  color: #ff00ff;
+  text-shadow: 0 0 5px rgba(255, 0, 255, 0.5);
+}
+
+p {
+  margin-bottom: 1.5em;
+  line-height: 1.8;
+}
+
+a {
+  color: #00bfff;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(0, 191, 255, 0.3);
+  transition: all 0.2s ease;
+  text-shadow: 0 0 3px rgba(0, 191, 255, 0.3);
+}
+
+a:hover {
+  color: #ff00ff;
+  border-bottom: 1px solid rgba(255, 0, 255, 0.5);
+  text-shadow: 0 0 5px rgba(255, 0, 255, 0.5);
+}
+
+blockquote {
+  margin: 2em 0;
+  padding: 1em 1.5em;
+  border-left: 3px solid #00bfff;
+  color: #b0b0b0;
+  background-color: rgba(0, 191, 255, 0.05);
+  border-radius: 0 5px 5px 0;
+}
+
+code {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.9em;
+  background-color: #1e1e1e;
+  padding: 0.2em 0.4em;
+  border-radius: 3px;
+  color: #ff00ff;
+}
+
+pre {
+  background-color: #1e1e1e;
+  padding: 1.2em;
+  border-radius: 5px;
+  overflow-x: auto;
+  margin: 1.5em 0;
+  border: 1px solid #333;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+pre code {
+  background-color: transparent;
+  padding: 0;
+  color: #00ffcc;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 2em 0;
+  border: 1px solid #333;
+}
+
+table th, table td {
+  padding: 0.8em;
+  border: 1px solid #333;
+  text-align: left;
+}
+
+table th {
+  background-color: #1e1e1e;
+  font-weight: bold;
+  color: #00bfff;
+}
+
+table tr:nth-child(even) {
+  background-color: #1a1a1a;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 2em auto;
+  border-radius: 5px;
+  box-shadow: 0 0 15px rgba(0, 191, 255, 0.3);
+  border: 1px solid #333;
+}
+
+hr {
+  border: 0;
+  height: 1px;
+  background-image: linear-gradient(to right, rgba(0, 191, 255, 0), rgba(0, 191, 255, 0.75), rgba(0, 191, 255, 0));
+  margin: 2em 0;
+}
+
+ul, ol {
+  padding-left: 2em;
+  margin: 1.5em 0;
+}
+
+li {
+  margin-bottom: 0.5em;
+  line-height: 1.6;
+}
+
+strong {
+  font-weight: bold;
+  color: #00ffcc;
+  text-shadow: 0 0 3px rgba(0, 255, 204, 0.3);
+}
+
+em {
+  font-style: italic;
+  color: #ff00ff;
+}
+
+.task-list-item {
+  list-style-type: none;
+  position: relative;
+  padding-left: 1.8em;
+}
+
+.task-list-item-checkbox {
+  position: absolute;
+  left: 0;
+  top: 0.3em;
+  accent-color: #00bfff;
+}
+
+/* 终端风格 */
+.terminal {
+  font-family: 'JetBrains Mono', monospace;
+  background-color: #1e1e1e;
+  padding: 1em;
+  border-radius: 5px;
+  margin: 1.5em 0;
+  border: 1px solid #333;
+  position: relative;
+}
+
+.terminal:before {
+  content: ">";
+  color: #00bfff;
+  position: absolute;
+  left: 0.5em;
+}
+
+/* 闪烁光标 */
+.cursor {
+  display: inline-block;
+  width: 0.5em;
+  height: 1em;
+  background-color: #00bfff;
+  animation: blink 1s infinite;
+  vertical-align: middle;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+@media (max-width: 600px) {
+  body {
+    padding: 20px;
+  }
+  
+  h1 {
+    font-size: 1.8em;
+  }
+}

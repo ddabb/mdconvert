@@ -1,0 +1,198 @@
+/* 复古报纸风格样式 */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&display=swap');
+
+body {
+  font-family: 'Noto Serif SC', 'Playfair Display', Georgia, "Times New Roman", serif;
+  line-height: 1.6;
+  color: #2c2c2c;
+  background-color: #f8f3e3; /* 米黄色背景，模拟旧纸张 */
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px;
+  letter-spacing: 0.02em;
+  background-image: url('data:image/png;base64,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');
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Playfair Display', 'Noto Serif SC', serif;
+  font-weight: 700;
+  line-height: 1.3;
+  margin-top: 1.5em;
+  margin-bottom: 0.8em;
+  color: #2c2c2c;
+}
+
+h1 {
+  font-size: 2.5em;
+  text-align: center;
+  margin-bottom: 0.8em;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border-bottom: 2px solid #2c2c2c;
+  padding-bottom: 0.3em;
+  position: relative;
+}
+
+h1:after {
+  content: "★ ★ ★";
+  display: block;
+  text-align: center;
+  font-size: 0.5em;
+  margin-top: 0.5em;
+  letter-spacing: 0.5em;
+}
+
+h2 {
+  font-size: 1.8em;
+  border-bottom: 1px solid #2c2c2c;
+  padding-bottom: 0.2em;
+}
+
+h3 {
+  font-size: 1.5em;
+  font-style: italic;
+}
+
+p {
+  margin-bottom: 1.5em;
+  line-height: 1.8;
+  text-align: justify;
+}
+
+a {
+  color: #8b4513;
+  text-decoration: none;
+  border-bottom: 1px dotted #8b4513;
+}
+
+a:hover {
+  border-bottom: 1px solid #8b4513;
+}
+
+blockquote {
+  margin: 2em 0;
+  padding: 1em 1.5em;
+  border-left: 3px double #8b4513;
+  color: #5c4033;
+  font-style: italic;
+  background-color: rgba(139, 69, 19, 0.05);
+  position: relative;
+}
+
+blockquote:before {
+  content: """;
+  font-size: 4em;
+  position: absolute;
+  left: 0.1em;
+  top: -0.5em;
+  color: rgba(139, 69, 19, 0.2);
+  font-family: Georgia, serif;
+}
+
+code {
+  font-family: "Courier New", Courier, monospace;
+  font-size: 0.9em;
+  background-color: #f0e6d2;
+  padding: 0.2em 0.4em;
+  border: 1px solid #d3c7a6;
+}
+
+pre {
+  background-color: #f0e6d2;
+  padding: 1.2em;
+  border: 1px solid #d3c7a6;
+  overflow-x: auto;
+  margin: 1.5em 0;
+}
+
+pre code {
+  background-color: transparent;
+  padding: 0;
+  border: none;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 2em 0;
+  border: 2px solid #8b4513;
+}
+
+table th, table td {
+  padding: 0.8em;
+  border: 1px solid #8b4513;
+  text-align: left;
+}
+
+table th {
+  background-color: #f0e6d2;
+  font-weight: bold;
+  color: #5c4033;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 2em auto;
+  border: 5px solid #fff;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  filter: sepia(20%);
+}
+
+hr {
+  border: 0;
+  height: 1px;
+  background-image: linear-gradient(to right, rgba(139, 69, 19, 0), rgba(139, 69, 19, 0.75), rgba(139, 69, 19, 0));
+  margin: 2em 0;
+}
+
+ul, ol {
+  padding-left: 2em;
+  margin: 1.5em 0;
+}
+
+li {
+  margin-bottom: 0.5em;
+  line-height: 1.6;
+}
+
+strong {
+  font-weight: bold;
+  color: #5c4033;
+}
+
+em {
+  font-style: italic;
+}
+
+.task-list-item {
+  list-style-type: none;
+  position: relative;
+  padding-left: 1.5em;
+}
+
+.task-list-item-checkbox {
+  position: absolute;
+  left: 0;
+  top: 0.3em;
+}
+
+/* 装饰元素 */
+.vintage-ornament {
+  text-align: center;
+  margin: 2em 0;
+  font-size: 1.5em;
+  color: #8b4513;
+}
+
+@media (max-width: 600px) {
+  body {
+    padding: 20px;
+  }
+  
+  h1 {
+    font-size: 2em;
+  }
+}

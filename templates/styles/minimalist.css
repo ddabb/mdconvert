@@ -1,0 +1,156 @@
+/* 极简风格样式 */
+body {
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  line-height: 1.6;
+  color: #333;
+  background-color: #fff;
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 40px;
+  letter-spacing: 0.01em;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 300;
+  line-height: 1.3;
+  margin-top: 2em;
+  margin-bottom: 1em;
+  color: #000;
+}
+
+h1 {
+  font-size: 2.2em;
+  text-align: center;
+  margin-top: 1.5em;
+  margin-bottom: 1.5em;
+  font-weight: 200;
+  letter-spacing: 0.05em;
+}
+
+h2 {
+  font-size: 1.6em;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 0.3em;
+  font-weight: 300;
+}
+
+h3 {
+  font-size: 1.3em;
+  font-weight: 400;
+}
+
+p {
+  margin-bottom: 1.5em;
+  line-height: 1.7;
+}
+
+a {
+  color: #0070f3;
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s ease;
+}
+
+a:hover {
+  border-bottom: 1px solid #0070f3;
+}
+
+blockquote {
+  margin: 2em 0;
+  padding: 0.8em 1.2em;
+  border-left: 3px solid #eee;
+  color: #666;
+  font-style: italic;
+}
+
+code {
+  font-family: "SF Mono", Consolas, Monaco, monospace;
+  font-size: 0.9em;
+  background-color: #f5f5f5;
+  padding: 0.2em 0.4em;
+  border-radius: 3px;
+}
+
+pre {
+  background-color: #f5f5f5;
+  padding: 1.2em;
+  border-radius: 5px;
+  overflow-x: auto;
+  margin: 1.5em 0;
+}
+
+pre code {
+  background-color: transparent;
+  padding: 0;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 2em 0;
+}
+
+table th, table td {
+  padding: 0.8em;
+  border-bottom: 1px solid #eee;
+  text-align: left;
+}
+
+table th {
+  font-weight: 500;
+  color: #000;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 2em auto;
+}
+
+hr {
+  border: 0;
+  height: 1px;
+  background-color: #eee;
+  margin: 3em 0;
+}
+
+ul, ol {
+  padding-left: 1.5em;
+  margin: 1.5em 0;
+}
+
+li {
+  margin-bottom: 0.5em;
+}
+
+strong {
+  font-weight: 600;
+  color: #000;
+}
+
+em {
+  font-style: italic;
+}
+
+.task-list-item {
+  list-style-type: none;
+  position: relative;
+  padding-left: 1.5em;
+}
+
+.task-list-item-checkbox {
+  position: absolute;
+  left: 0;
+  top: 0.3em;
+}
+
+@media (max-width: 600px) {
+  body {
+    padding: 20px;
+  }
+  
+  h1 {
+    font-size: 1.8em;
+  }
+}
