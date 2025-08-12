@@ -191,8 +191,8 @@ em {
   background-color: #8b2f5a;
 }
 
-/* 像素艺术特有元素 */
-.pixel-button {
+/* 像素艺术按钮 - 自动应用于强调文本 */
+strong {
   display: inline-block;
   padding: 10px 20px;
   background-color: #f8d568;
@@ -205,12 +205,13 @@ em {
   cursor: pointer;
 }
 
-.pixel-button:hover {
+strong:hover {
   transform: translate(2px, 2px);
   box-shadow: 2px 2px 0 #333;
 }
 
-.pixel-container {
+/* 像素艺术容器 - 自动应用于引用块 */
+blockquote {
   border: 4px solid #8b2f5a;
   padding: 20px;
   margin: 20px 0;
@@ -218,9 +219,40 @@ em {
   box-shadow: 8px 8px 0 #333;
 }
 
-.pixel-health-bar {
+/* 像素艺术生命条 - 自动应用于水平线 */
+hr {
   height: 20px;
   background-color: #4a5fb4;
   border: 4px solid #333;
   margin: 10px 0;
+}
+
+/* 添加像素艺术风格的内容容器 */
+.markdown-content {
+  background-color: #c0d6e4;
+  padding: 30px;
+  border: 4px solid #8b2f5a;
+  box-shadow: 12px 12px 0 #333;
+  position: relative;
+  image-rendering: pixelated;
+}
+
+/* 添加像素艺术风格的装饰元素 */
+.markdown-content::before,
+.markdown-content::after {
+  content: "";
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background-color: #8b2f5a;
+}
+
+.markdown-content::before {
+  top: 10px;
+  right: 10px;
+}
+
+.markdown-content::after {
+  bottom: 10px;
+  left: 10px;
 }

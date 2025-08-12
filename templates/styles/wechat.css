@@ -244,7 +244,8 @@ ol ol ol {
   border-top: 1px solid #f0f0f0;
 }
 
-.wechat-footer {
+/* 微信公众号底部样式 - 自动应用于最后一个段落 */
+.markdown-content > p:last-of-type {
   text-align: center;
   margin-top: 40px;
   padding-top: 20px;
@@ -253,19 +254,21 @@ ol ol ol {
   font-size: 14px;
 }
 
-.wechat-footer img {
+/* 微信公众号底部二维码图片样式 - 自动应用于最后一个图片 */
+.markdown-content > p:last-of-type img {
   width: 120px;
   height: 120px;
   margin: 10px auto;
 }
 
-.wechat-footer p {
+/* 微信公众号底部文字样式 */
+.markdown-content > p:last-of-type {
   margin: 5px 0;
   color: #888;
 }
 
-/* 微信特有的样式 */
-.wx-box {
+/* 微信特有的样式 - 自动应用于引用块 */
+blockquote {
   margin-bottom: 20px;
   padding: 15px;
   border: 1px solid #f0f0f0;
@@ -273,10 +276,12 @@ ol ol ol {
   background-color: #fafafa;
 }
 
-.wx-title {
+/* 微信标题样式 - 自动应用于引用块中的强调文本 */
+blockquote strong {
   font-weight: bold;
   margin-bottom: 10px;
   color: #07c160;
+  display: block;
 }
 
 /* 强调样式 */
@@ -399,30 +404,32 @@ img {
   }
 }
 
-/* 微信公众号特有的卡片样式 */
-.wx-card {
+/* 微信公众号特有的卡片样式 - 自动应用于带有特定标记的引用块 */
+blockquote:nth-of-type(2n) {
   margin: 20px 0;
   padding: 15px;
   border: 1px solid #e0e0e0;
   border-radius: 8px;
   background-color: #fafafa;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+  border-left: none;
 }
 
-.wx-card-title {
+blockquote:nth-of-type(2n) strong:first-child {
   font-size: 17px;
   font-weight: bold;
   margin-bottom: 10px;
   color: #1a1a1a;
+  display: block;
 }
 
-.wx-card-content {
+blockquote:nth-of-type(2n) p {
   font-size: 15px;
   color: #666;
 }
 
-/* 微信公众号特有的提示框样式 */
-.wx-tip {
+/* 微信公众号特有的提示框样式 - 自动应用于不同类型的引用块 */
+blockquote:nth-of-type(3n) {
   margin: 20px 0;
   padding: 15px;
   border-left: 4px solid #07c160;
@@ -430,7 +437,7 @@ img {
   color: #666;
 }
 
-.wx-warning {
+blockquote:nth-of-type(3n+1) {
   margin: 20px 0;
   padding: 15px;
   border-left: 4px solid #fa5151;
@@ -438,10 +445,29 @@ img {
   color: #666;
 }
 
-.wx-info {
+blockquote:nth-of-type(3n+2) {
   margin: 20px 0;
   padding: 15px;
   border-left: 4px solid #10aeff;
   background-color: #f0f8ff;
   color: #666;
+}
+
+/* 添加微信公众号风格的页面装饰 */
+.markdown-content {
+  position: relative;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+/* 添加微信公众号风格的页眉 */
+.markdown-content::before {
+  content: "";
+  display: block;
+  height: 10px;
+  background: linear-gradient(90deg, #07c160, #10aeff);
+  border-radius: 5px 5px 0 0;
+  margin: -20px -20px 20px -20px;
 }

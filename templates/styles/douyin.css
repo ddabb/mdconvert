@@ -318,17 +318,23 @@ em, i {
   font-size: 20px;
 }
 
-/* 抖音底部样式 */
-.douyin-footer {
+/* 抖音底部样式 - 自动应用于最后一个段落 */
+.markdown-content > p:last-of-type {
   text-align: center;
   padding: 20px 16px;
   border-top: 1px solid #222;
   color: rgba(255, 255, 255, 0.6);
   font-size: 14px;
+  margin-top: 30px;
 }
 
-/* 抖音特效 */
-.douyin-effect {
+/* 抖音特效 - 自动应用于整个内容区域 */
+.markdown-content {
+  position: relative;
+}
+
+.markdown-content::after {
+  content: "";
   position: absolute;
   top: 0;
   left: 0;

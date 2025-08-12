@@ -187,7 +187,7 @@ em {
   top: 0.3em;
 }
 
-/* 霓虹灯特有的动画效果 */
+/* 霓虹灯特有的动画效果 - 自动应用于标题 */
 @keyframes neon-flicker {
   0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
     text-shadow: 0 0 10px #ff00ff, 0 0 20px #ff00ff, 0 0 30px #ff00ff;
@@ -197,6 +197,49 @@ em {
   }
 }
 
-h1:hover, h2:hover, h3:hover {
+/* 自动为所有标题添加霓虹灯闪烁效果 */
+h1, h2, h3 {
   animation: neon-flicker 1.5s infinite alternate;
+  animation-play-state: paused;
+}
+
+h1:hover, h2:hover, h3:hover {
+  animation-play-state: running;
+}
+
+/* 添加霓虹灯背景效果 */
+.markdown-content {
+  position: relative;
+  background-color: #121212;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 20px rgba(255, 0, 255, 0.3), 0 0 40px rgba(0, 255, 255, 0.2);
+  border: 1px solid rgba(255, 0, 255, 0.3);
+}
+
+/* 添加霓虹灯边框效果 */
+.markdown-content::before {
+  content: "";
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(45deg, #ff00ff, #0ff, #ff0, #ff00ff);
+  z-index: -1;
+  border-radius: 10px;
+  animation: border-animation 10s linear infinite;
+  background-size: 400% 400%;
+}
+
+@keyframes border-animation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }

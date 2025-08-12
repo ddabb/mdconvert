@@ -206,16 +206,56 @@ em {
   accent-color: #5a8250;
 }
 
-/* 自然装饰元素 */
-.nature-decoration {
+/* 自然装饰元素 - 自动应用于水平线 */
+hr {
   text-align: center;
   margin: 2em 0;
+  height: 30px;
+  background-image: none;
+  border: none;
+  position: relative;
   color: #7fa36b;
 }
 
-.nature-decoration:before {
+hr:before {
   content: "❀ ❀ ❀";
   letter-spacing: 1em;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* 添加自然风格的内容容器 */
+.markdown-content {
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  border: 1px solid #e6ede1;
+  position: relative;
+  overflow: hidden;
+}
+
+/* 添加自然风格的装饰元素 */
+.markdown-content::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 5px;
+  background: linear-gradient(90deg, #7fa36b, #5a8250, #7fa36b);
+}
+
+/* 添加自然风格的叶子装饰 */
+.markdown-content::after {
+  content: "☘";
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  font-size: 2em;
+  color: rgba(127, 163, 107, 0.2);
+  transform: rotate(15deg);
 }
 
 @media (max-width: 600px) {

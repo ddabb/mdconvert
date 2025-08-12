@@ -200,21 +200,56 @@ em {
   top: 0.3em;
 }
 
-/* 北欧特有元素 */
-.nordic-divider {
+/* 北欧分隔线 - 自动应用于水平线 */
+hr {
   display: block;
   width: 100%;
   height: 20px;
   margin: 2em 0;
   background-image: linear-gradient(to right, #eceff4, #5e81ac, #eceff4);
   opacity: 0.3;
+  border: none;
 }
 
-.nordic-quote {
+/* 北欧引用 - 自动应用于引用块中的段落 */
+blockquote p {
   font-family: 'Noto Sans SC', 'Montserrat', serif;
   font-size: 1.2em;
   color: #5e81ac;
   text-align: center;
-  margin: 2em 0;
+  margin: 1em 0;
   font-style: italic;
+}
+
+/* 添加北欧风格的内容容器 */
+.markdown-content {
+  background-color: #fff;
+  padding: 40px;
+  border-radius: 5px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  position: relative;
+}
+
+/* 添加北欧风格的装饰元素 */
+.markdown-content::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 5px;
+  background-color: #5e81ac;
+  border-radius: 5px 5px 0 0;
+}
+
+/* 添加北欧风格的底部装饰 */
+.markdown-content::after {
+  content: "";
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 30%;
+  height: 1px;
+  background-color: #d8dee9;
 }

@@ -292,7 +292,7 @@ em {
   left: 0.1em;
 }
 
-/* 赛博朋克特有的故障效果 */
+/* 赛博朋克特有的故障效果 - 自动应用于标题 */
 @keyframes glitch {
   0% {
     text-shadow: 0.05em 0 0 rgba(255, 0, 255, 0.75), -0.05em -0.025em 0 rgba(0, 255, 255, 0.75);
@@ -317,14 +317,24 @@ em {
   }
 }
 
-h1:hover, h2:hover {
+/* 自动为所有标题添加故障效果 */
+h1, h2 {
   animation: glitch 0.3s infinite;
+  animation-play-state: paused;
 }
 
-/* 扫描线效果 */
-body::before {
+h1:hover, h2:hover {
+  animation-play-state: running;
+}
+
+/* 扫描线效果 - 应用于整个内容区域 */
+.markdown-content {
+  position: relative;
+}
+
+.markdown-content::before {
   content: "";
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   width: 100%;
@@ -338,4 +348,33 @@ body::before {
 @keyframes scan {
   0% { transform: translateY(-100%); }
   100% { transform: translateY(100%); }
+}
+
+/* 添加终端风格的界面 */
+.markdown-content {
+  border: 1px solid #00ffff;
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+  padding: 20px;
+  position: relative;
+}
+
+.markdown-content::after {
+  content: "SYSTEM ONLINE";
+  position: absolute;
+  top: 5px;
+  right: 10px;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.7em;
+  color: #00ffff;
+  text-shadow: 0 0 5px rgba(0, 255, 255, 0.7);
+}
+
+/* 添加代码块终端效果 */
+pre::before {
+  content: "$ executing_code...";
+  display: block;
+  color: #ff00ff;
+  margin-bottom: 10px;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.8em;
 }

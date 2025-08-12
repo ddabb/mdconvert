@@ -13,37 +13,51 @@ body {
   letter-spacing: 0.01em;
 }
 
-.post {
+/* 社交媒体帖子容器 - 自动应用于内容区域 */
+.markdown-content {
   background-color: #fff;
   border-radius: 8px;
   padding: 15px;
   margin-bottom: 20px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  position: relative;
 }
 
-.post-header {
+/* 社交媒体帖子头部 - 自动应用于一级标题 */
+h1 {
   display: flex;
   align-items: center;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #eee;
+  position: relative;
+  padding-left: 50px;
+  font-size: 1.2em;
 }
 
-.post-avatar {
+h1::before {
+  content: "";
   width: 40px;
   height: 40px;
   border-radius: 50%;
   background-color: #ddd;
-  margin-right: 10px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23777' d='M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z'/%3E%3C/svg%3E");
+  background-size: 60%;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
-.post-user {
-  font-weight: 700;
-  color: #333;
-  margin-bottom: 2px;
-}
-
-.post-time {
+h1::after {
+  content: "刚刚发布";
   font-size: 0.8em;
   color: #777;
+  font-weight: normal;
+  position: absolute;
+  right: 0;
+  bottom: 10px;
 }
 
 h1, h2, h3, h4, h5, h6 {

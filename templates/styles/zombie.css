@@ -212,30 +212,34 @@ em {
   top: 0.3em;
 }
 
-/* 丧尸特有元素 */
-.zombie-warning {
+/* 丧尸警告 - 自动应用于引用块 */
+blockquote {
   background-color: rgba(76, 175, 80, 0.1);
   border: 1px dashed #4caf50;
+  border-left: 3px solid #4caf50;
   padding: 15px;
   margin: 20px 0;
   position: relative;
   transform: rotate(-0.5deg);
 }
 
-.zombie-warning:before {
+blockquote:before {
   content: "⚠ 警告";
   display: block;
   color: #4caf50;
   font-weight: bold;
   margin-bottom: 10px;
   font-family: 'ZCOOL QingKe HuangYou', 'Creepster', cursive;
+  position: static;
+  font-size: 1.2em;
 }
 
-.blood-splatter {
+/* 血迹效果 - 自动应用于标题 */
+h1, h2, h3, h4, h5, h6 {
   position: relative;
 }
 
-.blood-splatter:after {
+h1:before, h2:before, h3:before {
   content: "";
   position: absolute;
   top: -10px;
@@ -245,4 +249,28 @@ em {
   border-radius: 50%;
   background-color: rgba(139, 0, 0, 0.7);
   transform: rotate(45deg) scale(0.8);
+  z-index: -1;
+}
+
+/* 添加丧尸风格的内容容器 */
+.markdown-content {
+  position: relative;
+  background-color: #1c1c1c;
+  padding: 30px;
+  border: 1px solid rgba(76, 175, 80, 0.3);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
+}
+
+/* 添加丧尸风格的背景效果 */
+.markdown-content:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><text x="30" y="50" font-family="Arial" font-size="30" fill="rgba(76, 175, 80, 0.03)">☣</text></svg>');
+  background-repeat: repeat;
+  z-index: -1;
+  opacity: 0.5;
 }

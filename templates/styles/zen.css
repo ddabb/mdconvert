@@ -175,19 +175,53 @@ em {
   top: 0.3em;
 }
 
-/* 禅风格特有的样式 */
-.zen-circle {
+/* 禅风格特有的样式 - 自动应用于水平线 */
+hr {
+  position: relative;
+  border: 0;
+  height: 1px;
+  background-color: rgba(0, 0, 0, 0.1);
+  margin: 3em auto;
+  width: 50px;
+}
+
+/* 禅风格圆圈 - 自动应用于水平线 */
+hr:after {
+  content: "";
+  display: block;
   width: 50px;
   height: 50px;
   border: 1px solid #333;
   border-radius: 50%;
   margin: 3em auto;
+  position: relative;
+  top: 1.5em;
 }
 
-.zen-quote {
+/* 禅风格引用 - 自动应用于引用块 */
+blockquote {
   text-align: center;
   font-style: italic;
   margin: 3em 0;
   font-size: 1.2em;
   color: #555;
+  border-left: none;
+  padding: 1em 2em;
+}
+
+/* 添加禅风格的内容容器 */
+.markdown-content {
+  position: relative;
+  background-color: #fafafa;
+  padding: 30px;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+/* 添加禅风格的空白空间 */
+.markdown-content:before,
+.markdown-content:after {
+  content: "";
+  display: block;
+  height: 50px;
 }

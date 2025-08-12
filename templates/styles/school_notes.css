@@ -205,33 +205,89 @@ em {
   top: 0.3em;
 }
 
-/* 笔记特有的元素 */
-.highlight-yellow {
+/* 笔记特有的元素 - 自动应用于不同的标记 */
+
+/* 黄色高亮 - 自动应用于斜体文本 */
+em {
+  font-style: italic;
+  color: #333;
   background-color: rgba(255, 204, 92, 0.3);
   padding: 0 0.2em;
 }
 
-.highlight-green {
+/* 绿色高亮 - 自动应用于代码文本 */
+code {
+  font-family: "Courier New", monospace;
   background-color: rgba(126, 211, 33, 0.3);
-  padding: 0 0.2em;
+  padding: 0.2em 0.4em;
+  border-radius: 3px;
+  color: #333;
 }
 
-.highlight-pink {
+/* 粉色高亮 - 自动应用于强调文本 */
+strong {
+  font-weight: bold;
+  color: #333;
   background-color: rgba(255, 107, 107, 0.3);
   padding: 0 0.2em;
 }
 
-.note-sticker {
+/* 笔记贴纸 - 自动应用于引用块 */
+blockquote {
   background-color: #ffcc5c;
   padding: 1em;
   margin: 1.5em 0;
   transform: rotate(1deg);
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+  border-left: none;
+  font-style: normal;
 }
 
-.handwritten-comment {
+blockquote:before {
+  content: none;
+}
+
+/* 手写评论 - 自动应用于三级标题 */
+h3 {
   font-family: 'Ma Shan Zheng', 'Architects Daughter', cursive;
   color: #ff6b6b;
   margin: 1em 0;
-  font-size: 1.1em;
+  font-size: 1.3em;
+  text-decoration: none;
+  border-bottom: none;
+}
+
+/* 添加笔记风格的内容容器 */
+.markdown-content {
+  position: relative;
+  background-color: #fffdf7;
+  padding: 30px;
+  border: 1px solid #ddd;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  background-image: linear-gradient(#fffdf7 29px, #0d88cd 30px);
+  background-size: 100% 30px;
+}
+
+/* 添加笔记风格的装饰元素 */
+.markdown-content::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 30px;
+  height: 100%;
+  width: 1px;
+  background-color: #ff6b6b;
+}
+
+/* 添加回形针效果 */
+.markdown-content::after {
+  content: "";
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  width: 30px;
+  height: 60px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='24' height='24'%3E%3Cpath fill='none' d='M0 0h24v24H0z'/%3E%3Cpath d='M9 13.59l8.607-8.607 1.414 1.414-8.607 8.607H18v2H7v-11h2v7.585z' fill='rgba(13,136,205,1)'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  transform: rotate(45deg);
 }

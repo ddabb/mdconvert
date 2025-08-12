@@ -10,6 +10,15 @@ body {
   letter-spacing: 0.01em;
 }
 
+/* 极简风格内容容器 - 自动应用于内容区域 */
+.markdown-content {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 20px 0;
+  background-color: #fff;
+  position: relative;
+}
+
 h1, h2, h3, h4, h5, h6 {
   font-weight: 300;
   line-height: 1.3;

@@ -13,28 +13,41 @@ body {
   letter-spacing: 0.01em;
 }
 
-.email-header {
+/* 电子邮件容器 - 自动应用于内容区域 */
+.markdown-content {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  overflow: hidden;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+/* 电子邮件头部 - 自动应用于第一个标题前 */
+.markdown-content::before {
+  content: "";
+  display: block;
   background-color: #fff;
   padding: 20px;
-  border: 1px solid #ddd;
-  border-radius: 5px 5px 0 0;
+  border-bottom: 1px solid #ddd;
   margin-bottom: 0;
 }
 
-.email-body {
+/* 电子邮件正文 - 自动应用于内容区域 */
+.markdown-content {
   background-color: #fff;
   padding: 20px;
-  border: 1px solid #ddd;
-  border-top: none;
   margin-top: 0;
 }
 
-.email-footer {
+/* 电子邮件底部 - 自动应用于最后一个段落 */
+.markdown-content > p:last-of-type {
   background-color: #f5f5f5;
   padding: 15px 20px;
-  border: 1px solid #ddd;
-  border-top: none;
-  border-radius: 0 0 5px 5px;
+  border-top: 1px solid #ddd;
+  margin-top: 20px;
+  margin-bottom: -20px;
+  margin-left: -20px;
+  margin-right: -20px;
   font-size: 0.9em;
   color: #777;
 }

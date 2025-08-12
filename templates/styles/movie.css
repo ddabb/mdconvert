@@ -249,18 +249,19 @@ em {
   left: 0.1em;
 }
 
-/* 电影字幕样式 */
-.subtitle {
+/* 电影字幕样式 - 自动应用于引用块后的段落 */
+blockquote + p {
   font-family: 'Courier New', monospace;
   font-size: 0.9em;
   color: #ccc;
   text-align: center;
   margin: 2em 0;
   line-height: 1.5;
+  font-style: italic;
 }
 
-/* 电影评级标签 */
-.rating {
+/* 电影评级标签 - 自动应用于强调文本 */
+strong {
   display: inline-block;
   padding: 0.2em 0.5em;
   background-color: #ff0000;
@@ -269,4 +270,41 @@ em {
   border-radius: 3px;
   margin-right: 0.5em;
   font-size: 0.8em;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* 添加电影海报风格的内容容器 */
+.markdown-content {
+  background-color: #121212;
+  padding: 30px;
+  border: 2px solid #ff0000;
+  box-shadow: 0 0 30px rgba(255, 0, 0, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+/* 添加电影胶片装饰 */
+.markdown-content::before,
+.markdown-content::after {
+  content: "";
+  position: absolute;
+  width: 20px;
+  top: 0;
+  bottom: 0;
+  background-image: repeating-linear-gradient(
+    0deg,
+    #000 0px,
+    #000 15px,
+    #ff0000 15px,
+    #ff0000 20px
+  );
+}
+
+.markdown-content::before {
+  left: 0;
+}
+
+.markdown-content::after {
+  right: 0;
 }

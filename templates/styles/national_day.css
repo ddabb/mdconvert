@@ -12,6 +12,49 @@ body {
   letter-spacing: 0.05em;
 }
 
+/* 国庆节风格内容容器 - 自动应用于内容区域 */
+.markdown-content {
+  position: relative;
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(230, 0, 0, 0.1);
+  border: 1px solid rgba(230, 0, 0, 0.2);
+  /* 添加红色边框装饰 */
+  border-top: 5px solid #e60000;
+  border-bottom: 5px solid #e60000;
+}
+
+/* 添加国旗五星装饰 */
+.markdown-content::before {
+  content: "★ ★ ★ ★ ★";
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 1em;
+  color: #ffcc00;
+  letter-spacing: 0.2em;
+}
+
+/* 添加国庆节底部装饰 */
+.markdown-content::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 10px;
+  background: repeating-linear-gradient(
+    90deg,
+    #e60000,
+    #e60000 20px,
+    #ffcc00 20px,
+    #ffcc00 40px
+  );
+  border-radius: 0 0 10px 10px;
+  opacity: 0.5;
+}
+
 h1, h2, h3, h4, h5, h6 {
   font-family: 'Noto Sans SC', 'Noto Serif SC', sans-serif;
   font-weight: 700;

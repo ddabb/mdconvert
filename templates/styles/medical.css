@@ -204,40 +204,67 @@ em {
   top: 0.3em;
 }
 
-/* 医疗健康特有的元素 */
-.medical-warning {
-  background-color: #fff0f0;
-  border-left: 4px solid #ff3b30;
-  padding: 1em;
-  margin: 1.5em 0;
+/* 医疗健康警告 - 自动应用于以"警告"或"注意"开头的引用块 */
+blockquote:first-line {
+  font-weight: bold;
+}
+
+blockquote strong:first-child {
   color: #cc0000;
 }
 
-.medical-info {
+/* 医疗健康信息 - 自动应用于普通引用块 */
+blockquote {
   background-color: #f0f8ff;
   border-left: 4px solid #0077cc;
   padding: 1em;
   margin: 1.5em 0;
 }
 
-.medical-success {
-  background-color: #f0fff0;
-  border-left: 4px solid #34c759;
-  padding: 1em;
-  margin: 1.5em 0;
+/* 医疗健康成功信息 - 自动应用于以"提示"开头的引用块 */
+blockquote em:first-child {
   color: #008800;
+  font-weight: bold;
 }
 
-/* 医疗图标 */
-.icon-heart:before {
+/* 医疗图标 - 自动应用于列表项 */
+ul li:before {
   content: "♥";
   color: #ff3b30;
-  margin-right: 0.5em;
+  position: absolute;
+  left: -1.5em;
+  font-size: 1.2em;
 }
 
-.icon-plus:before {
+/* 添加医疗风格的内容容器 */
+.markdown-content {
+  background-color: #ffffff;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 119, 204, 0.1);
+  border: 1px solid rgba(0, 119, 204, 0.2);
+  position: relative;
+}
+
+/* 添加医疗风格的装饰元素 */
+.markdown-content::before {
   content: "+";
-  color: #0077cc;
-  margin-right: 0.5em;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  color: rgba(0, 119, 204, 0.2);
+  font-size: 2em;
   font-weight: bold;
+}
+
+/* 添加医疗风格的底部装饰 */
+.markdown-content::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 5px;
+  background: linear-gradient(90deg, #0077cc, #0099ff, #0077cc);
+  border-radius: 0 0 10px 10px;
 }

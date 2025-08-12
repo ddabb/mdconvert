@@ -189,8 +189,8 @@ em {
   accent-color: #00bfff;
 }
 
-/* 终端风格 */
-.terminal {
+/* 终端风格 - 自动应用于代码块 */
+pre {
   font-family: 'JetBrains Mono', monospace;
   background-color: #1e1e1e;
   padding: 1em;
@@ -200,26 +200,58 @@ em {
   position: relative;
 }
 
-.terminal:before {
+pre:before {
   content: ">";
   color: #00bfff;
   position: absolute;
   left: 0.5em;
+  top: 0.5em;
 }
 
-/* 闪烁光标 */
-.cursor {
+/* 闪烁光标 - 自动应用于代码块末尾 */
+pre:after {
+  content: "";
   display: inline-block;
   width: 0.5em;
   height: 1em;
   background-color: #00bfff;
   animation: blink 1s infinite;
   vertical-align: middle;
+  position: absolute;
+  bottom: 0.5em;
+  right: 0.5em;
 }
 
 @keyframes blink {
   0%, 100% { opacity: 1; }
   50% { opacity: 0; }
+}
+
+/* 科技感背景 - 自动应用于内容区域 */
+.markdown-content {
+  position: relative;
+  background-color: #121212;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 20px rgba(0, 191, 255, 0.2);
+  border: 1px solid rgba(0, 191, 255, 0.2);
+  overflow: hidden;
+}
+
+/* 添加科技感网格背景 */
+.markdown-content::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    linear-gradient(rgba(0, 191, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 191, 255, 0.05) 1px, transparent 1px);
+  background-size: 20px 20px;
+  z-index: -1;
+  pointer-events: none;
 }
 
 @media (max-width: 600px) {

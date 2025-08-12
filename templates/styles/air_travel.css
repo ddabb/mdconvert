@@ -13,7 +13,8 @@ body {
   letter-spacing: 0.01em;
 }
 
-.boarding-pass {
+/* 登机牌样式 - 自动应用于第一个引用块 */
+blockquote:first-of-type {
   background-color: #fff;
   border: 1px dashed #ccc;
   border-radius: 8px;
@@ -22,7 +23,7 @@ body {
   position: relative;
 }
 
-.boarding-pass:before {
+blockquote:first-of-type:before {
   content: "";
   position: absolute;
   top: 20px;
@@ -31,7 +32,7 @@ body {
   border-right: 1px dashed #ccc;
 }
 
-.boarding-pass:after {
+blockquote:first-of-type:after {
   content: "";
   position: absolute;
   left: 20px;
@@ -181,38 +182,46 @@ em {
   top: 0.3em;
 }
 
-/* 航空旅行特有元素 */
-.flight-info {
+/* 航空旅行特有元素 - 自动应用于Markdown元素 */
+
+/* 航班信息 - 应用于表格 */
+table {
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
   margin-bottom: 20px;
 }
 
-.flight-number {
+/* 航班号 - 应用于表格中的强调文本 */
+table strong {
   font-family: 'Roboto Mono', monospace;
   font-weight: bold;
   color: #0056b3;
 }
 
-.airport-code {
+/* 机场代码 - 应用于H3标题 */
+h3 {
   font-family: 'Roboto Mono', monospace;
   font-weight: bold;
   font-size: 1.2em;
   color: #0056b3;
 }
 
-.flight-time {
+/* 航班时间 - 应用于代码块 */
+code {
   font-family: 'Roboto Mono', monospace;
   font-weight: bold;
 }
 
-.passenger-info {
+/* 乘客信息 - 应用于第二个引用块 */
+blockquote:nth-of-type(2) {
   margin-top: 20px;
   padding-top: 20px;
   border-top: 1px dashed #ccc;
 }
 
-.barcode {
+/* 条形码 - 应用于预格式化文本 */
+pre {
   font-family: 'Roboto Mono', monospace;
   text-align: center;
   margin: 20px 0;
@@ -220,27 +229,41 @@ em {
   color: #0056b3;
 }
 
-.ticket-label {
+/* 票务标签 - 应用于斜体文本 */
+em {
   font-size: 0.8em;
   color: #777;
   text-transform: uppercase;
   margin-bottom: 0.2em;
+  display: block;
 }
 
-.ticket-value {
+/* 票务值 - 应用于斜体后的段落 */
+em + p {
   font-weight: bold;
   margin-bottom: 1em;
 }
 
-.gate-info {
+/* 登机口信息 - 应用于最后一个引用块 */
+blockquote:last-of-type {
   background-color: rgba(0, 86, 179, 0.1);
   padding: 10px;
   border-radius: 4px;
   margin: 15px 0;
 }
 
-.gate-number {
+/* 登机口号码 - 应用于最后一个引用块中的强调文本 */
+blockquote:last-of-type strong {
   font-size: 1.2em;
   font-weight: bold;
   color: #0056b3;
+}
+
+/* 添加航空旅行背景效果 - 应用于整个内容区域 */
+.markdown-content {
+  position: relative;
+  background-color: #f8f9fa;
+  background-image: linear-gradient(to bottom, rgba(135, 206, 250, 0.1) 0%, rgba(135, 206, 250, 0) 100%);
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
 }

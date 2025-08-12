@@ -203,8 +203,8 @@ em {
   top: 0.3em;
 }
 
-/* 杂志特有的样式 */
-.magazine-caption {
+/* 杂志图片说明 - 自动应用于图片后的段落 */
+img + p {
   font-family: 'Roboto', 'Noto Serif SC', sans-serif;
   font-size: 0.9em;
   color: #666;
@@ -214,7 +214,8 @@ em {
   font-style: italic;
 }
 
-.magazine-quote {
+/* 杂志引用 - 自动应用于水平线之间的段落 */
+hr + p:not(:last-of-type) + hr {
   font-size: 1.5em;
   line-height: 1.4;
   font-weight: bold;
@@ -226,31 +227,36 @@ em {
   font-family: 'Playfair Display', 'Noto Serif SC', serif;
 }
 
-.magazine-author {
+/* 杂志作者 - 自动应用于引用后的段落 */
+blockquote + p {
   text-align: right;
   font-style: italic;
   margin-top: -1em;
   margin-bottom: 2em;
 }
 
-.magazine-box {
+/* 杂志信息框 - 自动应用于引用块 */
+blockquote {
   background-color: #f5f5f5;
   padding: 1.5em;
   margin: 2em 0;
   border: 1px solid #ddd;
+  border-left: 3px solid #000;
 }
 
-.magazine-box-title {
+/* 杂志信息框标题 - 自动应用于引用块中的强调文本 */
+blockquote strong:first-child {
   font-family: 'Playfair Display', 'Noto Serif SC', serif;
   font-weight: bold;
   font-size: 1.2em;
   margin-bottom: 1em;
   text-transform: uppercase;
   letter-spacing: 0.05em;
+  display: block;
 }
 
-/* 页码样式 */
-.page-number {
+/* 页码样式 - 自动应用于最后一个段落 */
+.markdown-content > p:last-of-type {
   text-align: center;
   font-size: 0.9em;
   color: #999;
@@ -258,10 +264,30 @@ em {
   font-family: 'Roboto', sans-serif;
 }
 
-.page-number::before {
+.markdown-content > p:last-of-type::before {
   content: "— ";
 }
 
-.page-number::after {
+.markdown-content > p:last-of-type::after {
   content: " —";
+}
+
+/* 添加杂志风格的内容容器 */
+.markdown-content {
+  position: relative;
+  background-color: #fff;
+  padding: 30px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  border: 1px solid #eee;
+}
+
+/* 添加杂志风格的装饰元素 */
+.markdown-content::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 5px;
+  background-color: #000;
 }

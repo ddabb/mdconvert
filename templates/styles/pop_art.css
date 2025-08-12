@@ -198,8 +198,8 @@ em {
   top: 0.3em;
 }
 
-/* 波普艺术特有元素 */
-.pop-art-bubble {
+/* 波普艺术对话泡泡 - 自动应用于引用块 */
+blockquote {
   background-color: #ffff00;
   border: 3px solid #333;
   border-radius: 20px;
@@ -212,7 +212,7 @@ em {
   text-align: center;
 }
 
-.pop-art-bubble:before {
+blockquote:before {
   content: "";
   position: absolute;
   bottom: -20px;
@@ -222,7 +222,7 @@ em {
   border-color: #333 transparent transparent transparent;
 }
 
-.pop-art-bubble:after {
+blockquote:after {
   content: "";
   position: absolute;
   bottom: -15px;
@@ -232,21 +232,63 @@ em {
   border-color: #ffff00 transparent transparent transparent;
 }
 
-.pop-art-exclamation {
+/* 波普艺术感叹词 - 自动应用于强调文本 */
+strong {
   font-family: 'ZCOOL KuaiLe', 'Bangers', cursive;
   font-size: 2em;
   color: #ff1493;
+  display: block;
   text-align: center;
   margin: 20px 0;
   transform: rotate(-5deg);
   text-shadow: 2px 2px 0 #ffff00;
+  text-transform: uppercase;
 }
 
-.pop-art-dots {
+/* 波普艺术圆点背景 - 自动应用于水平线前后的内容 */
+hr {
+  height: 20px;
   background-image: radial-gradient(#ff1493 20%, transparent 20%),
                     radial-gradient(#1e90ff 20%, transparent 20%);
   background-size: 10px 10px;
   background-position: 0 0, 5px 5px;
   padding: 20px;
   margin: 20px 0;
+  border: none;
+}
+
+/* 添加波普艺术风格的内容容器 */
+.markdown-content {
+  background-color: #fff;
+  padding: 30px;
+  border: 5px solid #1e90ff;
+  box-shadow: 10px 10px 0 #ff1493;
+  position: relative;
+  overflow: hidden;
+}
+
+/* 添加波普艺术风格的装饰元素 */
+.markdown-content::before {
+  content: "POP!";
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-family: 'ZCOOL KuaiLe', 'Bangers', cursive;
+  font-size: 1.5em;
+  color: #ff1493;
+  transform: rotate(15deg);
+  text-shadow: 1px 1px 0 #ffff00;
+}
+
+/* 添加波普艺术风格的背景装饰 */
+.markdown-content::after {
+  content: "";
+  position: absolute;
+  bottom: -50px;
+  right: -50px;
+  width: 100px;
+  height: 100px;
+  background-color: #ffff00;
+  border-radius: 50%;
+  z-index: -1;
 }

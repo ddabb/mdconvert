@@ -222,17 +222,63 @@ em {
   accent-color: #ff6b6b;
 }
 
-/* 儿童装饰元素 */
-.kids-decoration {
+/* 儿童装饰元素 - 自动应用于水平线 */
+hr {
   text-align: center;
   margin: 2em 0;
+  height: 30px;
+  background-image: none;
+  border: none;
+  position: relative;
 }
 
-.kids-decoration:before {
+hr:before {
   content: "✿ ✿ ✿";
   color: #ff6b6b;
   letter-spacing: 1em;
   font-size: 1.5em;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* 添加儿童风格的内容容器 */
+.markdown-content {
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  border: 5px solid #ffd166;
+  position: relative;
+  margin-top: 40px;
+}
+
+/* 添加儿童风格的装饰元素 */
+.markdown-content::before {
+  content: "";
+  position: absolute;
+  top: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 60px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='45' fill='%23ff6b6b'/%3E%3Ccircle cx='30' cy='35' r='8' fill='%23fff'/%3E%3Ccircle cx='70' cy='35' r='8' fill='%23fff'/%3E%3Cpath d='M30,70 Q50,85 70,70' stroke='%23fff' stroke-width='5' fill='none'/%3E%3C/svg%3E");
+  background-size: contain;
+  background-repeat: no-repeat;
+  z-index: 2;
+}
+
+/* 添加彩色边框 */
+.markdown-content::after {
+  content: "";
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  right: -10px;
+  bottom: -10px;
+  border: 3px dashed #4ecdc4;
+  border-radius: 25px;
+  z-index: -1;
 }
 
 @media (max-width: 600px) {

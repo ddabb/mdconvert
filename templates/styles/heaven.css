@@ -203,39 +203,41 @@ em {
   top: 0.3em;
 }
 
-/* 天堂特有元素 */
-.heaven-cloud {
+/* 天堂云朵效果 - 自动应用于引用块 */
+blockquote {
   position: relative;
   padding: 20px;
   margin: 30px 0;
   background-color: rgba(66, 153, 225, 0.05);
   border-radius: 20px;
+  border-left: none;
 }
 
-.heaven-cloud:before,
-.heaven-cloud:after {
+blockquote:before,
+blockquote:after {
   content: "☁";
   position: absolute;
   color: rgba(66, 153, 225, 0.3);
   font-size: 2em;
 }
 
-.heaven-cloud:before {
+blockquote:before {
   top: -15px;
   left: 10px;
 }
 
-.heaven-cloud:after {
+blockquote:after {
   bottom: -15px;
   right: 10px;
 }
 
-.heaven-light {
+/* 天堂光芒效果 - 自动应用于强调文本 */
+strong {
   position: relative;
   display: inline-block;
 }
 
-.heaven-light:after {
+strong:after {
   content: "✨";
   position: absolute;
   top: -10px;
@@ -244,7 +246,8 @@ em {
   color: #4299e1;
 }
 
-.heaven-quote {
+/* 天堂引用效果 - 自动应用于水平线前后的段落 */
+hr + p {
   font-family: 'Ma Shan Zheng', 'Montserrat', sans-serif;
   font-size: 1.2em;
   color: #4299e1;
@@ -255,20 +258,52 @@ em {
   padding: 20px 40px;
 }
 
-.heaven-quote:before,
-.heaven-quote:after {
+hr + p:before,
+hr + p:after {
   content: "✧";
   position: absolute;
   color: #4299e1;
   font-size: 1.5em;
 }
 
-.heaven-quote:before {
+hr + p:before {
   top: 0;
   left: 0;
 }
 
-.heaven-quote:after {
+hr + p:after {
   bottom: 0;
   right: 0;
+}
+
+/* 添加天堂风格的背景 */
+.markdown-content {
+  position: relative;
+  background-color: #f7fafc;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 0 30px rgba(66, 153, 225, 0.1);
+  overflow: hidden;
+}
+
+/* 添加天堂风格的光芒背景 */
+.markdown-content::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at 50% 0%, rgba(66, 153, 225, 0.1), transparent 70%);
+  z-index: -1;
+}
+
+/* 添加天堂风格的装饰元素 */
+.markdown-content::after {
+  content: "✧";
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  color: rgba(66, 153, 225, 0.3);
+  font-size: 2em;
 }

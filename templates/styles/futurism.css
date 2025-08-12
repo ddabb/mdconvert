@@ -218,8 +218,8 @@ em {
   top: 0.3em;
 }
 
-/* 未来主义特有元素 */
-.futurism-box {
+/* 未来主义特有元素 - 自动应用于引用块 */
+blockquote {
   border: 1px solid rgba(92, 230, 205, 0.3);
   padding: 20px;
   margin: 20px 0;
@@ -228,7 +228,7 @@ em {
   overflow: hidden;
 }
 
-.futurism-box:before {
+blockquote:before {
   content: "";
   position: absolute;
   top: 0;
@@ -248,9 +248,10 @@ em {
   }
 }
 
-.futurism-button {
+/* 未来主义按钮 - 自动应用于链接 */
+a {
   display: inline-block;
-  padding: 10px 20px;
+  padding: 5px 10px;
   background-color: rgba(92, 230, 205, 0.1);
   color: #5ce6cd;
   border: 1px solid rgba(92, 230, 205, 0.3);
@@ -258,13 +259,53 @@ em {
   font-weight: bold;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  margin: 10px 0;
+  margin: 5px 0;
   cursor: pointer;
   transition: all 0.3s ease;
   transform: skewX(-10deg);
 }
 
-.futurism-button:hover {
+a:hover {
   background-color: rgba(92, 230, 205, 0.2);
   box-shadow: 0 0 10px rgba(92, 230, 205, 0.5);
+  color: #ffffff;
+}
+
+/* 添加未来主义风格的背景 */
+.markdown-content {
+  position: relative;
+  background-color: #121a29;
+  padding: 30px;
+  border: 1px solid rgba(92, 230, 205, 0.3);
+  border-radius: 5px;
+  box-shadow: 0 0 20px rgba(92, 230, 205, 0.1);
+  overflow: hidden;
+}
+
+/* 添加未来主义风格的网格背景 */
+.markdown-content::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    linear-gradient(rgba(92, 230, 205, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(92, 230, 205, 0.05) 1px, transparent 1px);
+  background-size: 20px 20px;
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* 添加未来主义风格的装饰线 */
+.markdown-content::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, #5ce6cd, transparent);
+  z-index: 1;
 }

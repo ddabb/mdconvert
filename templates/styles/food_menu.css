@@ -221,8 +221,8 @@ em {
   top: 0.3em;
 }
 
-/* 菜单特有的价格标签 */
-.price-tag {
+/* 菜单特有的价格标签 - 自动应用于段落中的强调文本 */
+strong {
   display: inline-block;
   float: right;
   color: #d2691e;
@@ -230,24 +230,50 @@ em {
   font-family: 'Lora', serif;
 }
 
-/* 菜单分类标题 */
-.menu-category {
+/* 菜单分类标题 - 自动应用于二级标题 */
+h2 {
   text-align: center;
-  font-family: 'Pacifico', cursive;
+  font-family: 'Ma Shan Zheng', 'Pacifico', cursive;
   color: #8b4513;
   margin: 2em 0 1em;
   font-size: 1.5em;
+  border-bottom: 2px dotted #d2691e;
+  padding-bottom: 0.3em;
 }
 
-/* 特色菜品标记 */
-.special-dish {
+/* 特色菜品标记 - 自动应用于斜体文本 */
+em {
   position: relative;
+  font-style: italic;
+  color: #a0522d;
 }
 
-.special-dish:after {
+em:after {
   content: "★";
   color: #d2691e;
   position: absolute;
   right: -1.5em;
   top: 0;
+}
+
+/* 添加菜单风格的背景 */
+.markdown-content {
+  position: relative;
+  background-color: #fffbf0;
+  padding: 30px;
+  border: 2px solid #deb887;
+  border-radius: 8px;
+  box-shadow: 0 0 15px rgba(139, 69, 19, 0.1);
+  background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5z' fill='%23d2691e' fill-opacity='0.05'/%3E%3C/svg%3E");
+}
+
+/* 添加菜单装饰元素 */
+.markdown-content::before,
+.markdown-content::after {
+  content: "❦";
+  display: block;
+  text-align: center;
+  color: #d2691e;
+  font-size: 2em;
+  margin: 10px 0;
 }

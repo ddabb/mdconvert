@@ -203,23 +203,40 @@ em {
   top: 0.3em;
 }
 
-/* 哥特特有元素 */
-.gothic-ornament {
-  display: block;
-  text-align: center;
+/* 哥特特有元素 - 自动应用于水平线 */
+hr {
+  border: 0;
+  height: 1px;
+  background-color: rgba(196, 30, 58, 0.3);
   margin: 2em 0;
-  color: #c41e3a;
-  font-size: 1.5em;
+  position: relative;
+  text-align: center;
 }
 
-.gothic-ornament:before,
-.gothic-ornament:after {
+hr:before {
   content: "❧";
   display: inline-block;
-  margin: 0 10px;
+  position: relative;
+  top: -0.7em;
+  font-size: 1.5em;
+  padding: 0 0.5em;
+  background-color: #1a1a1a;
+  color: #c41e3a;
 }
 
-.gothic-initial-letter {
+hr:after {
+  content: "❧";
+  display: inline-block;
+  position: relative;
+  top: -0.7em;
+  font-size: 1.5em;
+  padding: 0 0.5em;
+  background-color: #1a1a1a;
+  color: #c41e3a;
+}
+
+/* 哥特首字下沉效果 - 自动应用于段落首字母 */
+p:first-of-type::first-letter {
   float: left;
   font-size: 3em;
   line-height: 0.8;
@@ -227,4 +244,32 @@ em {
   color: #c41e3a;
   font-family: 'Cinzel', serif;
   font-weight: bold;
+}
+
+/* 添加哥特风格的页面装饰 */
+.markdown-content {
+  position: relative;
+  background-color: #1a1a1a;
+  padding: 20px;
+  border: 1px solid rgba(196, 30, 58, 0.3);
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+}
+
+/* 添加哥特风格的角落装饰 */
+.markdown-content::before,
+.markdown-content::after {
+  content: "†";
+  position: absolute;
+  color: #c41e3a;
+  font-size: 2em;
+}
+
+.markdown-content::before {
+  top: 10px;
+  left: 10px;
+}
+
+.markdown-content::after {
+  bottom: 10px;
+  right: 10px;
 }

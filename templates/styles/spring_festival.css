@@ -10,6 +10,46 @@ body {
   margin: 0 auto;
   padding: 40px;
   letter-spacing: 0.05em;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E%3Cpath fill='%23c71d0b' fill-opacity='0.05' d='M20 0C9 0 0 9 0 20s9 20 20 20 20-9 20-20S31 0 20 0zm0 36c-8.8 0-16-7.2-16-16S11.2 4 20 4s16 7.2 16 16-7.2 16-16 16z'/%3E%3C/svg%3E");
+}
+
+/* 添加春节风格的内容容器 */
+.markdown-content {
+  position: relative;
+  background-color: rgba(255, 255, 255, 0.9);
+  padding: 30px;
+  border: 2px solid rgba(199, 29, 11, 0.3);
+  border-radius: 8px;
+  box-shadow: 0 0 20px rgba(199, 29, 11, 0.1);
+}
+
+/* 添加春节风格的装饰元素 */
+.markdown-content::before,
+.markdown-content::after {
+  content: "福";
+  position: absolute;
+  font-family: 'Ma Shan Zheng', serif;
+  color: #c71d0b;
+  font-size: 2em;
+  background-color: rgba(255, 241, 240, 0.8);
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  border: 2px solid #c71d0b;
+  transform: rotate(45deg);
+}
+
+.markdown-content::before {
+  top: -20px;
+  left: -20px;
+}
+
+.markdown-content::after {
+  bottom: -20px;
+  right: -20px;
 }
 
 h1, h2, h3, h4, h5, h6 {
