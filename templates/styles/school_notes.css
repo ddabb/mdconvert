@@ -1,0 +1,237 @@
+/* 校园笔记风格样式 */
+@import url('https://fonts.googleapis.com/css2?family=Architects+Daughter&family=Patrick+Hand&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&family=ZCOOL+KuaiLe&display=swap');
+
+body {
+  font-family: 'ZCOOL KuaiLe', 'Patrick Hand', cursive;
+  line-height: 1.8;
+  color: #333;
+  background-color: #fffdf7;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px;
+  letter-spacing: 0.02em;
+  background-image: linear-gradient(#fffdf7 29px, #0d88cd 30px);
+  background-size: 100% 30px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Ma Shan Zheng', 'Architects Daughter', cursive;
+  font-weight: 700;
+  line-height: 1.3;
+  margin-top: 1.8em;
+  margin-bottom: 0.8em;
+  color: #0d88cd;
+}
+
+h1 {
+  font-size: 2.5em;
+  text-align: center;
+  margin-bottom: 1em;
+  color: #0d88cd;
+  position: relative;
+  padding-bottom: 0.5em;
+  text-decoration: underline;
+  text-decoration-style: wavy;
+  text-decoration-color: #ff6b6b;
+}
+
+h2 {
+  font-size: 1.8em;
+  color: #0d88cd;
+  border-bottom: 2px dashed #0d88cd;
+  padding-bottom: 0.3em;
+}
+
+h3 {
+  font-size: 1.5em;
+  color: #0d88cd;
+  text-decoration: underline;
+  text-decoration-style: dotted;
+}
+
+p {
+  margin-bottom: 1.5em;
+  line-height: 1.8;
+  background: transparent;
+}
+
+a {
+  color: #ff6b6b;
+  text-decoration: none;
+  border-bottom: 1px dashed #ff6b6b;
+  transition: all 0.2s ease;
+}
+
+a:hover {
+  color: #ff9e9e;
+  border-bottom: 1px solid #ff9e9e;
+}
+
+blockquote {
+  margin: 2em 0;
+  padding: 1.5em;
+  border-left: 3px solid #ffcc5c;
+  color: #333;
+  background-color: rgba(255, 204, 92, 0.1);
+  position: relative;
+  font-style: italic;
+}
+
+blockquote:before {
+  content: "\201C";
+  font-family: 'Architects Daughter', cursive;
+  font-size: 3em;
+  position: absolute;
+  left: 0.1em;
+  top: -0.3em;
+  color: rgba(255, 204, 92, 0.5);
+}
+
+code {
+  font-family: "Courier New", monospace;
+  background-color: #f0f0f0;
+  padding: 0.2em 0.4em;
+  border-radius: 3px;
+  color: #ff6b6b;
+}
+
+pre {
+  background-color: #f0f0f0;
+  padding: 1.2em;
+  border-radius: 5px;
+  overflow-x: auto;
+  margin: 1.5em 0;
+  border: 1px solid #ddd;
+}
+
+pre code {
+  background-color: transparent;
+  padding: 0;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 2em 0;
+  border: 2px solid #0d88cd;
+}
+
+table th, table td {
+  padding: 0.8em;
+  border: 1px solid #0d88cd;
+  text-align: left;
+}
+
+table th {
+  background-color: rgba(13, 136, 205, 0.1);
+  font-weight: bold;
+  color: #0d88cd;
+}
+
+table tr:nth-child(even) {
+  background-color: rgba(13, 136, 205, 0.05);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 2em auto;
+  border: 5px solid #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  transform: rotate(-1deg);
+}
+
+hr {
+  border: 0;
+  height: 2px;
+  background-color: #0d88cd;
+  margin: 2em 0;
+  border-style: dashed;
+}
+
+ul, ol {
+  padding-left: 2em;
+  margin: 1.5em 0;
+}
+
+ul {
+  list-style-type: none;
+}
+
+ul li {
+  position: relative;
+  padding-left: 0.5em;
+}
+
+ul li:before {
+  content: "✎";
+  color: #ff6b6b;
+  position: absolute;
+  left: -1.5em;
+}
+
+ol {
+  list-style-type: decimal;
+}
+
+li {
+  margin-bottom: 0.8em;
+  line-height: 1.7;
+}
+
+strong {
+  font-weight: bold;
+  color: #ff6b6b;
+  background-color: rgba(255, 107, 107, 0.1);
+  padding: 0 0.2em;
+}
+
+em {
+  font-style: italic;
+  color: #0d88cd;
+}
+
+.task-list-item {
+  list-style-type: none;
+  position: relative;
+  padding-left: 1.5em;
+}
+
+.task-list-item-checkbox {
+  position: absolute;
+  left: 0;
+  top: 0.3em;
+}
+
+/* 笔记特有的元素 */
+.highlight-yellow {
+  background-color: rgba(255, 204, 92, 0.3);
+  padding: 0 0.2em;
+}
+
+.highlight-green {
+  background-color: rgba(126, 211, 33, 0.3);
+  padding: 0 0.2em;
+}
+
+.highlight-pink {
+  background-color: rgba(255, 107, 107, 0.3);
+  padding: 0 0.2em;
+}
+
+.note-sticker {
+  background-color: #ffcc5c;
+  padding: 1em;
+  margin: 1.5em 0;
+  transform: rotate(1deg);
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.handwritten-comment {
+  font-family: 'Ma Shan Zheng', 'Architects Daughter', cursive;
+  color: #ff6b6b;
+  margin: 1em 0;
+  font-size: 1.1em;
+}

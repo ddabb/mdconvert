@@ -1,0 +1,245 @@
+/* 蒸汽朋克风格样式 */
+@import url('https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Cinzel:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&family=Noto+Serif+SC:wght@400;700&display=swap');
+
+body {
+  font-family: 'Noto Serif SC', 'IM Fell English', serif;
+  line-height: 1.7;
+  color: #4a3520;
+  background-color: #f3e9d9;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px;
+  letter-spacing: 0.03em;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Ma Shan Zheng', 'Cinzel', serif;
+  font-weight: 700;
+  line-height: 1.3;
+  margin-top: 1.8em;
+  margin-bottom: 0.8em;
+  color: #6b4226;
+}
+
+h1 {
+  font-size: 2.5em;
+  text-align: center;
+  margin-bottom: 1em;
+  color: #6b4226;
+  position: relative;
+  padding-bottom: 0.5em;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+h1:after {
+  content: "§";
+  display: block;
+  text-align: center;
+  font-size: 0.7em;
+  margin-top: 0.5em;
+  color: #b38b59;
+}
+
+h2 {
+  font-size: 1.8em;
+  color: #6b4226;
+  border-bottom: 2px solid rgba(107, 66, 38, 0.3);
+  padding-bottom: 0.3em;
+}
+
+h3 {
+  font-size: 1.5em;
+  color: #6b4226;
+}
+
+p {
+  margin-bottom: 1.5em;
+  line-height: 1.8;
+}
+
+a {
+  color: #8b5a2b;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(139, 90, 43, 0.3);
+  transition: all 0.2s ease;
+}
+
+a:hover {
+  color: #b38b59;
+  border-bottom: 1px solid #b38b59;
+}
+
+blockquote {
+  margin: 2em 0;
+  padding: 1.5em;
+  border-left: 3px solid #b38b59;
+  color: #6b4226;
+  background-color: rgba(179, 139, 89, 0.1);
+  position: relative;
+  font-style: italic;
+}
+
+blockquote:before {
+  content: "\201C";
+  font-family: 'IM Fell English', serif;
+  font-size: 3em;
+  position: absolute;
+  left: 0.1em;
+  top: -0.3em;
+  color: rgba(107, 66, 38, 0.2);
+}
+
+code {
+  font-family: "Courier New", monospace;
+  background-color: #e6d9c6;
+  padding: 0.2em 0.4em;
+  border-radius: 3px;
+  color: #6b4226;
+}
+
+pre {
+  background-color: #e6d9c6;
+  padding: 1.2em;
+  border-radius: 5px;
+  overflow-x: auto;
+  margin: 1.5em 0;
+  border: 1px solid #d1c0a5;
+}
+
+pre code {
+  background-color: transparent;
+  padding: 0;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 2em 0;
+  border: 2px solid #b38b59;
+}
+
+table th, table td {
+  padding: 0.8em;
+  border: 1px solid #b38b59;
+  text-align: left;
+}
+
+table th {
+  background-color: rgba(179, 139, 89, 0.2);
+  font-weight: bold;
+  color: #6b4226;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 2em auto;
+  border: 5px solid #b38b59;
+  box-shadow: 0 0 10px rgba(107, 66, 38, 0.2);
+}
+
+hr {
+  border: 0;
+  height: 1px;
+  background-image: linear-gradient(to right, rgba(179, 139, 89, 0), rgba(179, 139, 89, 0.75), rgba(179, 139, 89, 0));
+  margin: 2em 0;
+}
+
+ul, ol {
+  padding-left: 2em;
+  margin: 1.5em 0;
+}
+
+ul {
+  list-style-type: none;
+}
+
+ul li {
+  position: relative;
+  padding-left: 0.5em;
+}
+
+ul li:before {
+  content: "⚙";
+  color: #b38b59;
+  position: absolute;
+  left: -1.5em;
+}
+
+ol {
+  list-style-type: decimal;
+}
+
+li {
+  margin-bottom: 0.5em;
+  line-height: 1.7;
+}
+
+strong {
+  font-weight: bold;
+  color: #6b4226;
+}
+
+em {
+  font-style: italic;
+  color: #8b5a2b;
+}
+
+.task-list-item {
+  list-style-type: none;
+  position: relative;
+  padding-left: 1.5em;
+}
+
+.task-list-item-checkbox {
+  position: absolute;
+  left: 0;
+  top: 0.3em;
+}
+
+/* 蒸汽朋克特有元素 */
+.steampunk-ornament {
+  text-align: center;
+  margin: 2em 0;
+  color: #b38b59;
+  font-size: 1.5em;
+}
+
+.steampunk-ornament:before {
+  content: "⚙ ⚙ ⚙";
+  letter-spacing: 0.5em;
+}
+
+.steampunk-frame {
+  border: 2px solid #b38b59;
+  padding: 20px;
+  margin: 20px 0;
+  position: relative;
+}
+
+.steampunk-frame:before {
+  content: "";
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  right: 5px;
+  bottom: 5px;
+  border: 1px solid #b38b59;
+}
+
+.steampunk-button {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #b38b59;
+  color: #f3e9d9;
+  border: 2px solid #6b4226;
+  border-radius: 5px;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin: 10px 0;
+  cursor: pointer;
+}

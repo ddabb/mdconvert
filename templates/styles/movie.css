@@ -1,0 +1,272 @@
+/* 电影海报风格样式 */
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;700;900&display=swap');
+
+body {
+  font-family: 'Noto Sans SC', 'Montserrat', sans-serif;
+  line-height: 1.6;
+  color: #fff;
+  background-color: #121212;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px;
+  letter-spacing: 0.02em;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Bebas Neue', 'Noto Sans SC', sans-serif;
+  font-weight: 700;
+  line-height: 1.2;
+  margin-top: 1.8em;
+  margin-bottom: 0.8em;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+h1 {
+  font-size: 3.5em;
+  text-align: center;
+  margin-bottom: 1em;
+  letter-spacing: 0.1em;
+  line-height: 1;
+  text-shadow: 3px 3px 0 #ff0000;
+}
+
+h2 {
+  font-size: 2.2em;
+  color: #fff;
+  border-bottom: 2px solid #ff0000;
+  padding-bottom: 0.2em;
+  text-shadow: 2px 2px 0 rgba(255, 0, 0, 0.5);
+}
+
+h3 {
+  font-size: 1.8em;
+  color: #fff;
+  text-shadow: 1px 1px 0 rgba(255, 0, 0, 0.5);
+}
+
+p {
+  margin-bottom: 1.5em;
+  line-height: 1.8;
+  font-size: 1.1em;
+}
+
+p:first-of-type::first-letter {
+  font-size: 3.5em;
+  float: left;
+  line-height: 0.8;
+  margin-right: 0.1em;
+  color: #ff0000;
+  font-weight: bold;
+  text-shadow: 1px 1px 0 #fff;
+}
+
+a {
+  color: #ff0000;
+  text-decoration: none;
+  border-bottom: 1px solid #ff0000;
+  transition: all 0.3s ease;
+}
+
+a:hover {
+  color: #ff5555;
+  border-bottom: 1px solid #ff5555;
+}
+
+blockquote {
+  margin: 2em 0;
+  padding: 1em 1.5em;
+  border-left: 5px solid #ff0000;
+  color: #fff;
+  background-color: rgba(255, 0, 0, 0.1);
+  position: relative;
+  font-size: 1.2em;
+  font-style: italic;
+  text-align: center;
+}
+
+blockquote::before {
+  content: "\201C";
+  font-size: 4em;
+  position: absolute;
+  left: 0.1em;
+  top: -0.5em;
+  color: rgba(255, 0, 0, 0.3);
+  font-family: Georgia, serif;
+}
+
+blockquote::after {
+  content: "\201D";
+  font-size: 4em;
+  position: absolute;
+  right: 0.1em;
+  bottom: -0.8em;
+  color: rgba(255, 0, 0, 0.3);
+  font-family: Georgia, serif;
+}
+
+code {
+  font-family: "Courier New", monospace;
+  background-color: #2a2a2a;
+  padding: 0.2em 0.4em;
+  border-radius: 3px;
+  color: #ff0000;
+}
+
+pre {
+  background-color: #2a2a2a;
+  padding: 1.2em;
+  border-radius: 5px;
+  overflow-x: auto;
+  margin: 1.5em 0;
+  border-left: 5px solid #ff0000;
+}
+
+pre code {
+  background-color: transparent;
+  padding: 0;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 2em 0;
+  border: 2px solid #ff0000;
+}
+
+table th, table td {
+  padding: 0.8em;
+  border: 1px solid #444;
+  text-align: left;
+}
+
+table th {
+  background-color: #2a2a2a;
+  font-weight: bold;
+  color: #ff0000;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+table tr:nth-child(even) {
+  background-color: #1a1a1a;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 2em auto;
+  border: 5px solid #fff;
+  box-shadow: 0 0 20px rgba(255, 0, 0, 0.5);
+}
+
+hr {
+  border: 0;
+  height: 3px;
+  background-color: #ff0000;
+  margin: 2em 0;
+}
+
+ul, ol {
+  padding-left: 2em;
+  margin: 1.5em 0;
+}
+
+ul {
+  list-style-type: none;
+}
+
+ul li {
+  position: relative;
+  padding-left: 0.5em;
+}
+
+ul li:before {
+  content: "•";
+  color: #ff0000;
+  position: absolute;
+  left: -1.5em;
+  font-size: 1.2em;
+}
+
+ol {
+  list-style-type: decimal;
+}
+
+ol li::marker {
+  color: #ff0000;
+}
+
+li {
+  margin-bottom: 0.8em;
+  line-height: 1.6;
+}
+
+strong {
+  font-weight: bold;
+  color: #ff0000;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+em {
+  font-style: italic;
+  color: #ff5555;
+}
+
+.task-list-item {
+  list-style-type: none;
+  position: relative;
+  padding-left: 1.5em;
+}
+
+.task-list-item-checkbox {
+  position: absolute;
+  left: 0;
+  top: 0.3em;
+  appearance: none;
+  width: 1em;
+  height: 1em;
+  border: 1px solid #ff0000;
+  background-color: transparent;
+  border-radius: 2px;
+}
+
+.task-list-item-checkbox:checked {
+  background-color: #ff0000;
+  border-color: #ff0000;
+}
+
+.task-list-item-checkbox:checked::before {
+  content: "✓";
+  position: absolute;
+  color: #fff;
+  font-size: 0.8em;
+  top: -0.2em;
+  left: 0.1em;
+}
+
+/* 电影字幕样式 */
+.subtitle {
+  font-family: 'Courier New', monospace;
+  font-size: 0.9em;
+  color: #ccc;
+  text-align: center;
+  margin: 2em 0;
+  line-height: 1.5;
+}
+
+/* 电影评级标签 */
+.rating {
+  display: inline-block;
+  padding: 0.2em 0.5em;
+  background-color: #ff0000;
+  color: #fff;
+  font-weight: bold;
+  border-radius: 3px;
+  margin-right: 0.5em;
+  font-size: 0.8em;
+}

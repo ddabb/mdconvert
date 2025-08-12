@@ -1,0 +1,193 @@
+/* 极简禅风格样式 */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;700&family=Noto+Serif+SC:wght@300;400;700&display=swap');
+
+body {
+  font-family: 'Noto Serif SC', 'Noto Sans JP', sans-serif;
+  font-weight: 300;
+  line-height: 1.8;
+  color: #333;
+  background-color: #fafafa;
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 60px 40px;
+  letter-spacing: 0.03em;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 400;
+  line-height: 1.4;
+  margin-top: 2.5em;
+  margin-bottom: 1em;
+  color: #333;
+}
+
+h1 {
+  font-size: 2em;
+  text-align: center;
+  margin-bottom: 2em;
+  letter-spacing: 0.1em;
+  font-weight: 300;
+}
+
+h2 {
+  font-size: 1.5em;
+  color: #333;
+  padding-bottom: 0.3em;
+  font-weight: 300;
+}
+
+h3 {
+  font-size: 1.2em;
+  color: #333;
+  font-weight: 300;
+}
+
+p {
+  margin-bottom: 2em;
+  line-height: 1.9;
+  text-align: justify;
+}
+
+a {
+  color: #333;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  transition: all 0.2s ease;
+}
+
+a:hover {
+  color: #000;
+  border-bottom: 1px solid #000;
+}
+
+blockquote {
+  margin: 3em 0;
+  padding: 1em 2em;
+  border-left: 2px solid #333;
+  color: #555;
+  font-style: italic;
+}
+
+code {
+  font-family: "Courier New", monospace;
+  background-color: rgba(0, 0, 0, 0.05);
+  padding: 0.2em 0.4em;
+  border-radius: 2px;
+  color: #333;
+}
+
+pre {
+  background-color: rgba(0, 0, 0, 0.05);
+  padding: 1.2em;
+  border-radius: 2px;
+  overflow-x: auto;
+  margin: 2em 0;
+}
+
+pre code {
+  background-color: transparent;
+  padding: 0;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 2em 0;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+table th, table td {
+  padding: 0.8em;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  text-align: left;
+}
+
+table th {
+  background-color: rgba(0, 0, 0, 0.03);
+  font-weight: normal;
+  color: #333;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 3em auto;
+  filter: grayscale(20%);
+}
+
+hr {
+  border: 0;
+  height: 1px;
+  background-color: rgba(0, 0, 0, 0.1);
+  margin: 3em 0;
+}
+
+ul, ol {
+  padding-left: 1.5em;
+  margin: 2em 0;
+}
+
+ul {
+  list-style-type: none;
+}
+
+ul li {
+  position: relative;
+  padding-left: 0.5em;
+}
+
+ul li:before {
+  content: "—";
+  color: #333;
+  position: absolute;
+  left: -1.5em;
+}
+
+ol {
+  list-style-type: decimal;
+}
+
+li {
+  margin-bottom: 0.8em;
+  line-height: 1.7;
+}
+
+strong {
+  font-weight: 400;
+  color: #000;
+}
+
+em {
+  font-style: italic;
+  color: #555;
+}
+
+.task-list-item {
+  list-style-type: none;
+  position: relative;
+  padding-left: 1.5em;
+}
+
+.task-list-item-checkbox {
+  position: absolute;
+  left: 0;
+  top: 0.3em;
+}
+
+/* 禅风格特有的样式 */
+.zen-circle {
+  width: 50px;
+  height: 50px;
+  border: 1px solid #333;
+  border-radius: 50%;
+  margin: 3em auto;
+}
+
+.zen-quote {
+  text-align: center;
+  font-style: italic;
+  margin: 3em 0;
+  font-size: 1.2em;
+  color: #555;
+}

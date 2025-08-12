@@ -1,0 +1,248 @@
+/* 丧尸风格样式 */
+@import url('https://fonts.googleapis.com/css2?family=Creepster&family=Special+Elite&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=ZCOOL+QingKe+HuangYou&family=Noto+Sans+SC:wght@400;700&display=swap');
+
+body {
+  font-family: 'Noto Sans SC', 'Special Elite', cursive;
+  line-height: 1.6;
+  color: #c9c9c9;
+  background-color: #1c1c1c;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px;
+  letter-spacing: 0.03em;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'ZCOOL QingKe HuangYou', 'Creepster', cursive;
+  font-weight: 400;
+  line-height: 1.3;
+  margin-top: 1.8em;
+  margin-bottom: 0.8em;
+  color: #4caf50;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.7);
+}
+
+h1 {
+  font-size: 2.8em;
+  text-align: center;
+  margin-bottom: 1em;
+  color: #4caf50;
+  position: relative;
+  padding-bottom: 0.5em;
+  transform: rotate(-1deg);
+}
+
+h1:after {
+  content: "";
+  display: block;
+  position: absolute;
+  bottom: 0;
+  left: 10%;
+  width: 80%;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, #4caf50, transparent);
+}
+
+h2 {
+  font-size: 2em;
+  color: #4caf50;
+  border-bottom: 1px solid rgba(76, 175, 80, 0.3);
+  padding-bottom: 0.3em;
+  transform: rotate(-0.5deg);
+}
+
+h3 {
+  font-size: 1.6em;
+  color: #4caf50;
+}
+
+p {
+  margin-bottom: 1.5em;
+  line-height: 1.8;
+  text-align: justify;
+}
+
+a {
+  color: #8bc34a;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(139, 195, 74, 0.3);
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+a:hover {
+  color: #cddc39;
+  border-bottom: 1px solid #cddc39;
+}
+
+blockquote {
+  margin: 2em 0;
+  padding: 1.5em;
+  border-left: 3px solid #4caf50;
+  color: #c9c9c9;
+  background-color: rgba(76, 175, 80, 0.1);
+  position: relative;
+  font-style: italic;
+  transform: rotate(-0.5deg);
+}
+
+blockquote:before {
+  content: "\201C";
+  font-size: 3em;
+  position: absolute;
+  left: 0.1em;
+  top: -0.3em;
+  color: rgba(76, 175, 80, 0.3);
+}
+
+code {
+  font-family: "Courier New", monospace;
+  background-color: #2a2a2a;
+  padding: 0.2em 0.4em;
+  border-radius: 3px;
+  color: #4caf50;
+}
+
+pre {
+  background-color: #2a2a2a;
+  padding: 1.2em;
+  border-radius: 5px;
+  overflow-x: auto;
+  margin: 1.5em 0;
+  border: 1px solid rgba(76, 175, 80, 0.3);
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+pre code {
+  background-color: transparent;
+  padding: 0;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 2em 0;
+  border: 2px solid #4caf50;
+}
+
+table th, table td {
+  padding: 0.8em;
+  border: 1px solid rgba(76, 175, 80, 0.3);
+  text-align: left;
+}
+
+table th {
+  background-color: rgba(76, 175, 80, 0.1);
+  font-weight: bold;
+  color: #4caf50;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 2em auto;
+  border: 3px solid #2a2a2a;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.7);
+  filter: sepia(20%) hue-rotate(60deg);
+}
+
+hr {
+  border: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(76, 175, 80, 0.5), transparent);
+  margin: 2em 0;
+}
+
+ul, ol {
+  padding-left: 2em;
+  margin: 1.5em 0;
+}
+
+ul {
+  list-style-type: none;
+}
+
+ul li {
+  position: relative;
+  padding-left: 0.5em;
+}
+
+ul li:before {
+  content: "☣";
+  color: #4caf50;
+  position: absolute;
+  left: -1.5em;
+  font-size: 1.2em;
+}
+
+ol {
+  list-style-type: decimal;
+}
+
+li {
+  margin-bottom: 0.8em;
+  line-height: 1.7;
+}
+
+strong {
+  font-weight: bold;
+  color: #8bc34a;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.7);
+}
+
+em {
+  font-style: italic;
+  color: #8bc34a;
+}
+
+.task-list-item {
+  list-style-type: none;
+  position: relative;
+  padding-left: 1.5em;
+}
+
+.task-list-item-checkbox {
+  position: absolute;
+  left: 0;
+  top: 0.3em;
+}
+
+/* 丧尸特有元素 */
+.zombie-warning {
+  background-color: rgba(76, 175, 80, 0.1);
+  border: 1px dashed #4caf50;
+  padding: 15px;
+  margin: 20px 0;
+  position: relative;
+  transform: rotate(-0.5deg);
+}
+
+.zombie-warning:before {
+  content: "⚠ 警告";
+  display: block;
+  color: #4caf50;
+  font-weight: bold;
+  margin-bottom: 10px;
+  font-family: 'ZCOOL QingKe HuangYou', 'Creepster', cursive;
+}
+
+.blood-splatter {
+  position: relative;
+}
+
+.blood-splatter:after {
+  content: "";
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: rgba(139, 0, 0, 0.7);
+  transform: rotate(45deg) scale(0.8);
+}

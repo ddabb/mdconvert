@@ -1,0 +1,204 @@
+/* 春节风格样式 */
+@import url('https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&family=Noto+Serif+SC:wght@400;700&display=swap');
+
+body {
+  font-family: 'Noto Serif SC', serif;
+  line-height: 1.8;
+  color: #333;
+  background-color: #fff1f0;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px;
+  letter-spacing: 0.05em;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Ma Shan Zheng', 'Noto Serif SC', serif;
+  font-weight: 700;
+  line-height: 1.3;
+  margin-top: 1.8em;
+  margin-bottom: 0.8em;
+  color: #c71d0b;
+}
+
+h1 {
+  font-size: 2.5em;
+  text-align: center;
+  margin-bottom: 1em;
+  color: #c71d0b;
+  position: relative;
+  padding-bottom: 0.5em;
+}
+
+h1:before, h1:after {
+  content: "✿";
+  color: #c71d0b;
+  position: absolute;
+  top: 0;
+  font-size: 0.6em;
+}
+
+h1:before {
+  left: 0;
+}
+
+h1:after {
+  right: 0;
+}
+
+h2 {
+  font-size: 1.8em;
+  color: #c71d0b;
+  border-bottom: 2px solid rgba(199, 29, 11, 0.2);
+  padding-bottom: 0.3em;
+}
+
+h3 {
+  font-size: 1.5em;
+  color: #c71d0b;
+}
+
+p {
+  margin-bottom: 1.5em;
+  line-height: 1.8;
+}
+
+a {
+  color: #c71d0b;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(199, 29, 11, 0.3);
+  transition: all 0.2s ease;
+}
+
+a:hover {
+  color: #ff4d4d;
+  border-bottom: 1px solid #ff4d4d;
+}
+
+blockquote {
+  margin: 2em 0;
+  padding: 1em 1.5em;
+  border-left: 3px solid #c71d0b;
+  color: #c71d0b;
+  background-color: rgba(255, 241, 240, 0.8);
+  position: relative;
+}
+
+blockquote:before {
+  content: "\201C";
+  font-size: 3em;
+  position: absolute;
+  left: 0.1em;
+  top: -0.5em;
+  color: rgba(199, 29, 11, 0.2);
+  font-family: 'Ma Shan Zheng', serif;
+}
+
+code {
+  font-family: "Courier New", monospace;
+  background-color: rgba(255, 241, 240, 0.8);
+  padding: 0.2em 0.4em;
+  border-radius: 3px;
+  color: #c71d0b;
+}
+
+pre {
+  background-color: rgba(255, 241, 240, 0.8);
+  padding: 1.2em;
+  border-radius: 5px;
+  overflow-x: auto;
+  margin: 1.5em 0;
+  border: 1px solid rgba(199, 29, 11, 0.2);
+}
+
+pre code {
+  background-color: transparent;
+  padding: 0;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 2em 0;
+  border: 2px solid #c71d0b;
+}
+
+table th, table td {
+  padding: 0.8em;
+  border: 1px solid rgba(199, 29, 11, 0.3);
+  text-align: left;
+}
+
+table th {
+  background-color: rgba(255, 241, 240, 0.8);
+  font-weight: bold;
+  color: #c71d0b;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 2em auto;
+  border: 3px solid #fff;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+}
+
+hr {
+  border: 0;
+  height: 2px;
+  background-color: rgba(199, 29, 11, 0.2);
+  margin: 2em 0;
+}
+
+ul, ol {
+  padding-left: 2em;
+  margin: 1.5em 0;
+}
+
+ul {
+  list-style-type: none;
+}
+
+ul li {
+  position: relative;
+  padding-left: 0.5em;
+}
+
+ul li:before {
+  content: "❧";
+  color: #c71d0b;
+  position: absolute;
+  left: -1.5em;
+}
+
+ol {
+  list-style-type: decimal;
+}
+
+li {
+  margin-bottom: 0.5em;
+  line-height: 1.7;
+}
+
+strong {
+  font-weight: bold;
+  color: #c71d0b;
+}
+
+em {
+  font-style: italic;
+  color: #c71d0b;
+}
+
+.task-list-item {
+  list-style-type: none;
+  position: relative;
+  padding-left: 1.5em;
+}
+
+.task-list-item-checkbox {
+  position: absolute;
+  left: 0;
+  top: 0.3em;
+}
