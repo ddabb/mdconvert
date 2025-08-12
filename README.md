@@ -4,7 +4,7 @@
 
 ## 特性
 
-- **多模板支持**：内置多种样式模板（默认、微信、抖音、小红书等）
+- **多模板支持**：内置多种样式模板（默认、微信、抖音、小红书、手写体等）
 - **高质量图片生成**：优化的图片生成流程，支持多种图片格式
 - **智能分页**：自动检测内容尺寸，超长内容自动分页，或按章节分割
 - **流程图支持**：完美支持 Mermaid 流程图、序列图、甘特图等
@@ -77,6 +77,7 @@ yyds_md2png --list-templates
 yyds_md2png document.md --template wechat    # 微信公众号风格
 yyds_md2png document.md --template douyin    # 抖音风格
 yyds_md2png document.md --template xiaohongshu  # 小红书风格
+yyds_md2png document.md --template handwriting  # 手写体风格
 ```
 
 ### 高级功能

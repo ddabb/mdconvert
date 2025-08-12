@@ -1,7 +1,7 @@
 {
   "name": "yyds_md2png",
-  "version": "1.0.4",
-  "description": "将Markdown文件转换为不同样式的HTML或PNG图片，支持国内环境安装",
+  "version": "1.0.5",
+  "description": "将Markdown文件转换为不同样式的HTML或PNG图片，支持国内环境安装，内置多种模板",
   "main": "src/index.js",
   "bin": {
     "md2png": "bin/yyds_md2png.js"
@@ -29,17 +29,18 @@
     "chalk": "^4.1.2",
     "commander": "^11.1.0",
     "highlight.js": "^11.9.0",
-    "html-pdf": "^3.0.1",
+    "html-pdf": "^1.5.0",
     "markdown-it": "^13.0.2",
     "markdown-it-anchor": "^8.6.7",
     "markdown-it-katex": "^2.0.3",
     "markdown-it-task-lists": "^2.1.1",
     "markdown-it-toc-done-right": "^4.2.0",
-    "node-html-to-image": "^4.0.0",
-    "open": "^8.4.2"
+    "node-html-to-image": "^5.0.0",
+    "open": "^8.4.2",
+    "puppeteer-core": "^24.16.1"
   },
   "peerDependencies": {
-    "puppeteer": "^19.11.1"
+    "puppeteer": "^24.16.1"
   },
   "engines": {
     "node": ">=14.0.0"
