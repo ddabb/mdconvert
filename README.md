@@ -2,6 +2,8 @@
 
 一个功能强大的 Markdown 转换工具，支持将 Markdown 文件转换为精美的 HTML 或 PNG 图片，内置多种样式模板（微信、抖音、小红书等）。
 
+> **1.0.7版本更新**：优化了所有CSS模板，使特定样式能够自动应用到Markdown转HTML生成的标准HTML元素上，无需添加特定类名。
+
 ## 特性
 
 - **多模板支持**：内置多种样式模板（默认、微信、抖音、小红书、手写体等）
@@ -12,6 +14,7 @@
 - **批量处理**：支持批量处理整个目录的 Markdown 文件
 - **交互式命令**：无参数运行时，自动询问是否处理当前目录下所有文件
 - **高级定制**：支持代码高亮、目录生成、自定义 CSS/JS、透明背景等
+- **智能样式应用**：特定样式自动应用到Markdown转HTML生成的标准HTML元素上，无需添加特定类名
 
 ## 安装
 
@@ -231,7 +234,7 @@ yyds_md2png document.md --format webp
 
 ## 自定义模板
 
-yyds_md2png 使用基于 CSS 的模板系统，您可以通过以下方式创建自己的模板：
+yyds_md2png 使用基于 CSS 的模板系统，所有样式会自动应用到Markdown转HTML生成的标准HTML元素上，您可以通过以下方式创建自己的模板：
 
 ### 方法一：使用命令行创建模板
 
@@ -266,8 +269,29 @@ h1, h2, h3, h4, h5, h6 {
   color: #0066cc;
 }
 
+/* 特殊效果 - 使用伪元素自动应用于标准HTML元素 */
+h1:after {
+  content: "";
+  display: block;
+  width: 100px;
+  height: 2px;
+  background-color: #0066cc;
+  margin-top: 10px;
+}
+
+/* 首字下沉效果 - 自动应用于第一段的首字母 */
+p:first-of-type::first-letter {
+  float: left;
+  font-size: 3em;
+  line-height: 0.8;
+  margin-right: 0.1em;
+  color: #0066cc;
+}
+
 /* 更多自定义样式... */
 ```
+
+> **提示**：在创建自定义模板时，尽量使用标准HTML元素选择器（如h1, p, blockquote等）、伪元素（::before, ::after）和位置选择器（:first-of-type, :last-of-type等），这样样式就能自动应用到Markdown转HTML生成的元素上，无需添加特定类名。
 
 ### 使用自定义模板
 
@@ -309,6 +333,10 @@ convert();
 ### 图片质量不佳？
 
 增加质量和缩放比例：`--png-quality 95 --png-scale 2`
+
+### 特定样式没有应用？
+
+从1.0.7版本开始，所有CSS模板已优化为自动应用样式到标准HTML元素，无需添加特定类名。如果您使用自定义模板，请参考上面的"自定义模板"部分，使用标准HTML元素选择器和伪元素。
 
 ## 许可证
 
