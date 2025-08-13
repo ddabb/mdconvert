@@ -75,14 +75,14 @@ program
   .option('--to-png', '将生成的HTML转换为PNG图片', true)
   .option('--png-quality <quality>', 'PNG图片质量(0-100)', '90')
   .option('--png-scale <scale>', '设备缩放比例', '2')
-  .option('--png-width <width>', 'PNG图片宽度')
-  .option('--png-height <height>', 'PNG图片高度')
+  .option('--png-width <width>', 'PNG图片宽度', '595')
+  .option('--png-height <height>', 'PNG图片高度', '842')
   .option('--png-output <directory>', '指定PNG输出目录')
   .option('--split-sections', '按章节分割PNG图片', false)
   .option('--section-selector <selector>', '章节选择器', 'h1, h2, h3')
   .option('--auto-size', '自动确定图片尺寸（根据内容）', true)
   .option('--no-auto-size', '禁用自动尺寸')
-  .option('--max-height <height>', '图片最大高度，超过此高度将自动分页', '15000')
+  .option('--max-height <height>', '图片最大高度，超过此高度将自动分页', '1123')
   .option('--transparent', '使用透明背景（仅PNG格式有效）', false)
   .option('--format <format>', '主要图片格式 (png, jpeg, webp, pdf)', 'png')
   .option('--output-formats <formats>', '额外输出格式，用逗号分隔 (例如: png,jpeg,webp,pdf)')
@@ -191,8 +191,8 @@ async function main() {
     const pngOptions = {
       quality: parseInt(options.pngQuality),
       deviceScaleFactor: parseFloat(options.pngScale),
-      width: options.pngWidth ? parseInt(options.pngWidth) : undefined,
-      height: options.pngHeight ? parseInt(options.pngHeight) : undefined,
+      width: parseInt(options.pngWidth),
+      height: parseInt(options.pngHeight),
       splitSections: options.splitSections,
       sectionSelector: options.sectionSelector,
       transparent: options.transparent,

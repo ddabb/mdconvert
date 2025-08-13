@@ -170,7 +170,7 @@ yyds_md2png document.md --split-sections
 yyds_md2png document.md --png-width 1200 --png-height 800 --png-scale 2
 
 # 设置图片最大高度，超过此高度将自动分页
-yyds_md2png document.md --max-height 15000
+yyds_md2png document.md --max-height 1123
 
 # 使用透明背景
 yyds_md2png document.md --transparent
@@ -218,7 +218,7 @@ yyds_md2png document.md --format webp
   --section-selector <selector>  章节选择器 (默认: "h1, h2, h3")
   --auto-size                    自动确定图片尺寸（根据内容） (默认: true)
   --no-auto-size                 禁用自动尺寸
-  --max-height <height>          图片最大高度，超过此高度将自动分页 (默认: "15000")
+  --max-height <height>          图片最大高度，超过此高度将自动分页 (默认: "1123")
   --transparent                  使用透明背景（仅 PNG 格式有效） (默认: false)
   --format <format>              图片格式 (png, jpeg, webp) (默认: "png")
   --optimize                     优化图片大小 (默认: true)
