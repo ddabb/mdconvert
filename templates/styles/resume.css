@@ -1,0 +1,322 @@
+/* 简历风格样式 - 专业版 */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&family=Noto+Serif+SC:wght@400;700&display=swap');
+
+body {
+  font-family: 'Noto Sans SC', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  line-height: 1.6;
+  color: #333;
+  background-color: #f5f5f5;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 30px;
+  letter-spacing: 0.01em;
+}
+
+/* 简历容器 - 自动应用于内容区域 */
+.markdown-content {
+  background-color: #fff;
+  padding: 40px;
+  border-radius: 5px;
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+  position: relative;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 700;
+  line-height: 1.3;
+  margin-top: 1.5em;
+  margin-bottom: 0.8em;
+  color: #2c3e50;
+}
+
+h1 {
+  font-size: 2.2em;
+  text-align: center;
+  margin-bottom: 0.5em;
+  color: #2c3e50;
+  border-bottom: none;
+  padding-bottom: 0;
+  position: relative;
+}
+
+h1:after {
+  content: "";
+  display: block;
+  width: 100px;
+  height: 3px;
+  background: linear-gradient(to right, #3498db, #2c3e50);
+  margin: 15px auto 0;
+  border-radius: 2px;
+}
+
+h2 {
+  font-size: 1.5em;
+  color: #3498db;
+  border-bottom: 2px solid #3498db;
+  padding-bottom: 0.3em;
+  margin-top: 1.8em;
+  display: flex;
+  align-items: center;
+}
+
+h2:before {
+  content: "";
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  background-color: #3498db;
+  margin-right: 8px;
+  transform: rotate(45deg);
+}
+
+h3 {
+  font-size: 1.3em;
+  color: #2c3e50;
+  position: relative;
+  padding-left: 15px;
+}
+
+h3:before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 8px;
+  height: 8px;
+  background-color: #3498db;
+  border-radius: 50%;
+}
+
+/* 个人信息区域 - 自动应用于第一个段落 */
+p:first-of-type {
+  text-align: center;
+  margin-bottom: 2em;
+  color: #7f8c8d;
+  font-size: 1.1em;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+p:first-of-type:before, p:first-of-type:after {
+  content: "•";
+  color: #3498db;
+  display: none;
+}
+
+p {
+  margin-bottom: 1em;
+  line-height: 1.6;
+}
+
+/* 技能标签样式 */
+ul {
+  padding-left: 1.5em;
+  margin: 1em 0;
+  list-style-type: none;
+}
+
+ul li {
+  margin-bottom: 0.7em;
+  position: relative;
+  padding-left: 1.2em;
+}
+
+ul li:before {
+  content: "•";
+  color: #3498db;
+  position: absolute;
+  left: 0;
+  font-size: 1.2em;
+  line-height: 1;
+}
+
+/* 经验条目样式 */
+h3 + p {
+  margin-top: -0.5em;
+  color: #7f8c8d;
+  font-size: 0.95em;
+  font-style: italic;
+  margin-bottom: 1em;
+  padding-left: 15px;
+}
+
+/* 强调重点内容 */
+strong {
+  font-weight: 700;
+  color: #3498db;
+}
+
+em {
+  font-style: italic;
+  color: #7f8c8d;
+}
+
+/* 链接样式 */
+a {
+  color: #3498db;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(52, 152, 219, 0.3);
+  transition: all 0.2s ease;
+}
+
+a:hover {
+  color: #2980b9;
+  border-bottom: 1px solid #2980b9;
+}
+
+/* 表格样式 - 用于技能评级等 */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.5em 0;
+  border-radius: 5px;
+  overflow: hidden;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+}
+
+table th, table td {
+  padding: 0.8em;
+  border: 1px solid #ecf0f1;
+  text-align: left;
+}
+
+table th {
+  font-weight: 700;
+  color: #fff;
+  background-color: #3498db;
+}
+
+table tr:nth-child(even) {
+  background-color: #f8f9fa;
+}
+
+/* 进度条样式 - 用于技能评级 */
+.skill-bar {
+  height: 10px;
+  background-color: #ecf0f1;
+  border-radius: 5px;
+  margin-top: 5px;
+  margin-bottom: 15px;
+  overflow: hidden;
+}
+
+.skill-level {
+  height: 100%;
+  background: linear-gradient(to right, #3498db, #2980b9);
+  border-radius: 5px;
+}
+
+/* 项目经验样式 */
+h2 + h3 {
+  margin-top: 1em;
+}
+
+/* 证书和语言能力样式 */
+h2 + ul {
+  margin-top: 0.5em;
+}
+
+/* 打印样式优化 */
+@media print {
+  body {
+    background-color: #fff;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .markdown-content {
+    box-shadow: none;
+    padding: 20px;
+  }
+  
+  h2 {
+    page-break-after: avoid;
+  }
+  
+  h3, h4, h5, h6 {
+    page-break-after: avoid;
+  }
+  
+  ul, ol, img {
+    page-break-inside: avoid;
+  }
+}
+
+/* 响应式设计 */
+@media (max-width: 600px) {
+  body {
+    padding: 15px;
+  }
+  
+  .markdown-content {
+    padding: 20px;
+  }
+  
+  h1 {
+    font-size: 1.8em;
+  }
+  
+  h2 {
+    font-size: 1.3em;
+  }
+  
+  p:first-of-type {
+    flex-direction: column;
+    gap: 5px;
+  }
+}
+
+/* 技能评分星星样式 */
+.skill-stars {
+  color: #3498db;
+  letter-spacing: 2px;
+}
+
+/* 时间线样式 */
+.timeline {
+  position: relative;
+  margin-left: 20px;
+  padding-left: 20px;
+  border-left: 2px solid #3498db;
+}
+
+.timeline-item {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.timeline-item:before {
+  content: "";
+  position: absolute;
+  left: -26px;
+  top: 0;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #3498db;
+  border: 2px solid #fff;
+}
+
+/* 简历底部样式 */
+.resume-footer {
+  margin-top: 40px;
+  padding-top: 20px;
+  border-top: 1px solid #ecf0f1;
+  text-align: center;
+  color: #7f8c8d;
+  font-size: 0.9em;
+}
+
+/* 添加页眉装饰 */
+.markdown-content:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 5px;
+  background: linear-gradient(to right, #3498db, #2c3e50);
+}
