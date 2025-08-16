@@ -76,7 +76,6 @@ async function htmlToPng(htmlPath, options = {}) {
     template: 'default',
     timeout: 60000, // 默认超时时间60秒
     autoSize: true, // 默认使用自动尺寸
-    maxHeight: 15000, // 最大高度，超过此高度将自动分页
     outputFormats: [] // 额外的输出格式，例如 ['png', 'jpeg', 'webp', 'pdf']
   };
 
@@ -345,7 +344,7 @@ async function convertWithFixedSize(html, htmlPath, options) {
   // 如果有文件名前缀，使用 "文件名_模板名" 作为前缀，否则只使用模板名
   const prefix = options.fileNamePrefix 
     ? `${options.fileNamePrefix}_${options.template}` 
-    : options.template;
+    : (options.template || 'default');
   
   // 确保输出目录存在
   if (!fs.existsSync(options.outputDir)) {
@@ -578,8 +577,8 @@ async function convertWithSplitSections(html, htmlPath, options) {
       const timestamp = new Date().getTime();
       // 如果有文件名前缀，使用 "文件名_模板名" 作为前缀，否则只使用模板名
       const prefix = options.fileNamePrefix 
-        ? `${options.fileNamePrefix}_${options.template}` 
-        : options.template;
+        ? `${options.fileNamePrefix}_${options.template || 'default'}` 
+        : (options.template || 'default');
       const fileName = `${prefix}_section${i+1}_${timestamp}.${options.format}`;
       const outputPath = path.resolve(options.outputDir, fileName);
       
@@ -705,14 +704,22 @@ async function generateHtmlPreview(htmlPath, options) {
     const prefix = options.fileNamePrefix 
       ? `${options.fileNamePrefix}_${options.template}` 
       : options.template;
-    // 使用简短的文件名，避免中文路径问题
-    const fileName = `${prefix}_preview_${timestamp}.html`;
-    const outputPath = path.resolve(options.outputDir, fileName);
+    // 使用与PNG图片一致的命名方式
+    const fileName = `${prefix}_${timestamp}.html`;
     
-    // 确保输出目录存在
-    if (!fs.existsSync(path.dirname(outputPath))) {
-      fs.mkdirSync(path.dirname(outputPath), { recursive: true });
+    // 确保输出目录存在并按模板分类
+    let outputDir = options.outputDir;
+    
+    // 如果没有指定不使用子文件夹，则创建与模板相关的输出目录
+    if (options.noSubfolders !== true) {
+      outputDir = path.resolve(options.outputDir, options.template);
+      if (!fs.existsSync(outputDir)) {
+        fs.mkdirSync(outputDir, { recursive: true });
+        console.log(chalk.blue(`📁 为HTML预览创建模板目录: ${outputDir}`));
+      }
     }
+    
+    const outputPath = path.resolve(outputDir, fileName);
     
     console.log(chalk.blue(`📄 将生成预览文件: ${fileName}`));
     

@@ -49,8 +49,7 @@ program
   .option('-t, --theme <theme>', '设置主题 (light, dark)', 'light')
   .option('--toc', '生成目录', false)
   .option('-b, --batch <directory>', '批量处理指定目录中的所有Markdown文件')
-  .option('--template <template>', '设置模板 (default, wechat, douyin, xiaohongshu等)', 'default')
-  .option('--templates <templates>', '使用多个模板，用逗号分隔 (例如: default,wechat,douyin)，使用 * 表示所有模板')
+  .option('--template <template>', '设置模板 (default, wechat, douyin, xiaohongshu等)，使用 * 表示所有模板', 'default')
   .option('--subfolders', '为每个模板创建子文件夹')
   .option('--css <file>', '使用自定义CSS文件')
   .option('--js <file>', '使用自定义JavaScript文件')
@@ -82,7 +81,6 @@ program
   .option('--section-selector <selector>', '章节选择器', 'h1, h2, h3')
   .option('--auto-size', '自动确定图片尺寸（根据内容）', true)
   .option('--no-auto-size', '禁用自动尺寸')
-  .option('--max-height <height>', '图片最大高度，超过此高度将自动分页', '1123')
   .option('--transparent', '使用透明背景（仅PNG格式有效）', false)
   .option('--format <format>', '主要图片格式 (png, jpeg, webp, pdf)', 'png')
   .option('--output-formats <formats>', '额外输出格式，用逗号分隔 (例如: png,jpeg,webp,pdf)')
@@ -201,7 +199,6 @@ async function main() {
       waitTime: parseInt(options.wait),
       timeout: parseInt(options.timeout),
       autoSize: options.autoSize,
-      maxHeight: parseInt(options.maxHeight),
       // 添加文件名前缀选项，用于生成图片文件名，保留原始中文文件名
       fileNamePrefix: markdownFile ? (() => {
         // 获取文件名（不含扩展名）
@@ -228,17 +225,17 @@ async function main() {
     Object.assign(convertOptions, pngOptions);
 
     // 检查是否使用多个模板
-    if (options.templates) {
+    if (options.template === '*' || options.template.includes(',')) {
       // 解析多个模板
       let templateList = [];
       
-      // 特殊处理 --templates * 选项，使用所有可用模板
-      if (options.templates.trim() === '*') {
+      // 特殊处理 --template * 选项，使用所有可用模板
+      if (options.template.trim() === '*') {
         console.log(chalk.blue('🎨 使用所有可用模板处理'));
         const availableTemplates = templates.getAvailableTemplates();
         templateList = Object.keys(availableTemplates);
       } else {
-        templateList = options.templates.split(',').map(t => t.trim());
+        templateList = options.template.split(',').map(t => t.trim());
       }
       console.log(chalk.blue(`🎨 使用多个模板处理: ${templateList.join(', ')}`));
       

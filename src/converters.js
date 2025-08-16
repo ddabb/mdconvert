@@ -66,17 +66,17 @@ async function convertToHtml(filePath, options = {}) {
     // 合并元数据
     opts.meta = { ...opts.meta, ...meta };
 
-    // 创建HTML输出文件路径
+    // 创建HTML输出文件路径，加入模板名称以避免覆盖
+    const timestamp = new Date().getTime();
+    const fileName = `${path.basename(filePath, '.md')}_${opts.template}_${timestamp}.html`;
+    
     const htmlFilePath = options.output || path.join(
       path.dirname(filePath),
-      path.basename(filePath, '.md') + '.html'
+      fileName
     );
 
-    // 获取模板
-    const templateName = opts.template;
-    
     // 使用模板渲染HTML
-    const fullHtml = renderTemplate(templateName, { 
+    const fullHtml = renderTemplate(opts.template, { 
       title, 
       content: htmlContent, 
       options: opts, 

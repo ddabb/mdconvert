@@ -4,10 +4,23 @@
 
 > **1.0.7版本更新**：优化了所有CSS模板，使特定样式能够自动应用到Markdown转HTML生成的标准HTML元素上，无需添加特定类名。
 
-## 特性
+## 📚 目录
 
-- **多模板支持**：内置多种样式模板（默认、微信、抖音、小红书、手写体等）
-- **高质量图片生成**：优化的图片生成流程，支持多种图片格式
+- [特性](#特性)
+- [安装](#安装)
+- [快速开始](#快速开始)
+- [内置模板](#内置模板)
+- [高级功能](#高级功能)
+- [命令行选项](#命令行选项)
+- [自定义模板](#自定义模板)
+- [在代码中使用](#在代码中使用)
+- [常见问题解答](#常见问题解答)
+- [许可证](#许可证)
+
+## ✨ 特性
+
+- **多模板支持**：内置 40+ 种精美样式模板（默认、微信、抖音、小红书、手写体等）
+- **高质量图片生成**：优化的图片生成流程，支持多种图片格式（PNG、JPEG、WebP、PDF）
 - **智能分页**：自动检测内容尺寸，超长内容自动分页，或按章节分割
 - **流程图支持**：完美支持 Mermaid 流程图、序列图、甘特图等
 - **数学公式**：支持 KaTeX 数学公式渲染
@@ -16,7 +29,7 @@
 - **高级定制**：支持代码高亮、目录生成、自定义 CSS/JS、透明背景等
 - **智能样式应用**：特定样式自动应用到Markdown转HTML生成的标准HTML元素上，无需添加特定类名
 
-## 安装
+## 📦 安装
 
 ```bash
 npm install -g yyds_md2png
@@ -52,7 +65,7 @@ npm install -g cnpm
 cnpm install -g yyds_md2png
 ```
 
-## 快速开始
+## 🚀 快速开始
 
 ### 基本用法
 
@@ -63,6 +76,10 @@ yyds_md2png document.md
 # 使用微信公众号模板
 yyds_md2png document.md --template wechat
 
+# 使用多个模板或所有模板
+yyds_md2png document.md --template wechat,douyin,xiaohongshu
+yyds_md2png document.md --template *
+
 # 转换为 HTML
 yyds_md2png document.md --to-html
 
@@ -70,9 +87,16 @@ yyds_md2png document.md --to-html
 yyds_md2png
 ```
 
-## 内置模板
+## 🎨 内置模板
 
 yyds_md2png 提供了多种精心设计的模板，适用于不同场景和平台：
+
+### 模板分类
+
+- **基础风格**：default, wechat, douyin, xiaohongshu, handwriting
+- **设计风格**：minimalist, vintage, tech, nature, kids, cyberpunk, chinese, movie, magazine, ink, zen, neon, pixel_art, steampunk, pop_art, futurism, gothic, tropical, nordic, bohemian, food_menu, medical, school_notes, email, social_media, air_travel, zombie, vampire, heaven
+- **节日风格**：spring_festival, mid_autumn, national_day, dragon_boat, new_year
+- **文章类型**：narrative（记叙文）, argumentative（议论文）
 
 ### 模板列表
 
@@ -117,28 +141,36 @@ yyds_md2png 提供了多种精心设计的模板，适用于不同场景和平�
 | | 国庆节风格 | national_day | 红色主调，金黄星星 | 爱国主题、历史回顾 |
 | | 端午节风格 | dragon_boat | 绿色主调，清新自然 | 传统文化、健康养生 |
 | | 元旦风格 | new_year | 蓝色主调，雪花元素 | 新年计划、总结展望 |
+| **文章类型** | 记叙文风格 | narrative | 清新布局，强调时间线 | 故事、经历、游记 |
+| | 议论文风格 | argumentative | 严谨布局，强调论点 | 论文、评论、分析 |
 
-### 基础风格模板示例
-
-#### 默认模板 (default)
+### 模板使用示例
 
 ```bash
+# 基础风格模板
 yyds_md2png document.md --template default
-```
-
-#### 微信公众号模板 (wechat)
-
-```bash
 yyds_md2png document.md --template wechat
-```
-
-#### 抖音模板 (douyin)
-
-```bash
 yyds_md2png document.md --template douyin
+yyds_md2png document.md --template xiaohongshu
+
+# 设计风格模板
+yyds_md2png document.md --template minimalist
+yyds_md2png document.md --template tech
+yyds_md2png document.md --template nature
+
+# 节日风格模板
+yyds_md2png document.md --template spring_festival
+yyds_md2png document.md --template mid_autumn
+
+# 文章类型模板
+yyds_md2png document.md --template narrative
+yyds_md2png document.md --template argumentative
+
+# 查看所有可用模板
+yyds_md2png --list-templates
 ```
 
-## 高级功能
+## 🛠️ 高级功能
 
 ```bash
 # 生成目录
@@ -155,31 +187,16 @@ yyds_md2png --batch ./docs
 
 # 在浏览器中打开生成的 HTML 文件
 yyds_md2png document.md --to-html --browser
+
+# 图片转换选项
+yyds_md2png document.md --auto-size                                # 自动确定图片尺寸（根据内容）
+yyds_md2png document.md --split-sections                           # 按章节分割成多个 PNG 图片
+yyds_md2png document.md --png-width 1200 --png-height 800 --png-scale 2  # 自定义 PNG 图片尺寸和缩放
+yyds_md2png document.md --transparent                              # 使用透明背景
+yyds_md2png document.md --format webp                              # 使用不同图片格式
 ```
 
-## 图片转换选项
-
-```bash
-# 自动确定图片尺寸（根据内容）
-yyds_md2png document.md --auto-size
-
-# 按章节分割成多个 PNG 图片
-yyds_md2png document.md --split-sections
-
-# 自定义 PNG 图片尺寸和缩放
-yyds_md2png document.md --png-width 1200 --png-height 800 --png-scale 2
-
-# 设置图片最大高度，超过此高度将自动分页
-yyds_md2png document.md --max-height 1123
-
-# 使用透明背景
-yyds_md2png document.md --transparent
-
-# 使用不同图片格式
-yyds_md2png document.md --format webp
-```
-
-## 命令行选项
+## 📋 命令行选项
 
 ```
 选项:
@@ -187,7 +204,8 @@ yyds_md2png document.md --format webp
   -t, --theme <theme>            设置主题 (light, dark) (默认: "light")
   --toc                          生成目录 (默认: false)
   -b, --batch <directory>        批量处理指定目录中的所有 Markdown 文件
-  --template <template>          设置模板 (default, wechat, douyin, xiaohongshu等) (默认: "default")
+  --template <template>          设置模板 (default, wechat, douyin等)，使用 * 表示所有模板 (默认: "default")
+  --subfolders                   为每个模板创建子文件夹
   --css <file>                   使用自定义 CSS 文件
   --js <file>                    使用自定义 JavaScript 文件
   --mermaid-theme <theme>        设置 Mermaid 图表主题 (默认: "default")
@@ -211,16 +229,16 @@ yyds_md2png document.md --format webp
   --to-png                       将生成的 HTML 转换为 PNG 图片 (默认: true)
   --png-quality <quality>        PNG 图片质量(0-100) (默认: "90")
   --png-scale <scale>            设备缩放比例 (默认: "2")
-  --png-width <width>            PNG 图片宽度
-  --png-height <height>          PNG 图片高度
+  --png-width <width>            PNG 图片宽度 (默认: "595")
+  --png-height <height>          PNG 图片高度 (默认: "842")
   --png-output <directory>       指定 PNG 输出目录
   --split-sections               按章节分割 PNG 图片 (默认: false)
   --section-selector <selector>  章节选择器 (默认: "h1, h2, h3")
   --auto-size                    自动确定图片尺寸（根据内容） (默认: true)
   --no-auto-size                 禁用自动尺寸
-  --max-height <height>          图片最大高度，超过此高度将自动分页 (默认: "1123")
   --transparent                  使用透明背景（仅 PNG 格式有效） (默认: false)
-  --format <format>              图片格式 (png, jpeg, webp) (默认: "png")
+  --format <format>              主要图片格式 (png, jpeg, webp, pdf) (默认: "png")
+  --output-formats <formats>     额外输出格式，用逗号分隔 (例如: png,jpeg,webp,pdf)
   --optimize                     优化图片大小 (默认: true)
   --no-optimize                  不优化图片大小
   --delete-html                  转换完成后删除 HTML 文件 (默认: false)
@@ -232,7 +250,7 @@ yyds_md2png document.md --format webp
   -h, --help                     显示帮助信息
 ```
 
-## 自定义模板
+## 🎭 自定义模板
 
 yyds_md2png 使用基于 CSS 的模板系统，所有样式会自动应用到Markdown转HTML生成的标准HTML元素上，您可以通过以下方式创建自己的模板：
 
@@ -299,7 +317,7 @@ p:first-of-type::first-letter {
 yyds_md2png document.md --template my-template
 ```
 
-## 在代码中使用
+## 💻 在代码中使用
 
 您也可以在 Node.js 项目中直接使用 yyds_md2png：
 
@@ -320,7 +338,7 @@ async function convert() {
 convert();
 ```
 
-## 常见问题解答
+## ❓ 常见问题解答
 
 ### 流程图不显示？
 
@@ -338,6 +356,14 @@ convert();
 
 从1.0.7版本开始，所有CSS模板已优化为自动应用样式到标准HTML元素，无需添加特定类名。如果您使用自定义模板，请参考上面的"自定义模板"部分，使用标准HTML元素选择器和伪元素。
 
-## 许可证
+### 如何使用所有模板处理一个文件？
+
+使用星号参数：`--template *`
+
+### 如何同时输出多种格式？
+
+使用 `--output-formats` 参数：`--output-formats png,jpeg,webp,pdf`
+
+## 📄 许可证
 
 MIT
