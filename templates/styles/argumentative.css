@@ -1,0 +1,298 @@
+/* 模板信息
+ * 描述: 议论文风格模板
+ * 作者: CodeBuddy
+ * 版本: 1.0.0
+ * 标签: 议论文, 论证, 学术
+ */
+
+/* 基础样式 */
+body {
+  font-family: "宋体", "SimSun", "NSimSun", serif;
+  line-height: 1.8;
+  color: #333;
+  background-color: #f9f9f9;
+  padding: 35px;
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: justify;
+  position: relative;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.08);
+  border-radius: 8px;
+  background-image: linear-gradient(to bottom, #ffffff, #f9f9f9);
+}
+
+/* 标题样式 */
+h1 {
+  font-family: "黑体", "SimHei", "Microsoft YaHei", sans-serif;
+  font-size: 2.2em;
+  color: #004e8c;
+  text-align: center;
+  margin-bottom: 30px;
+  padding-bottom: 15px;
+  border-bottom: 2px solid #004e8c;
+  letter-spacing: 0.05em;
+}
+
+h2 {
+  font-family: "黑体", "SimHei", "Microsoft YaHei", sans-serif;
+  font-size: 1.7em;
+  color: #004e8c;
+  margin-top: 40px;
+  margin-bottom: 20px;
+  padding-left: 15px;
+  border-left: 5px solid #004e8c;
+}
+
+h3 {
+  font-family: "黑体", "SimHei", "Microsoft YaHei", sans-serif;
+  font-size: 1.4em;
+  color: #004e8c;
+  margin-top: 30px;
+  margin-bottom: 15px;
+}
+
+/* 段落样式 */
+p {
+  margin-bottom: 20px;
+  text-indent: 2em;
+  font-size: 1.05em;
+}
+
+/* 首段样式 */
+p:first-of-type {
+  font-weight: bold;
+  color: #333;
+}
+
+/* 引用样式 - 用于引用观点或权威言论 */
+blockquote {
+  border-left: 4px solid #004e8c;
+  padding: 15px 20px;
+  margin: 25px 0;
+  background-color: rgba(58, 110, 165, 0.05);
+  font-style: italic;
+  border-radius: 0 5px 5px 0;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+blockquote p {
+  text-indent: 0;
+}
+
+/* 列表样式 - 用于列举论点或证据 */
+ul, ol {
+  margin: 20px 0;
+  padding-left: 2em;
+}
+
+li {
+  margin-bottom: 10px;
+}
+
+/* 有序列表特殊样式 - 用于步骤论证 */
+ol {
+  counter-reset: item;
+  list-style-type: none;
+}
+
+ol li {
+  position: relative;
+  padding-left: 2em;
+}
+
+ol li:before {
+  content: counter(item) ".";
+  counter-increment: item;
+  position: absolute;
+  left: 0;
+  color: #004e8c;
+  font-weight: bold;
+}
+
+/* 链接样式 */
+a {
+  color: #004e8c;
+  text-decoration: none;
+  border-bottom: 1px solid #004e8c;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+a:hover {
+  color: #3a6ea5;
+  border-color: #3a6ea5;
+}
+
+/* 图片样式 */
+img {
+  max-width: 100%;
+  border: 1px solid #ddd;
+  margin: 20px auto;
+  display: block;
+  border-radius: 4px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* 代码样式 */
+code {
+  font-family: "Courier New", Courier, monospace;
+  background-color: #f0f0f0;
+  padding: 2px 5px;
+  border-radius: 3px;
+  font-size: 0.9em;
+}
+
+pre {
+  background-color: #f0f0f0;
+  padding: 15px;
+  border-radius: 5px;
+  overflow-x: auto;
+  margin: 20px 0;
+  border: 1px solid #ddd;
+}
+
+pre code {
+  background-color: transparent;
+  padding: 0;
+}
+
+/* 分割线 - 用于分隔不同论点 */
+hr {
+  border: 0;
+  height: 1px;
+  background-image: linear-gradient(to right, rgba(58, 110, 165, 0), rgba(58, 110, 165, 0.75), rgba(58, 110, 165, 0));
+  margin: 30px 0;
+}
+
+/* 表格样式 - 用于展示数据或对比 */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 25px 0;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+th, td {
+  padding: 12px 15px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+th {
+  background-color: #f0f0f0;
+  color: #004e8c;
+  font-weight: bold;
+}
+
+tr:hover {
+  background-color: #f5f5f5;
+}
+
+/* 脚注样式 */
+.footnote {
+  font-size: 0.9em;
+  color: #777;
+  margin-top: 40px;
+  border-top: 1px solid #ddd;
+  padding-top: 20px;
+}
+
+/* 论点标记 */
+.thesis {
+  font-weight: bold;
+  color: #004e8c;
+  background-color: rgba(58, 110, 165, 0.05);
+  padding: 5px 10px;
+  border-radius: 3px;
+  display: inline-block;
+}
+
+.argument {
+  font-weight: bold;
+  color: #004e8c;
+}
+
+.evidence {
+  color: #2e8b57;
+}
+
+.conclusion {
+  font-weight: bold;
+  color: #004e8c;
+  border-bottom: 1px dashed #004e8c;
+  padding-bottom: 2px;
+}
+
+/* 反驳样式 */
+.counterargument {
+  color: #8b0000;
+}
+
+/* 强调样式 */
+.emphasis {
+  font-style: italic;
+  font-weight: bold;
+  background-color: rgba(58, 110, 165, 0.05);
+  padding: 0 5px;
+}
+
+/* 定义样式 */
+.definition {
+  background-color: rgba(58, 110, 165, 0.05);
+  padding: 15px;
+  border-radius: 5px;
+  margin: 20px 0;
+  border-left: 3px solid rgba(58, 110, 165, 0.5);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.definition p {
+  text-indent: 0;
+}
+
+/* 页脚 */
+footer {
+  margin-top: 50px;
+  text-align: center;
+  font-size: 0.9em;
+  color: #777;
+  padding-top: 20px;
+  border-top: 1px solid #eee;
+}
+
+/* 参考文献样式 */
+.references {
+  margin-top: 40px;
+  border-top: 2px solid #ddd;
+  padding-top: 20px;
+}
+
+.references h2 {
+  font-size: 1.5em;
+  border-left: none;
+  padding-left: 0;
+  text-align: center;
+}
+
+.references ol {
+  padding-left: 0;
+}
+
+.references li {
+  margin-bottom: 10px;
+  padding-left: 3em;
+  text-indent: -3em;
+}
+
+/* 注释和批注 */
+.note {
+  font-size: 0.9em;
+  color: #666;
+  background-color: #f5f5f5;
+  padding: 12px;
+  border-radius: 5px;
+  margin: 15px 0;
+  border: 1px solid #eee;
+}

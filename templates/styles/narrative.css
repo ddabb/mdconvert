@@ -1,0 +1,219 @@
+/* 模板信息
+ * 描述: 记叙文风格模板
+ * 作者: CodeBuddy
+ * 版本: 1.0.0
+ * 标签: 记叙文, 故事, 叙事
+ */
+
+/* 基础样式 */
+body {
+  font-family: "楷体", "KaiTi", "STKaiti", serif;
+  line-height: 1.8;
+  color: #333;
+  background-color: #f0f7ff; /* 淡蓝色背景，更能引起阅读欲望 */
+  padding: 30px;
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: justify;
+  background-image: linear-gradient(90deg, rgba(176, 224, 230, 0.3) 0%, rgba(240, 247, 255, 0.9) 50%, rgba(176, 224, 230, 0.3) 100%);
+  position: relative;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
+
+/* 移除了页面顶部装饰 */
+
+/* 标题样式 */
+h1 {
+  font-family: "华文行楷", "STXingkai", "楷体", "KaiTi", serif;
+  font-size: 2.5em;
+  color: #2c5d8d;
+  text-align: center;
+  margin-bottom: 30px;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+  border-bottom: 2px solid #5fb0e5;
+  padding-bottom: 10px;
+}
+
+h2 {
+  font-family: "华文楷体", "STKaiti", "楷体", "KaiTi", serif;
+  font-size: 1.8em;
+  color: #2c5d8d;
+  margin-top: 40px;
+  margin-bottom: 20px;
+  border-left: 5px solid #5fb0e5;
+  padding-left: 15px;
+}
+
+h3 {
+  font-family: "华文楷体", "STKaiti", "楷体", "KaiTi", serif;
+  font-size: 1.5em;
+  color: #2c5d8d;
+  margin-top: 30px;
+  margin-bottom: 15px;
+}
+
+/* 段落样式 */
+p {
+  margin-bottom: 20px;
+  text-indent: 2em;
+  font-size: 1.1em;
+}
+
+/* 段落首字样式 - 移除首字下沉效果 */
+p:first-of-type {
+  font-size: 1.15em;
+  color: #2c3e50;
+}
+
+/* 引用样式 */
+blockquote {
+  border-left: 4px solid #5fb0e5;
+  padding: 10px 20px;
+  margin: 20px 0;
+  background-color: rgba(95, 176, 229, 0.1);
+  font-style: italic;
+}
+
+blockquote p {
+  text-indent: 0;
+}
+
+/* 列表样式 */
+ul, ol {
+  margin: 20px 0;
+  padding-left: 2em;
+}
+
+li {
+  margin-bottom: 10px;
+}
+
+/* 链接样式 */
+a {
+  color: #4a90e2;
+  text-decoration: none;
+  border-bottom: 1px dashed #4a90e2;
+}
+
+a:hover {
+  color: #5fb0e5;
+  border-bottom: 1px solid #5fb0e5;
+}
+
+/* 图片样式 */
+img {
+  max-width: 100%;
+  border: 5px solid white;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin: 20px auto;
+  display: block;
+}
+
+/* 代码样式 */
+code {
+  font-family: "Courier New", Courier, monospace;
+  background-color: #e8f4ff;
+  padding: 2px 5px;
+  border-radius: 3px;
+}
+
+pre {
+  background-color: #e8f4ff;
+  padding: 15px;
+  border-radius: 5px;
+  overflow-x: auto;
+  margin: 20px 0;
+  border: 1px solid #c0d8e8;
+}
+
+pre code {
+  background-color: transparent;
+  padding: 0;
+}
+
+/* 分割线 */
+hr {
+  border: 0;
+  height: 1px;
+  background-image: linear-gradient(to right, rgba(95, 176, 229, 0), rgba(95, 176, 229, 0.75), rgba(95, 176, 229, 0));
+  margin: 30px 0;
+}
+
+/* 表格样式 */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+}
+
+th, td {
+  padding: 12px 15px;
+  text-align: left;
+  border-bottom: 1px solid #c0d8e8;
+}
+
+th {
+  background-color: #e8f4ff;
+  color: #2c5d8d;
+  font-weight: bold;
+}
+
+tr:hover {
+  background-color: #f0f7ff;
+}
+
+/* 脚注样式 */
+.footnote {
+  font-size: 0.9em;
+  color: #777;
+  margin-top: 40px;
+  border-top: 1px solid #c0d8e8;
+  padding-top: 20px;
+}
+
+/* 时间地点人物标记 */
+.time, .place, .person {
+  font-weight: bold;
+}
+
+.time {
+  color: #2c5d8d;
+}
+
+.place {
+  color: #2e8b57;
+}
+
+.person {
+  color: #4169e1;
+}
+
+/* 情感描写强调 */
+.emotion {
+  font-style: italic;
+  color: #2c5d8d;
+}
+
+/* 对话样式 */
+.dialogue {
+  margin: 20px 0;
+  padding: 15px;
+  background-color: rgba(255, 255, 255, 0.7);
+  border-radius: 10px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.05);
+}
+
+.dialogue p {
+  margin: 10px 0;
+}
+
+/* 页脚 */
+footer {
+  margin-top: 50px;
+  text-align: center;
+  font-size: 0.9em;
+  color: #777;
+}
