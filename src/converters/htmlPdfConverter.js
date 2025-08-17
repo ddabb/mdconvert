@@ -37,13 +37,16 @@ async function convertWithHtmlPdf(htmlPath, options) {
     
     console.log(chalk.blue(`📄 将生成图片: ${fileName}`));
     
+    // 输出质量信息
+    console.log(chalk.blue(`📊 图片质量设置: ${options.pngQuality || options.quality}%`));
+    
     // 转换选项
     const pdfOptions = {
       format: 'A4',
       orientation: 'portrait',
       border: '10mm',
       type: options.format === 'png' ? 'png' : 'pdf',
-      quality: options.quality / 100
+      quality: (options.pngQuality || options.quality) / 100
     };
     
     // 执行转换

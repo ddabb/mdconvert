@@ -72,7 +72,7 @@ program
   // 转换相关选项
   .option('--to-html', '将Markdown转换为HTML而不是PNG图片', false)
   .option('--to-png', '将生成的HTML转换为PNG图片', true)
-  .option('--png-quality <quality>', 'PNG图片质量(0-100)', '90')
+  .option('--png-quality <quality>', 'PNG图片质量(0-100)', '100')
   .option('--png-scale <scale>', '设备缩放比例', '2')
   .option('--png-width <width>', 'PNG图片宽度', '595')
   .option('--png-height <height>', 'PNG图片高度', '842')
@@ -187,7 +187,8 @@ async function main() {
 
     // PNG转换选项
     const pngOptions = {
-      quality: parseInt(options.pngQuality),
+      quality: parseInt(options.pngQuality), // 这是从命令行参数获取的质量值
+      pngQuality: parseInt(options.pngQuality), // 添加这个以匹配命令行参数名
       deviceScaleFactor: parseFloat(options.pngScale),
       width: parseInt(options.pngWidth),
       height: parseInt(options.pngHeight),

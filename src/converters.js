@@ -142,12 +142,13 @@ async function convertToPngDirect(filePath, options = {}) {
     // 再转换为PNG
     const pngOptions = {
       outputDir: options.pngOutput || path.join(path.dirname(filePath), 'images'),
-      quality: options.pngQuality || 90,
+      quality: options.pngQuality || 100,
       deviceScaleFactor: options.pngScale || 2,
       splitSections: options.splitSections || false,
       sectionSelector: options.sectionSelector || 'h1, h2, h3',
-      width: options.pngWidth || 1200,
-      height: options.pngHeight || 800,
+      // 不设置默认宽高，让转换器自动适应HTML页面的实际尺寸
+      width: options.pngWidth,
+      height: options.pngHeight,
       waitTime: options.waitTime || 2000,
       transparent: options.transparent || false,
       format: options.format || 'png',

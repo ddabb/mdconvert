@@ -1,12 +1,13 @@
 /**
- * nodeHtmlToImageConverter.js - 使用node-html-to-image库进行HTML到图片的转换
+ * htmlToImageConverter.js - HTML到图片的转换工具
+ * 支持自动尺寸和固定尺寸两种模式
  */
 
 const fs = require('fs');
 const path = require('path');
 const chalk = require('chalk');
 const { injectMermaidRenderer, getMermaidRenderScript } = require('../renderers/mermaidRenderer');
-const { ensureDirectoryExists, generateFileName, getOutputDirectory } = require('../utils/fileUtils');
+const { ensureDirectoryExists, generateFileName } = require('../utils/fileUtils');
 
 /**
  * 使用node-html-to-image转换HTML到图片
@@ -17,7 +18,7 @@ const { ensureDirectoryExists, generateFileName, getOutputDirectory } = require(
 async function convertWithNodeHtmlToImage(htmlPath, options) {
   try {
     const nodeHtmlToImage = require('node-html-to-image');
-    console.log(chalk.blue('🚀 使用node-html-to-image转换...'));
+    console.log(chalk.blue('🚀 使用HTML到图片转换...'));
     
     // 读取HTML内容
     let html = fs.readFileSync(htmlPath, 'utf8');
@@ -29,19 +30,21 @@ async function convertWithNodeHtmlToImage(htmlPath, options) {
     if (options.splitSections) {
       return await convertWithSplitSections(html, htmlPath, options);
     } else {
-      // 检查是否指定了图片尺寸
-      const useAutoSize = options.autoSize && (!options.width || !options.height);
+      // 检查是否应该使用自动尺寸
+      // 如果autoSize为true或者未设置宽高，则使用自动尺寸
+      const useAutoSize = options.autoSize !== false || (!options.width || !options.height);
       
       if (useAutoSize) {
-        console.log(chalk.blue('📏 使用自动尺寸，根据内容确定图片大小'));
+        console.log(chalk.blue('📏 使用自动尺寸模式'));
         return await convertWithAutoSize(html, htmlPath, options);
       } else {
         // 使用指定尺寸
+        console.log(chalk.blue(`📏 使用固定尺寸模式: ${options.width}x${options.height}`));
         return await convertWithFixedSize(html, htmlPath, options);
       }
     }
   } catch (error) {
-    console.error(chalk.red(`❌ node-html-to-image转换失败: ${error.message}`));
+    console.error(chalk.red(`❌ 图片转换失败: ${error.message}`));
     throw error;
   }
 }
@@ -57,25 +60,19 @@ async function convertWithAutoSize(html, htmlPath, options) {
   const nodeHtmlToImage = require('node-html-to-image');
   
   // 准备输出路径
-  // 如果有文件名前缀，使用 "文件名_模板名" 作为前缀，否则只使用模板名
   const prefix = options.fileNamePrefix 
     ? `${options.fileNamePrefix}_${options.template}` 
     : options.template;
-  
-  // 输出调试信息
-  console.log(chalk.blue(`📄 文件名前缀: ${options.fileNamePrefix || '未设置'}`));
-  console.log(chalk.blue(`📄 使用的前缀: ${prefix}`));
   
   // 确保输出目录存在
   ensureDirectoryExists(options.outputDir);
   
   // 主要输出格式
   const mainFormat = options.format || 'png';
-  // 生成文件名
   const fileName = generateFileName(prefix, options.template, mainFormat);
   const outputPath = path.resolve(options.outputDir, fileName);
   
-  console.log(chalk.blue(`📄 将生成图片: ${fileName}`));
+  console.log(chalk.blue(`📄 生成图片: ${fileName} (质量: ${options.pngQuality || options.quality}%)`));
   
   // 准备额外的输出格式
   const outputPaths = [outputPath];
@@ -87,7 +84,7 @@ async function convertWithAutoSize(html, htmlPath, options) {
     html,
     output: outputPath,
     type: options.format,
-    quality: options.quality / 100,
+    quality: (options.pngQuality || options.quality) / 100,
     transparent: options.transparent,
     puppeteerArgs: {
       defaultViewport: null, // 设置为null，让Puppeteer自动确定视口大小
@@ -144,7 +141,7 @@ async function convertWithAutoSize(html, htmlPath, options) {
     const additionalFileName = generateFileName(prefix, options.template, format);
     const additionalOutputPath = path.resolve(options.outputDir, additionalFileName);
     
-    console.log(chalk.blue(`📄 将生成额外格式图片(${format}): ${additionalFileName}`));
+    console.log(chalk.blue(`📄 生成额外格式图片(${format}): ${additionalFileName}`));
     
     const additionalOptions = {
       ...convertOptions,
@@ -175,7 +172,6 @@ async function convertWithFixedSize(html, htmlPath, options) {
   const nodeHtmlToImage = require('node-html-to-image');
   
   // 准备输出路径
-  // 如果有文件名前缀，使用 "文件名_模板名" 作为前缀，否则只使用模板名
   const prefix = options.fileNamePrefix 
     ? `${options.fileNamePrefix}_${options.template}` 
     : (options.template || 'default');
@@ -188,26 +184,34 @@ async function convertWithFixedSize(html, htmlPath, options) {
   const fileName = generateFileName(prefix, options.template, mainFormat);
   const outputPath = path.resolve(options.outputDir, fileName);
   
-  console.log(chalk.blue(`📄 将生成图片: ${fileName}`));
+  // 根据是否设置了宽高显示不同的日志
+  const sizeInfo = options.width && options.height 
+    ? `尺寸: ${options.width}x${options.height}` 
+    : "自动尺寸";
+  console.log(chalk.blue(`📄 生成图片: ${fileName} (${sizeInfo}, 质量: ${options.pngQuality || options.quality}%)`));
   
   // 准备额外的输出格式
   const outputPaths = [outputPath];
   const additionalFormats = Array.isArray(options.outputFormats) ? 
     options.outputFormats.filter(fmt => fmt !== mainFormat) : [];
   
+  // 检查是否提供了宽高
+  const hasCustomSize = options.width && options.height;
+  
   // 转换选项
   const convertOptions = {
     html,
     output: outputPath,
     type: options.format,
-    quality: options.quality / 100,
+    quality: (options.pngQuality || options.quality) / 100,
     transparent: options.transparent,
     puppeteerArgs: {
-      defaultViewport: {
-        width: options.width || 1200,
-        height: options.height || 800,
+      // 如果没有提供宽高，则使用null让Puppeteer自动确定视口大小
+      defaultViewport: hasCustomSize ? {
+        width: options.width,
+        height: options.height,
         deviceScaleFactor: options.deviceScaleFactor || 2
-      },
+      } : null,
       args: ['--no-sandbox', '--disable-setuid-sandbox']
     },
     waitUntil: 'networkidle0',
@@ -232,7 +236,7 @@ async function convertWithFixedSize(html, htmlPath, options) {
     const additionalFileName = generateFileName(prefix, options.template, format);
     const additionalOutputPath = path.resolve(options.outputDir, additionalFileName);
     
-    console.log(chalk.blue(`📄 将生成额外格式图片(${format}): ${additionalFileName}`));
+    console.log(chalk.blue(`📄 生成额外格式图片(${format}): ${additionalFileName}`));
     
     const additionalOptions = {
       ...convertOptions,

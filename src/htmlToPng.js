@@ -10,7 +10,7 @@ const chalk = require('chalk');
 // 导入各个模块
 const { injectMermaidRenderer } = require('./renderers/mermaidRenderer');
 const { ensureDirectoryExists, getOutputDirectory } = require('./utils/fileUtils');
-const { convertWithNodeHtmlToImage } = require('./converters/nodeHtmlToImageConverter');
+const { convertWithNodeHtmlToImage } = require('./converters/htmlToImageConverter');
 const { convertWithHtmlPdf } = require('./converters/htmlPdfConverter');
 const { generateHtmlPreview } = require('./utils/previewGenerator');
 
@@ -24,7 +24,7 @@ async function htmlToPng(htmlPath, options = {}) {
   // 默认选项
   const defaultOptions = {
     outputDir: path.join(path.dirname(htmlPath), 'images'),
-    quality: 90,
+    quality: 100,
     fullPage: true,
     prefix: 'page',
     splitSections: false,

@@ -7,7 +7,7 @@ const path = require('path');
 const chalk = require('chalk');
 const puppeteer = require('puppeteer');
 const { generateFileName } = require('../utils/fileUtils');
-const { convertWithAutoSize } = require('./nodeHtmlToImageConverter');
+const { convertWithAutoSize } = require('./htmlToImageConverter');
 
 /**
  * 按章节分割并转换HTML到多张图片
