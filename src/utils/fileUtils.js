@@ -36,7 +36,13 @@ function ensureDirectoryExists(dirPath) {
 function generateFileName(prefix, template, format, section = null) {
   const timestamp = new Date().getTime();
   const sectionPart = section !== null ? `_section${section}` : '';
-  return `${prefix}_${template}${sectionPart}_${timestamp}.${format}`;
+  
+  // 检查prefix是否已经包含template名称，避免重复
+  if (prefix.endsWith(`_${template}`)) {
+    return `${prefix}${sectionPart}_${timestamp}.${format}`;
+  } else {
+    return `${prefix}_${template}${sectionPart}_${timestamp}.${format}`;
+  }
 }
 
 /**
