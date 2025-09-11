@@ -60,9 +60,17 @@ async function convertWithAutoSize(html, htmlPath, options) {
   const nodeHtmlToImage = require('node-html-to-image');
   
   // 准备输出路径
-  const prefix = options.fileNamePrefix 
-    ? `${options.fileNamePrefix}_${options.template}` 
-    : options.template;
+  let prefix;
+  if (options.fileNamePrefix) {
+    // 如果指定了文件名前缀，使用它
+    prefix = options.fileNamePrefix;
+  } else {
+    // 否则，从HTML文件路径中提取文件名作为前缀
+    const htmlFileName = path.basename(htmlPath, '.html');
+    // 移除可能的时间戳和模板名后缀
+    const baseFileName = htmlFileName.replace(/_\d+$/, '').replace(new RegExp(`_${options.template}$`), '');
+    prefix = baseFileName || options.template;
+  }
   
   // 确保输出目录存在
   ensureDirectoryExists(options.outputDir);
@@ -172,9 +180,17 @@ async function convertWithFixedSize(html, htmlPath, options) {
   const nodeHtmlToImage = require('node-html-to-image');
   
   // 准备输出路径
-  const prefix = options.fileNamePrefix 
-    ? `${options.fileNamePrefix}_${options.template}` 
-    : (options.template || 'default');
+  let prefix;
+  if (options.fileNamePrefix) {
+    // 如果指定了文件名前缀，使用它
+    prefix = options.fileNamePrefix;
+  } else {
+    // 否则，从HTML文件路径中提取文件名作为前缀
+    const htmlFileName = path.basename(htmlPath, '.html');
+    // 移除可能的时间戳和模板名后缀
+    const baseFileName = htmlFileName.replace(/_\d+$/, '').replace(new RegExp(`_${options.template}$`), '');
+    prefix = baseFileName || options.template || 'default';
+  }
   
   // 确保输出目录存在
   ensureDirectoryExists(options.outputDir);

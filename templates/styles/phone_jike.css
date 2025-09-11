@@ -1,0 +1,338 @@
+/**
+ * phone_jike.css - 即刻风格手机端样式
+ * 适合在手机屏幕上查看的即刻风格Markdown渲染样式
+ */
+
+:root {
+  --primary-color: #1D7AFF;
+  --secondary-color: #0F88FF;
+  --text-color: #333333;
+  --light-text: #8E8E93;
+  --background-color: #ffffff;
+  --card-background: #f8f8f8;
+  --border-color: #eeeeee;
+  --code-background: #f5f7f9;
+  --blockquote-color: #f5f7fa;
+  --font-size-base: 16px;
+  --line-height: 1.7;
+  --border-radius: 12px;
+}
+
+/* 基础样式 */
+body {
+  font-family: -apple-system, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+  line-height: var(--line-height);
+  color: var(--text-color);
+  background-color: var(--background-color);
+  margin: 0;
+  padding: 16px;
+  font-size: var(--font-size-base);
+  /* 手机端宽度设置 */
+  width: 375px;
+  max-width: 100%;
+  box-sizing: border-box;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  letter-spacing: 0.01em;
+}
+
+/* 内容容器 */
+.markdown-content {
+  position: relative;
+  background-color: var(--background-color);
+  border-radius: var(--border-radius);
+  padding: 16px;
+  margin-bottom: 16px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  /* 添加背景图案 */
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cpath fill='%231D7AFF' fill-opacity='0.03' d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5z'%3E%3C/path%3E%3C/svg%3E");
+}
+
+/* 标题样式 - 即刻风格 */
+h1, h2, h3, h4, h5, h6 {
+  margin-top: 1.5em;
+  margin-bottom: 0.8em;
+  font-weight: 600;
+  line-height: 1.4;
+  color: var(--text-color);
+}
+
+h1 {
+  font-size: 1.8em;
+  margin-bottom: 1em;
+  font-weight: 700;
+  color: #000;
+}
+
+h2 {
+  font-size: 1.5em;
+  margin-bottom: 0.8em;
+  font-weight: 600;
+  color: #111;
+}
+
+h3 {
+  font-size: 1.25em;
+  margin-bottom: 0.7em;
+  color: #222;
+}
+
+h4 {
+  font-size: 1.1em;
+  margin-bottom: 0.6em;
+  color: #333;
+}
+
+h5 {
+  font-size: 1em;
+  color: #444;
+}
+
+h6 {
+  font-size: 0.9em;
+  color: #555;
+}
+
+/* 段落和列表 */
+p {
+  margin-top: 0;
+  margin-bottom: 1.2em;
+  line-height: 1.8;
+}
+
+ul, ol {
+  padding-left: 1.5em;
+  margin-bottom: 1.2em;
+}
+
+li {
+  margin-bottom: 0.5em;
+  line-height: 1.8;
+}
+
+/* 链接样式 - 即刻蓝色链接 */
+a {
+  color: var(--primary-color);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(29, 122, 255, 0.3);
+  transition: all 0.2s ease;
+}
+
+a:hover {
+  color: var(--secondary-color);
+  border-bottom-color: var(--secondary-color);
+}
+
+/* 代码样式 */
+code {
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+  padding: 0.2em 0.4em;
+  margin: 0;
+  font-size: 85%;
+  background-color: var(--code-background);
+  border-radius: 4px;
+}
+
+pre {
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+  padding: 16px;
+  overflow: auto;
+  font-size: 85%;
+  line-height: 1.45;
+  background-color: var(--code-background);
+  border-radius: 8px;
+  margin-bottom: 16px;
+  word-wrap: normal;
+}
+
+pre code {
+  padding: 0;
+  margin: 0;
+  background-color: transparent;
+  border: 0;
+  word-break: normal;
+  white-space: pre;
+}
+
+/* 引用块 - 即刻风格 */
+blockquote {
+  margin: 1.2em 0;
+  padding: 12px 16px;
+  color: #666;
+  background-color: var(--blockquote-color);
+  border-radius: 8px;
+  border-left: 4px solid var(--primary-color);
+}
+
+blockquote > :first-child {
+  margin-top: 0;
+}
+
+blockquote > :last-child {
+  margin-bottom: 0;
+}
+
+/* 表格样式 */
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin-bottom: 16px;
+  display: block;
+  overflow-x: auto;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+table th, table td {
+  padding: 10px 15px;
+  border: 1px solid var(--border-color);
+}
+
+table th {
+  font-weight: 600;
+  background-color: rgba(29, 122, 255, 0.05);
+}
+
+table tr {
+  background-color: #fff;
+  border-top: 1px solid var(--border-color);
+}
+
+table tr:nth-child(2n) {
+  background-color: #fafafa;
+}
+
+/* 图片样式 */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 1.2em auto;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+/* 水平线 */
+hr {
+  height: 1px;
+  padding: 0;
+  margin: 24px 0;
+  background-color: var(--border-color);
+  border: 0;
+}
+
+/* 适配手机端长宽比 */
+.markdown-body {
+  min-height: 667px; /* iPhone 8 高度 */
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* 即刻风格的卡片 */
+.card {
+  background-color: var(--card-background);
+  border-radius: var(--border-radius);
+  padding: 16px;
+  margin-bottom: 16px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+/* 即刻风格的标签 */
+.tag {
+  display: inline-block;
+  padding: 4px 8px;
+  background-color: rgba(29, 122, 255, 0.1);
+  color: var(--primary-color);
+  border-radius: 4px;
+  font-size: 0.85em;
+  margin-right: 8px;
+  margin-bottom: 8px;
+}
+
+/* 即刻风格的用户信息 */
+.user-info {
+  display: flex;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 12px;
+}
+
+.user-name {
+  font-weight: 600;
+  font-size: 1em;
+  margin: 0;
+}
+
+.user-bio {
+  color: var(--light-text);
+  font-size: 0.85em;
+  margin: 0;
+}
+
+/* 即刻风格的互动按钮 */
+.interaction {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 16px;
+  padding-top: 12px;
+  border-top: 1px solid var(--border-color);
+}
+
+.interaction-item {
+  display: flex;
+  align-items: center;
+  color: var(--light-text);
+  font-size: 0.9em;
+}
+
+.interaction-item svg {
+  margin-right: 4px;
+}
+
+/* 强调文本 */
+strong, b {
+  font-weight: 600;
+  color: #111;
+}
+
+/* 斜体文本 */
+em, i {
+  font-style: italic;
+  color: #444;
+}
+
+/* 删除线 */
+del {
+  text-decoration: line-through;
+  color: #999;
+}
+
+/* 即刻风格的背景 */
+body {
+  background-color: #f5f5f5;
+  background-image: linear-gradient(to bottom, rgba(29, 122, 255, 0.02), rgba(29, 122, 255, 0.005));
+  background-attachment: fixed;
+}
+
+/* 即刻风格的首字下沉 */
+p:first-of-type::first-letter {
+  font-size: 1.5em;
+  font-weight: 600;
+  color: var(--primary-color);
+}
+
+/* 即刻风格的引用装饰 */
+blockquote::before {
+  content: "\201C";
+  font-size: 2em;
+  color: rgba(29, 122, 255, 0.2);
+  position: absolute;
+  left: 8px;
+  top: 0;
+}

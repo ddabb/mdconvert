@@ -2,7 +2,9 @@
 
 一个功能强大的 Markdown 转换工具，支持将 Markdown 文件转换为精美的 HTML 或 PNG 图片，内置多种样式模板（微信、抖音、小红书等）。
 
-> **1.0.7版本更新**：优化了所有CSS模板，使特定样式能够自动应用到Markdown转HTML生成的标准HTML元素上，无需添加特定类名。
+> **1.0.14 版本更新**：优化了所有手机端（phone\_）模板，将背景图像从 body 移动到 .markdown-content 类中，提升了内容区域的视觉效果。
+
+> **1.0.7 版本更新**：优化了所有 CSS 模板，使特定样式能够自动应用到 Markdown 转 HTML 生成的标准 HTML 元素上，无需添加特定类名。
 
 ## 📚 目录
 
@@ -27,7 +29,7 @@
 - **批量处理**：支持批量处理整个目录的 Markdown 文件
 - **交互式命令**：无参数运行时，自动询问是否处理当前目录下所有文件
 - **高级定制**：支持代码高亮、目录生成、自定义 CSS/JS、透明背景等
-- **智能样式应用**：特定样式自动应用到Markdown转HTML生成的标准HTML元素上，无需添加特定类名
+- **智能样式应用**：特定样式自动应用到 Markdown 转 HTML 生成的标准 HTML 元素上，无需添加特定类名
 
 ## 📦 安装
 
@@ -94,55 +96,69 @@ yyds_md2png 提供了多种精心设计的模板，适用于不同场景和平�
 ### 模板分类
 
 - **基础风格**：default, wechat, douyin, xiaohongshu, handwriting
+- **手机端风格**：phone_default, phone_wechat, phone_douyin, phone_xiaohongshu, phone_calm, phone_dreamy, phone_happy, phone_jike, phone_minimal, phone_nature, phone_retro, phone_romantic, phone_tech
 - **设计风格**：minimalist, vintage, tech, nature, kids, cyberpunk, chinese, movie, magazine, ink, zen, neon, pixel_art, steampunk, pop_art, futurism, gothic, tropical, nordic, bohemian, food_menu, medical, school_notes, email, social_media, air_travel, zombie, vampire, heaven
 - **节日风格**：spring_festival, mid_autumn, national_day, dragon_boat, new_year
 - **文章类型**：narrative（记叙文）, argumentative（议论文）
 
 ### 模板列表
 
-| 分类 | 模板名称 | 模板代码 | 主要特点 | 适用场景 |
-|------|---------|---------|---------|---------|
-| **基础风格** | 默认模板 | default | 现代简约风格，蓝色系标题 | 技术文档和一般内容 |
-| | 微信公众号模板 | wechat | 微信绿色主色调，装饰线 | 微信公众号内容 |
-| | 抖音模板 | douyin | 深色背景，红蓝配色 | 抖音平台内容 |
-| | 小红书模板 | xiaohongshu | 粉色系为主，圆角设计 | 小红书平台内容 |
-| | 手写体模板 | handwriting | 楷体风格，纸张质感 | 诗歌、随笔、感悟 |
-| **设计风格** | 极简风格 | minimalist | 大量留白，黑白配色 | 商务报告或技术文档 |
-| | 复古报纸风格 | vintage | 旧纸张质感，衬线字体 | 新闻类或历史类内容 |
-| | 科技感风格 | tech | 深色背景，霓虹色调 | 科技、编程内容 |
-| | 自然风格 | nature | 绿色或棕色调，有机形状 | 环保、旅行或健康内容 |
-| | 儿童风格 | kids | 明亮多彩，可爱字体 | 教育或儿童相关内容 |
-| | 赛博朋克风格 | cyberpunk | 霓虹色彩，故障艺术效果 | 科幻内容、游戏相关 |
-| | 中国传统风格 | chinese | 中国红、金色，传统纹样 | 中国传统文化、诗词 |
-| | 电影海报风格 | movie | 大标题，高对比度 | 影评、电影介绍 |
-| | 杂志风格 | magazine | 多栏布局，首字下沉 | 时尚、生活方式、访谈 |
-| | 水墨画风格 | ink | 黑白灰色调，水墨晕染 | 艺术评论、哲学思考 |
-| | 极简禅风格 | zen | 大量留白，极简线条 | 哲学内容、简约生活 |
-| | 霓虹灯风格 | neon | 深色背景，发光文字 | 夜生活、音乐、娱乐 |
-| | 像素艺术风格 | pixel_art | 像素化字体和边框 | 游戏相关、复古科技 |
-| | 蒸汽朋克风格 | steampunk | 铜色、棕色、金色 | 复古科幻、机械主题 |
-| | 波普艺术风格 | pop_art | 原色使用，点状半色调 | 现代艺术、时尚内容 |
-| | 未来主义风格 | futurism | 斜线和动态线条 | 前卫科技、动态内容 |
-| | 哥特风格 | gothic | 黑色和深紫色，神秘符号 | 恐怖、神秘或中世纪主题 |
-| | 热带风格 | tropical | 鲜艳热带色彩，植物元素 | 旅游、度假相关内容 |
-| | 北欧简约风格 | nordic | 极简配色，几何图形 | 家居、设计、简约生活 |
-| | 波西米亚风格 | bohemian | 丰富图案，暖色调 | 艺术、多元文化内容 |
-| | 食品菜单风格 | food_menu | 菜单排版，手写风格 | 美食、烹饪内容 |
-| | 医疗健康风格 | medical | 蓝白配色，专业布局 | 健康、医疗相关内容 |
-| | 校园笔记风格 | school_notes | 方格纸背景，手写注释 | 教育、学习内容 |
-| | 电子邮件风格 | email | 邮件界面元素 | 商务通信内容 |
-| | 社交媒体风格 | social_media | 社交平台界面元素 | 社交媒体内容分享 |
-| | 航空旅行风格 | air_travel | 登机牌设计，航空元素 | 旅行、航空相关内容 |
-| | 丧尸风格 | zombie | 绿色调，破损效果 | 恐怖、末日题材内容 |
-| | 吸血鬼风格 | vampire | 深红色调，哥特元素 | 神秘、黑暗题材内容 |
-| | 天堂风格 | heaven | 淡蓝色调，云朵元素 | 宗教、精神、平和内容 |
-| **节日风格** | 春节风格 | spring_festival | 红色和金色，花朵符号 | 新年祝福、家庭团聚 |
-| | 中秋节风格 | mid_autumn | 蓝紫色调，月亮符号 | 思乡、团圆、诗词 |
-| | 国庆节风格 | national_day | 红色主调，金黄星星 | 爱国主题、历史回顾 |
-| | 端午节风格 | dragon_boat | 绿色主调，清新自然 | 传统文化、健康养生 |
-| | 元旦风格 | new_year | 蓝色主调，雪花元素 | 新年计划、总结展望 |
-| **文章类型** | 记叙文风格 | narrative | 清新布局，强调时间线 | 故事、经历、游记 |
-| | 议论文风格 | argumentative | 严谨布局，强调论点 | 论文、评论、分析 |
+| 分类           | 模板名称       | 模板代码          | 主要特点                 | 适用场景               |
+| -------------- | -------------- | ----------------- | ------------------------ | ---------------------- |
+| **基础风格**   | 默认模板       | default           | 现代简约风格，蓝色系标题 | 技术文档和一般内容     |
+|                | 微信公众号模板 | wechat            | 微信绿色主色调，装饰线   | 微信公众号内容         |
+|                | 抖音模板       | douyin            | 深色背景，红蓝配色       | 抖音平台内容           |
+|                | 小红书模板     | xiaohongshu       | 粉色系为主，圆角设计     | 小红书平台内容         |
+|                | 手写体模板     | handwriting       | 楷体风格，纸张质感       | 诗歌、随笔、感悟       |
+| **手机端风格** | 手机默认风格   | phone_default     | 适配手机屏幕的简约风格   | 手机端阅读的一般内容   |
+|                | 手机微信风格   | phone_wechat      | 适配手机的微信风格       | 手机端微信文章         |
+|                | 手机抖音风格   | phone_douyin      | 适配手机的抖音风格       | 手机端抖音内容         |
+|                | 手机小红书风格 | phone_xiaohongshu | 适配手机的小红书风格     | 手机端小红书内容       |
+|                | 手机平静风格   | phone_calm        | 蓝色系，平静舒适的设计   | 心情随笔、冥想内容     |
+|                | 手机梦幻风格   | phone_dreamy      | 紫色系，梦幻柔和的设计   | 创意写作、幻想内容     |
+|                | 手机欢乐风格   | phone_happy       | 黄色系，活泼明亮的设计   | 积极向上、欢乐内容     |
+|                | 手机即刻风格   | phone_jike        | 即刻风格，简洁现代       | 社交分享、即时内容     |
+|                | 手机极简风格   | phone_minimal     | 黑白配色，极简设计       | 极简主义、商务内容     |
+|                | 手机自然风格   | phone_nature      | 绿色系，自然元素设计     | 自然、环保、健康内容   |
+|                | 手机复古风格   | phone_retro       | 复古色调，怀旧设计       | 历史、怀旧、复古内容   |
+|                | 手机浪漫风格   | phone_romantic    | 粉色系，浪漫温馨设计     | 爱情、情感、温馨内容   |
+|                | 手机科技风格   | phone_tech        | 蓝色系，科技感设计       | 科技、数码、编程内容   |
+| **设计风格**   | 极简风格       | minimalist        | 大量留白，黑白配色       | 商务报告或技术文档     |
+|                | 复古报纸风格   | vintage           | 旧纸张质感，衬线字体     | 新闻类或历史类内容     |
+|                | 科技感风格     | tech              | 深色背景，霓虹色调       | 科技、编程内容         |
+|                | 自然风格       | nature            | 绿色或棕色调，有机形状   | 环保、旅行或健康内容   |
+|                | 儿童风格       | kids              | 明亮多彩，可爱字体       | 教育或儿童相关内容     |
+|                | 赛博朋克风格   | cyberpunk         | 霓虹色彩，故障艺术效果   | 科幻内容、游戏相关     |
+|                | 中国传统风格   | chinese           | 中国红、金色，传统纹样   | 中国传统文化、诗词     |
+|                | 电影海报风格   | movie             | 大标题，高对比度         | 影评、电影介绍         |
+|                | 杂志风格       | magazine          | 多栏布局，首字下沉       | 时尚、生活方式、访谈   |
+|                | 水墨画风格     | ink               | 黑白灰色调，水墨晕染     | 艺术评论、哲学思考     |
+|                | 极简禅风格     | zen               | 大量留白，极简线条       | 哲学内容、简约生活     |
+|                | 霓虹灯风格     | neon              | 深色背景，发光文字       | 夜生活、音乐、娱乐     |
+|                | 像素艺术风格   | pixel_art         | 像素化字体和边框         | 游戏相关、复古科技     |
+|                | 蒸汽朋克风格   | steampunk         | 铜色、棕色、金色         | 复古科幻、机械主题     |
+|                | 波普艺术风格   | pop_art           | 原色使用，点状半色调     | 现代艺术、时尚内容     |
+|                | 未来主义风格   | futurism          | 斜线和动态线条           | 前卫科技、动态内容     |
+|                | 哥特风格       | gothic            | 黑色和深紫色，神秘符号   | 恐怖、神秘或中世纪主题 |
+|                | 热带风格       | tropical          | 鲜艳热带色彩，植物元素   | 旅游、度假相关内容     |
+|                | 北欧简约风格   | nordic            | 极简配色，几何图形       | 家居、设计、简约生活   |
+|                | 波西米亚风格   | bohemian          | 丰富图案，暖色调         | 艺术、多元文化内容     |
+|                | 食品菜单风格   | food_menu         | 菜单排版，手写风格       | 美食、烹饪内容         |
+|                | 医疗健康风格   | medical           | 蓝白配色，专业布局       | 健康、医疗相关内容     |
+|                | 校园笔记风格   | school_notes      | 方格纸背景，手写注释     | 教育、学习内容         |
+|                | 电子邮件风格   | email             | 邮件界面元素             | 商务通信内容           |
+|                | 社交媒体风格   | social_media      | 社交平台界面元素         | 社交媒体内容分享       |
+|                | 航空旅行风格   | air_travel        | 登机牌设计，航空元素     | 旅行、航空相关内容     |
+|                | 丧尸风格       | zombie            | 绿色调，破损效果         | 恐怖、末日题材内容     |
+|                | 吸血鬼风格     | vampire           | 深红色调，哥特元素       | 神秘、黑暗题材内容     |
+|                | 天堂风格       | heaven            | 淡蓝色调，云朵元素       | 宗教、精神、平和内容   |
+| **节日风格**   | 春节风格       | spring_festival   | 红色和金色，花朵符号     | 新年祝福、家庭团聚     |
+|                | 中秋节风格     | mid_autumn        | 蓝紫色调，月亮符号       | 思乡、团圆、诗词       |
+|                | 国庆节风格     | national_day      | 红色主调，金黄星星       | 爱国主题、历史回顾     |
+|                | 端午节风格     | dragon_boat       | 绿色主调，清新自然       | 传统文化、健康养生     |
+|                | 元旦风格       | new_year          | 蓝色主调，雪花元素       | 新年计划、总结展望     |
+| **文章类型**   | 记叙文风格     | narrative         | 清新布局，强调时间线     | 故事、经历、游记       |
+|                | 议论文风格     | argumentative     | 严谨布局，强调论点       | 论文、评论、分析       |
 
 ### 模板使用示例
 
@@ -152,6 +168,15 @@ yyds_md2png document.md --template default
 yyds_md2png document.md --template wechat
 yyds_md2png document.md --template douyin
 yyds_md2png document.md --template xiaohongshu
+
+# 手机端风格模板
+yyds_md2png document.md --template phone_default
+yyds_md2png document.md --template phone_wechat
+yyds_md2png document.md --template phone_romantic
+yyds_md2png document.md --template phone_tech
+
+# 使用所有手机端模板
+yyds_md2png document.md --template "phone_*"
 
 # 设计风格模板
 yyds_md2png document.md --template minimalist
@@ -204,7 +229,7 @@ yyds_md2png document.md --format webp                              # 使用不�
   -t, --theme <theme>            设置主题 (light, dark) (默认: "light")
   --toc                          生成目录 (默认: false)
   -b, --batch <directory>        批量处理指定目录中的所有 Markdown 文件
-  --template <template>          设置模板 (default, wechat, douyin等)，使用 * 表示所有模板 (默认: "default")
+  --template <template>          设置模板 (default, wechat, douyin等)，使用 * 表示所有模板，使用 prefix_* 表示所有以prefix_开头的模板 (默认: "default")
   --subfolders                   为每个模板创建子文件夹
   --css <file>                   使用自定义 CSS 文件
   --js <file>                    使用自定义 JavaScript 文件
@@ -223,7 +248,7 @@ yyds_md2png document.md --format webp                              # 使用不�
   --create-template <name>       创建新模板
   --template-author <author>     新模板的作者
   --template-desc <description>  新模板的描述
-  
+
   # 转换相关选项
   --to-html                      将 Markdown 转换为 HTML 而不是 PNG 图片 (默认: false)
   --to-png                       将生成的 HTML 转换为 PNG 图片 (默认: true)
@@ -242,7 +267,7 @@ yyds_md2png document.md --format webp                              # 使用不�
   --optimize                     优化图片大小 (默认: true)
   --no-optimize                  不优化图片大小
   --delete-html                  转换完成后删除 HTML 文件 (默认: false)
-  
+
   # 元数据选项
   --author <author>              设置文档作者
   --description <description>    设置文档描述
@@ -252,7 +277,7 @@ yyds_md2png document.md --format webp                              # 使用不�
 
 ## 🎭 自定义模板
 
-yyds_md2png 使用基于 CSS 的模板系统，所有样式会自动应用到Markdown转HTML生成的标准HTML元素上，您可以通过以下方式创建自己的模板：
+yyds_md2png 使用基于 CSS 的模板系统，所有样式会自动应用到 Markdown 转 HTML 生成的标准 HTML 元素上，您可以通过以下方式创建自己的模板：
 
 ### 方法一：使用命令行创建模板
 
@@ -283,7 +308,12 @@ body {
   background-color: #f9f9f9;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   color: #0066cc;
 }
 
@@ -309,7 +339,7 @@ p:first-of-type::first-letter {
 /* 更多自定义样式... */
 ```
 
-> **提示**：在创建自定义模板时，尽量使用标准HTML元素选择器（如h1, p, blockquote等）、伪元素（::before, ::after）和位置选择器（:first-of-type, :last-of-type等），这样样式就能自动应用到Markdown转HTML生成的元素上，无需添加特定类名。
+> **提示**：在创建自定义模板时，尽量使用标准 HTML 元素选择器（如 h1, p, blockquote 等）、伪元素（::before, ::after）和位置选择器（:first-of-type, :last-of-type 等），这样样式就能自动应用到 Markdown 转 HTML 生成的元素上，无需添加特定类名。
 
 ### 使用自定义模板
 
@@ -322,16 +352,16 @@ yyds_md2png document.md --template my-template
 您也可以在 Node.js 项目中直接使用 yyds_md2png：
 
 ```javascript
-const { convertToPngDirect } = require('yyds_md2png');
+const { convertToPngDirect } = require("yyds_md2png");
 
 async function convert() {
   const options = {
-    template: 'wechat',
+    template: "wechat",
     waitTime: 5000,
-    autoSize: true
+    autoSize: true,
   };
-  
-  const pngPaths = await convertToPngDirect('document.md', options);
+
+  const pngPaths = await convertToPngDirect("document.md", options);
   console.log(`生成的图片: ${pngPaths}`);
 }
 
@@ -354,7 +384,7 @@ convert();
 
 ### 特定样式没有应用？
 
-从1.0.7版本开始，所有CSS模板已优化为自动应用样式到标准HTML元素，无需添加特定类名。如果您使用自定义模板，请参考上面的"自定义模板"部分，使用标准HTML元素选择器和伪元素。
+从 1.0.7 版本开始，所有 CSS 模板已优化为自动应用样式到标准 HTML 元素，无需添加特定类名。如果您使用自定义模板，请参考上面的"自定义模板"部分，使用标准 HTML 元素选择器和伪元素。
 
 ### 如何使用所有模板处理一个文件？
 

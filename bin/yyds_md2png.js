@@ -49,7 +49,7 @@ program
   .option('-t, --theme <theme>', '设置主题 (light, dark)', 'light')
   .option('--toc', '生成目录', false)
   .option('-b, --batch <directory>', '批量处理指定目录中的所有Markdown文件')
-  .option('--template <template>', '设置模板 (default, wechat, douyin, xiaohongshu等)，使用 * 表示所有模板', 'default')
+  .option('--template <template>', '设置模板 (default, wechat, douyin, xiaohongshu等)，使用 * 表示所有模板，使用 prefix_* 表示所有以prefix_开头的模板', 'default')
   .option('--subfolders', '为每个模板创建子文件夹')
   .option('--css <file>', '使用自定义CSS文件')
   .option('--js <file>', '使用自定义JavaScript文件')
@@ -140,6 +140,50 @@ if (options.createTemplate) {
   process.exit(success ? 0 : 1);
 }
 
+/**
+ * 处理模板通配符
+ * @param {string} templatePattern 模板模式，可以是具体模板名、*、prefix_*等
+ * @param {Object} availableTemplates 可用模板对象
+ * @returns {string[]} 匹配的模板名称数组
+ */
+function processTemplatePattern(templatePattern, availableTemplates) {
+  // 如果是逗号分隔的多个模板，递归处理每个模板模式
+  if (templatePattern.includes(',')) {
+    const patterns = templatePattern.split(',').map(p => p.trim());
+    const allTemplates = new Set();
+    
+    patterns.forEach(pattern => {
+      const matchedTemplates = processTemplatePattern(pattern, availableTemplates);
+      matchedTemplates.forEach(t => allTemplates.add(t));
+    });
+    
+    return Array.from(allTemplates);
+  }
+  
+  // 处理单个模板模式
+  const pattern = templatePattern.trim();
+  
+  // 如果是 * 通配符，返回所有模板
+  if (pattern === '*') {
+    return Object.keys(availableTemplates);
+  }
+  
+  // 如果是 prefix_* 形式的通配符，返回所有以prefix_开头的模板
+  if (pattern.endsWith('*') && pattern !== '*') {
+    const prefix = pattern.slice(0, -1); // 去掉末尾的 *
+    return Object.keys(availableTemplates).filter(name => name.startsWith(prefix));
+  }
+  
+  // 如果是具体模板名，检查是否存在
+  if (availableTemplates[pattern]) {
+    return [pattern];
+  }
+  
+  // 如果模板不存在，返回默认模板
+  console.error(chalk.yellow(`⚠️ 模板 ${pattern} 不存在，使用默认模板`));
+  return ['default'];
+}
+
 // 主函数
 async function main() {
   try {
@@ -225,20 +269,15 @@ async function main() {
     // 合并PNG选项到转换选项
     Object.assign(convertOptions, pngOptions);
 
+    // 获取可用模板
+    const availableTemplates = templates.getAvailableTemplates();
+    
+    // 处理模板通配符
+    const templateList = processTemplatePattern(options.template, availableTemplates);
+    
     // 检查是否使用多个模板
-    if (options.template === '*' || options.template.includes(',')) {
-      // 解析多个模板
-      let templateList = [];
-      
-      // 特殊处理 --template * 选项，使用所有可用模板
-      if (options.template.trim() === '*') {
-        console.log(chalk.blue('🎨 使用所有可用模板处理'));
-        const availableTemplates = templates.getAvailableTemplates();
-        templateList = Object.keys(availableTemplates);
-      } else {
-        templateList = options.template.split(',').map(t => t.trim());
-      }
-      console.log(chalk.blue(`🎨 使用多个模板处理: ${templateList.join(', ')}`));
+    if (templateList.length > 1) {
+      console.log(chalk.blue(`🎨 使用多个模板处理: ${templateList.join(' ')}`));
       
       // 存储所有生成的图片路径
       const allPngPaths = [];
@@ -285,6 +324,8 @@ async function main() {
       }
     } else {
       // 使用单一模板
+      convertOptions.template = templateList[0]; // 使用处理后的模板名称
+      
       // 根据不同的处理模式执行相应的操作
       if (options.toHtml) {
         // 只转换为HTML

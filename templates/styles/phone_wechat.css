@@ -1,0 +1,226 @@
+/**
+ * phone_wechat.css - 微信风格手机端样式
+ * 适合在手机屏幕上查看的微信风格Markdown渲染样式
+ */
+
+:root {
+  --primary-color: #07C160;
+  --secondary-color: #06ad56;
+  --text-color: #333333;
+  --background-color: #ffffff;
+  --border-color: #e0e0e0;
+  --code-background: #f8f8f8;
+  --blockquote-color: #f0f0f0;
+  --font-size-base: 16px;
+  --line-height: 1.6;
+  --wechat-gray: #f7f7f7;
+  --wechat-link: #576b95;
+}
+
+/* 基础样式 */
+body {
+  font-family: -apple-system, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif;
+  line-height: var(--line-height);
+  color: var(--text-color);
+  background-color: var(--background-color);
+  margin: 0;
+  padding: 16px;
+  font-size: var(--font-size-base);
+  /* 手机端宽度设置 */
+  width: 375px;
+  max-width: 100%;
+  box-sizing: border-box;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  letter-spacing: 0.034em;
+}
+
+/* 标题样式 - 微信风格 */
+h1, h2, h3, h4, h5, h6 {
+  margin-top: 1.5em;
+  margin-bottom: 0.5em;
+  font-weight: 600;
+  line-height: 1.4;
+  color: var(--text-color);
+}
+
+h1 {
+  font-size: 1.8em;
+  margin-bottom: 0.8em;
+  font-weight: bold;
+}
+
+h2 {
+  font-size: 1.5em;
+  margin-bottom: 0.7em;
+  font-weight: bold;
+}
+
+h3 {
+  font-size: 1.25em;
+  margin-bottom: 0.6em;
+}
+
+h4 {
+  font-size: 1em;
+  margin-bottom: 0.5em;
+}
+
+h5 {
+  font-size: 0.875em;
+}
+
+h6 {
+  font-size: 0.85em;
+  color: #777;
+}
+
+/* 段落和列表 */
+p {
+  margin-top: 0;
+  margin-bottom: 1em;
+  line-height: 1.8;
+}
+
+ul, ol {
+  padding-left: 2em;
+  margin-bottom: 1em;
+}
+
+li {
+  margin-bottom: 0.5em;
+  line-height: 1.8;
+}
+
+/* 链接样式 - 微信蓝色链接 */
+a {
+  color: var(--wechat-link);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* 代码样式 */
+code {
+  font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  padding: 0.2em 0.4em;
+  margin: 0;
+  font-size: 85%;
+  background-color: var(--code-background);
+  border-radius: 3px;
+}
+
+pre {
+  font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  padding: 16px;
+  overflow: auto;
+  font-size: 85%;
+  line-height: 1.45;
+  background-color: var(--code-background);
+  border-radius: 3px;
+  margin-bottom: 16px;
+  word-wrap: normal;
+}
+
+pre code {
+  padding: 0;
+  margin: 0;
+  background-color: transparent;
+  border: 0;
+  word-break: normal;
+  white-space: pre;
+}
+
+/* 引用块 - 微信风格 */
+blockquote {
+  margin: 1em 0;
+  padding: 0.8em 1em;
+  color: #6a737d;
+  border-left: 4px solid var(--primary-color);
+  background-color: var(--wechat-gray);
+  border-radius: 0 3px 3px 0;
+}
+
+blockquote > :first-child {
+  margin-top: 0;
+}
+
+blockquote > :last-child {
+  margin-bottom: 0;
+}
+
+/* 表格样式 */
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin-bottom: 16px;
+  display: block;
+  overflow-x: auto;
+}
+
+table th, table td {
+  padding: 8px 13px;
+  border: 1px solid var(--border-color);
+}
+
+table th {
+  font-weight: 600;
+  background-color: #f6f8fa;
+}
+
+table tr {
+  background-color: #fff;
+  border-top: 1px solid var(--border-color);
+}
+
+table tr:nth-child(2n) {
+  background-color: #f8f8f8;
+}
+
+/* 图片样式 */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 1em auto;
+  border-radius: 4px;
+}
+
+/* 水平线 */
+hr {
+  height: 1px;
+  padding: 0;
+  margin: 24px 0;
+  background-color: var(--border-color);
+  border: 0;
+}
+
+/* 适配手机端长宽比 */
+.markdown-body {
+  min-height: 667px; /* iPhone 8 高度 */
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* 微信风格的段落间距 */
+p + p {
+  margin-top: 1em;
+}
+
+/* 列表样式 */
+ul li {
+  list-style-type: disc;
+}
+
+ol li {
+  list-style-type: decimal;
+}
+
+/* 手机端背景 */
+body {
+  background-color: #ffffff;
+  background-image: linear-gradient(to bottom, rgba(7, 193, 96, 0.05), rgba(7, 193, 96, 0.01));
+  background-attachment: fixed;
+}

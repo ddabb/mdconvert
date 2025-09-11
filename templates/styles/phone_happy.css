@@ -1,0 +1,303 @@
+/**
+ * phone_happy.css - 快乐心情手机端样式
+ * 适合在手机屏幕上查看的快乐风格Markdown渲染样式
+ */
+
+:root {
+  --primary-color: #FFB300;
+  --secondary-color: #FFC107;
+  --text-color: #333333;
+  --background-color: #ffffff;
+  --border-color: #f0f0f0;
+  --code-background: #f8f8f8;
+  --blockquote-color: #fff8e1;
+  --font-size-base: 16px;
+  --line-height: 1.7;
+}
+
+/* 基础样式 */
+body {
+  font-family: -apple-system, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+  line-height: var(--line-height);
+  color: var(--text-color);
+  background-color: var(--background-color);
+  margin: 0;
+  padding: 16px;
+  font-size: var(--font-size-base);
+  /* 手机端宽度设置 */
+  width: 375px;
+  max-width: 100%;
+  box-sizing: border-box;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  letter-spacing: 0.03em;
+  background-color: #fffdf7;
+  background-image: linear-gradient(120deg, rgba(255, 251, 235, 0.8) 0%, rgba(255, 243, 205, 0.4) 100%);
+}
+
+/* Markdown内容容器 */
+.markdown-content {
+  position: relative;
+  background-color: #fff;
+  padding: 25px;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(255, 179, 0, 0.1);
+  border: 1px solid rgba(255, 179, 0, 0.2);
+  /* 添加背景图案 */
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 80 80'%3E%3Cpath fill='%23FFB300' fill-opacity='0.05' d='M14 16H9v-2h5V9.87a4 4 0 1 1 2 0V14h5v2h-5v15.95A10 10 0 0 0 23.66 27l-3.46-2 8.2-2.2-2.9 5a12 12 0 0 1-21 0l-2.89-5 8.2 2.2-3.47 2A10 10 0 0 0 14 31.95V16zm40 40h-5v-2h5v-4.13a4 4 0 1 1 2 0V54h5v2h-5v15.95A10 10 0 0 0 63.66 67l-3.47-2 8.2-2.2-2.88 5a12 12 0 0 1-21.02 0l-2.88-5 8.2 2.2-3.47 2A10 10 0 0 0 54 71.95V56zm-39 6a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm40-40a2 2 0 1 1 0-4 2 2 0 0 1 0 4zM15 8a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm40 40a2 2 0 1 0 0-4 2 2 0 0 0 0 4z'%3E%3C/path%3E%3C/svg%3E");
+}
+
+/* 添加快乐风格装饰 */
+.markdown-content::before {
+  content: "✿";
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 1.5em;
+  color: rgba(255, 179, 0, 0.3);
+}
+
+/* 标题样式 - 快乐风格 */
+h1, h2, h3, h4, h5, h6 {
+  margin-top: 1.5em;
+  margin-bottom: 0.8em;
+  font-weight: 600;
+  line-height: 1.4;
+  color: var(--primary-color);
+}
+
+h1 {
+  font-size: 1.8em;
+  margin-bottom: 1em;
+  font-weight: 700;
+  color: var(--primary-color);
+  text-align: center;
+  position: relative;
+  padding-bottom: 0.5em;
+}
+
+h1:after {
+  content: "";
+  display: block;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--primary-color), transparent);
+}
+
+h2 {
+  font-size: 1.5em;
+  margin-bottom: 0.8em;
+  font-weight: 600;
+  color: var(--primary-color);
+  border-bottom: 1px solid rgba(255, 179, 0, 0.3);
+  padding-bottom: 0.3em;
+}
+
+h3 {
+  font-size: 1.25em;
+  margin-bottom: 0.7em;
+  color: var(--primary-color);
+}
+
+h4 {
+  font-size: 1.1em;
+  margin-bottom: 0.6em;
+  color: var(--primary-color);
+}
+
+h5 {
+  font-size: 1em;
+  color: var(--primary-color);
+}
+
+h6 {
+  font-size: 0.9em;
+  color: var(--primary-color);
+}
+
+/* 段落和列表 */
+p {
+  margin-top: 0;
+  margin-bottom: 1.2em;
+  line-height: 1.8;
+}
+
+ul, ol {
+  padding-left: 2em;
+  margin-bottom: 1.2em;
+}
+
+li {
+  margin-bottom: 0.6em;
+  line-height: 1.8;
+}
+
+/* 链接样式 */
+a {
+  color: var(--primary-color);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(255, 179, 0, 0.3);
+}
+
+a:hover {
+  text-decoration: none;
+  border-bottom: 1px solid var(--primary-color);
+}
+
+/* 代码样式 */
+code {
+  font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  padding: 0.2em 0.4em;
+  margin: 0;
+  font-size: 85%;
+  background-color: var(--code-background);
+  border-radius: 4px;
+}
+
+pre {
+  font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  padding: 16px;
+  overflow: auto;
+  font-size: 85%;
+  line-height: 1.45;
+  background-color: var(--code-background);
+  border-radius: 8px;
+  margin-bottom: 16px;
+  word-wrap: normal;
+}
+
+pre code {
+  padding: 0;
+  margin: 0;
+  background-color: transparent;
+  border: 0;
+  word-break: normal;
+  white-space: pre;
+}
+
+/* 引用块 - 快乐风格 */
+blockquote {
+  margin: 1.2em 0;
+  padding: 1em 1.2em;
+  color: #666;
+  border-left: 4px solid var(--primary-color);
+  background-color: var(--blockquote-color);
+  border-radius: 0 8px 8px 0;
+  position: relative;
+}
+
+blockquote:before {
+  content: "❝";
+  position: absolute;
+  top: -0.5em;
+  left: 0.5em;
+  font-size: 1.5em;
+  color: rgba(255, 179, 0, 0.3);
+}
+
+blockquote > :first-child {
+  margin-top: 0;
+}
+
+blockquote > :last-child {
+  margin-bottom: 0;
+}
+
+/* 表格样式 */
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin-bottom: 16px;
+  display: block;
+  overflow-x: auto;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+table th, table td {
+  padding: 10px 15px;
+  border: 1px solid var(--border-color);
+}
+
+table th {
+  font-weight: 600;
+  background-color: rgba(255, 179, 0, 0.1);
+}
+
+table tr {
+  background-color: #fff;
+  border-top: 1px solid var(--border-color);
+}
+
+table tr:nth-child(2n) {
+  background-color: #fafafa;
+}
+
+/* 图片样式 */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 1.2em auto;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* 水平线 */
+hr {
+  height: 1px;
+  padding: 0;
+  margin: 24px 0;
+  background: linear-gradient(90deg, transparent, rgba(255, 179, 0, 0.5), transparent);
+  border: 0;
+}
+
+/* 适配手机端长宽比 */
+.markdown-body {
+  min-height: 667px; /* iPhone 8 高度 */
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* 列表样式 */
+ul {
+  list-style-type: none;
+}
+
+ul li {
+  position: relative;
+  padding-left: 0.5em;
+}
+
+ul li:before {
+  content: "✦";
+  color: var(--primary-color);
+  position: absolute;
+  left: -1.5em;
+}
+
+ol li {
+  list-style-type: decimal;
+}
+
+/* 强调文本 */
+strong, b {
+  font-weight: 700;
+  color: var(--primary-color);
+}
+
+/* 斜体文本 */
+em, i {
+  font-style: italic;
+  color: #555;
+}
+
+/* 删除线 */
+del {
+  text-decoration: line-through;
+  color: #999;
+}

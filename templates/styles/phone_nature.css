@@ -1,0 +1,308 @@
+/**
+ * phone_nature.css - 自然心情手机端样式
+ * 适合在手机屏幕上查看的自然风格Markdown渲染样式
+ */
+
+:root {
+  --primary-color: #4CAF50;
+  --secondary-color: #81C784;
+  --text-color: #33691E;
+  --background-color: #ffffff;
+  --border-color: #E8F5E9;
+  --code-background: #F1F8E9;
+  --blockquote-color: #E8F5E9;
+  --font-size-base: 16px;
+  --line-height: 1.7;
+}
+
+/* 基础样式 */
+body {
+  font-family: -apple-system, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+  line-height: var(--line-height);
+  color: var(--text-color);
+  background-color: var(--background-color);
+  margin: 0;
+  padding: 16px;
+  font-size: var(--font-size-base);
+  /* 手机端宽度设置 */
+  width: 375px;
+  max-width: 100%;
+  box-sizing: border-box;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  letter-spacing: 0.03em;
+  background-color: #f8fbf6;
+  background-image: linear-gradient(to right, rgba(232, 245, 233, 0.8) 0%, rgba(220, 237, 220, 0.4) 100%);
+}
+
+/* Markdown内容容器 */
+.markdown-content {
+  position: relative;
+  background-color: #fff;
+  padding: 25px;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(76, 175, 80, 0.1);
+  border: 1px solid rgba(76, 175, 80, 0.2);
+  /* 添加背景图案 */
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cpath fill='%234CAF50' fill-opacity='0.05' d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5z'%3E%3C/path%3E%3C/svg%3E");
+}
+
+/* 添加自然风格装饰 */
+.markdown-content::before {
+  content: "❀";
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 1.5em;
+  color: rgba(76, 175, 80, 0.3);
+}
+
+/* 标题样式 - 自然风格 */
+h1, h2, h3, h4, h5, h6 {
+  margin-top: 1.5em;
+  margin-bottom: 0.8em;
+  font-weight: 500;
+  line-height: 1.4;
+  color: var(--primary-color);
+}
+
+h1 {
+  font-size: 1.8em;
+  margin-bottom: 1em;
+  font-weight: 600;
+  color: var(--primary-color);
+  text-align: center;
+  position: relative;
+  padding-bottom: 0.5em;
+}
+
+h1:before, h1:after {
+  content: "❀";
+  position: absolute;
+  top: 0;
+  color: rgba(76, 175, 80, 0.3);
+  font-size: 0.8em;
+}
+
+h1:before {
+  left: 0;
+}
+
+h1:after {
+  right: 0;
+}
+
+h2 {
+  font-size: 1.5em;
+  margin-bottom: 0.8em;
+  font-weight: 500;
+  color: var(--primary-color);
+  border-bottom: 1px solid rgba(76, 175, 80, 0.3);
+  padding-bottom: 0.3em;
+}
+
+h3 {
+  font-size: 1.25em;
+  margin-bottom: 0.7em;
+  color: var(--primary-color);
+}
+
+h4 {
+  font-size: 1.1em;
+  margin-bottom: 0.6em;
+  color: var(--primary-color);
+}
+
+h5 {
+  font-size: 1em;
+  color: var(--primary-color);
+}
+
+h6 {
+  font-size: 0.9em;
+  color: var(--primary-color);
+}
+
+/* 段落和列表 */
+p {
+  margin-top: 0;
+  margin-bottom: 1.2em;
+  line-height: 1.8;
+}
+
+ul, ol {
+  padding-left: 2em;
+  margin-bottom: 1.2em;
+}
+
+li {
+  margin-bottom: 0.6em;
+  line-height: 1.8;
+}
+
+/* 链接样式 */
+a {
+  color: var(--primary-color);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(76, 175, 80, 0.3);
+}
+
+a:hover {
+  text-decoration: none;
+  border-bottom: 1px solid var(--primary-color);
+}
+
+/* 代码样式 */
+code {
+  font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  padding: 0.2em 0.4em;
+  margin: 0;
+  font-size: 85%;
+  background-color: var(--code-background);
+  border-radius: 4px;
+}
+
+pre {
+  font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  padding: 16px;
+  overflow: auto;
+  font-size: 85%;
+  line-height: 1.45;
+  background-color: var(--code-background);
+  border-radius: 8px;
+  margin-bottom: 16px;
+  word-wrap: normal;
+}
+
+pre code {
+  padding: 0;
+  margin: 0;
+  background-color: transparent;
+  border: 0;
+  word-break: normal;
+  white-space: pre;
+}
+
+/* 引用块 - 自然风格 */
+blockquote {
+  margin: 1.2em 0;
+  padding: 1em 1.2em;
+  color: #558B2F;
+  border-left: 4px solid var(--primary-color);
+  background-color: var(--blockquote-color);
+  border-radius: 0 8px 8px 0;
+  position: relative;
+}
+
+blockquote:before {
+  content: "❝";
+  position: absolute;
+  top: -0.5em;
+  left: 0.5em;
+  font-size: 1.5em;
+  color: rgba(76, 175, 80, 0.3);
+}
+
+blockquote > :first-child {
+  margin-top: 0;
+}
+
+blockquote > :last-child {
+  margin-bottom: 0;
+}
+
+/* 表格样式 */
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin-bottom: 16px;
+  display: block;
+  overflow-x: auto;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+table th, table td {
+  padding: 10px 15px;
+  border: 1px solid var(--border-color);
+}
+
+table th {
+  font-weight: 500;
+  background-color: rgba(76, 175, 80, 0.1);
+}
+
+table tr {
+  background-color: #fff;
+  border-top: 1px solid var(--border-color);
+}
+
+table tr:nth-child(2n) {
+  background-color: #fafafa;
+}
+
+/* 图片样式 */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 1.2em auto;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* 水平线 */
+hr {
+  height: 1px;
+  padding: 0;
+  margin: 24px 0;
+  background: linear-gradient(90deg, transparent, rgba(76, 175, 80, 0.5), transparent);
+  border: 0;
+}
+
+/* 适配手机端长宽比 */
+.markdown-body {
+  min-height: 667px; /* iPhone 8 高度 */
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* 列表样式 */
+ul {
+  list-style-type: none;
+}
+
+ul li {
+  position: relative;
+  padding-left: 0.5em;
+}
+
+ul li:before {
+  content: "❀";
+  color: var(--primary-color);
+  position: absolute;
+  left: -1.5em;
+  font-size: 0.8em;
+}
+
+ol li {
+  list-style-type: decimal;
+}
+
+/* 强调文本 */
+strong, b {
+  font-weight: 600;
+  color: #2E7D32;
+}
+
+/* 斜体文本 */
+em, i {
+  font-style: italic;
+  color: #558B2F;
+}
+
+/* 删除线 */
+del {
+  text-decoration: line-through;
+  color: #AED581;
+}
