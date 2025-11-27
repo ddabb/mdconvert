@@ -1,10 +1,10 @@
 {
   "name": "yyds_md2png",
-  "version": "1.0.14",
+  "version": "1.0.15",
   "description": "将Markdown文件转换为不同样式的HTML或PNG图片，支持国内环境安装，内置多种模板",
   "main": "src/index.js",
   "bin": {
-    "md2png": "bin/yyds_md2png.js"
+    "yyds_md2png": "bin/yyds_md2png.js"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
